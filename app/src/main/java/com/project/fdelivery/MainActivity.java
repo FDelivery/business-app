@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button curier;
     Button business;
 
     @Override
@@ -19,8 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        curier = (Button) findViewById(R.id.curier);
-        curier.setOnClickListener(this);
         business = (Button) findViewById(R.id.business);
         business.setOnClickListener(this);
     }
