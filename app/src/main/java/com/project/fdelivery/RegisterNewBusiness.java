@@ -18,23 +18,22 @@ import retrofit2.Response;
 
 public class RegisterNewBusiness extends AppCompatActivity {
 
-    private EditText BusinessName, PasswordEt, Address, Phone2, Phone1;
-    Button Create;
+    private EditText BusinessName, PasswordEt, Address, Phone2, Phone1, EmailEt;
+    private Button Create;
     RetrofitInterface rtfBase;
-    TextView EmailEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_new_business);
-        BusinessName = (EditText)findViewById(R.id.Name);
-        PasswordEt = (EditText)findViewById(R.id.Password);
-        Address = (EditText)findViewById(R.id.Adress);
+        BusinessName = (EditText)findViewById(R.id.BusinessName);
+        PasswordEt = (EditText)findViewById(R.id.PasswordEt);
+        Address = (EditText)findViewById(R.id.Address);
         Phone2 = (EditText)findViewById(R.id.Phone2);
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Update);
-        EmailEt = findViewById(R.id.RegEmail);
+        EmailEt = findViewById(R.id.EmailEt);
 
 
         Create.setOnClickListener((v) -> {

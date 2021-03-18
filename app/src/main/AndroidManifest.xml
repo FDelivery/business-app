@@ -9,21 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FDelivery">
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".FillDetailsBusiness" />
         <activity android:name=".RegisterNewBusiness" />
-        <activity android:name=".BusinessMain" />
         <activity
-            android:name=".MainActivity"
+            android:name=".BusinessMain"
             android:theme="@style/Theme.FDelivery.NoActionBar">
-            >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.FDelivery.NoActionBar" />
+
     </application>
 
 </manifest>

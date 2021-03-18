@@ -4,16 +4,22 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/sign1"
-            android:icon="@drawable/ic_baseline_dashboard_24"
-            android:title="idk">
+            android:id="@+id/edit_detailes"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="edit your account" />
 
-        </item>
-        <item
-            android:id="@+id/wifi"
-            android:icon="@drawable/ic_baseline_wifi_off_24"
-            android:title="sign2">
-
-        </item>
     </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"
+                android:title="log out" />
+
+        </menu>
+
+    </item>
+
+
 </menu>
