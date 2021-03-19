@@ -24,35 +24,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef1de3a7-cb21-4e25-9aff-198f3b31d454" name="Default Changelist" comment=".">
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_email_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" afterDir="false" />
+    <list default="true" id="ef1de3a7-cb21-4e25-9aff-198f3b31d454" name="Default Changelist" comment="start tool bar">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/FDelivery.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/FDelivery.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/BusinessMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/BusinessMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/FillDetailsBusiness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/MainActivity2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/RegisterNewBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/fdelivery/RegisterNewBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_business_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_business_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_fill_detailes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_new_business.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_new_business.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +66,7 @@
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -107,7 +90,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FeedMe" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -265,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615889101811</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="start tool bar">
+      <created>1616095811748</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616095811749</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,7 +281,8 @@
     <MESSAGE value="we move" />
     <MESSAGE value="first commit" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="start tool bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="start tool bar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="112" y="21" key="#Live_Templates" timestamp="1614711571255">
@@ -318,10 +309,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="550" y="54" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1616078332050" />
-    <state x="301" y="55" width="838" height="486" key="AndroidCreateResourceFileDialog" timestamp="1616078705252">
+    <state x="698" y="106" width="838" height="486" key="AndroidCreateResourceFileDialog" timestamp="1616144932387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="301" y="55" width="838" height="486" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1616078705252" />
+    <state x="698" y="106" width="838" height="486" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1616144932387" />
     <state x="614" y="198" key="AndroidCreateXmlResourceDialog" timestamp="1616076696424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -330,26 +321,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="565" y="158" key="AndroidProcessChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1616076876588" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1615889165285">
+    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1616146497484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615889165285" />
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom" timestamp="1616088615750">
+    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616146497484" />
+    <state width="744" height="206" key="GridCell.Tab.0.bottom" timestamp="1616147052843">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616088615750" />
-    <state width="1491" height="210" key="GridCell.Tab.0.center" timestamp="1616088615750">
+    <state width="744" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616147052843" />
+    <state width="744" height="206" key="GridCell.Tab.0.center" timestamp="1616147052843">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616088615750" />
-    <state width="1491" height="210" key="GridCell.Tab.0.left" timestamp="1616088615749">
+    <state width="744" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616147052843" />
+    <state width="744" height="206" key="GridCell.Tab.0.left" timestamp="1616147052843">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616088615749" />
-    <state width="1491" height="210" key="GridCell.Tab.0.right" timestamp="1616088615750">
+    <state width="744" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616147052843" />
+    <state width="744" height="206" key="GridCell.Tab.0.right" timestamp="1616147052843">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616088615750" />
+    <state width="744" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616147052843" />
     <state x="147" y="65" key="MergeDialog" timestamp="1615889115420">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -366,11 +357,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615883462540" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1615889076048">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1616095840412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1614687013642" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615889076048" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1616095840412" />
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615888971535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
