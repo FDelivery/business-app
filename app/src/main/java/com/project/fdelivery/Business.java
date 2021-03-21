@@ -2,13 +2,9 @@ package com.project.fdelivery;
 
 public class Business {
 
-    String email;
-    String BusinessName;
-    String PhoneNumber1;
-    String PhoneNumber2;
-    String Address;
+    private String email, BusinessName, PhoneNumber1 ,PhoneNumber2, Address, Password;
 
-    Business(String e, String p1, String p2, String a, String name)
+    Business(String e, String p1, String p2, String a, String name,String password)
     {
         email = e;
         PhoneNumber1 = p1;
@@ -16,7 +12,7 @@ public class Business {
         Address = a;
         BusinessName = name;
     }
-    Business(String e, String p1, String a, String name)
+    Business(String e, String p1, String a, String name, String password)
     {
         email = e;
         PhoneNumber1 = p1;
@@ -44,7 +40,6 @@ public class Business {
 
     public void setAddress(String address) { Address = address; }
 
-
-
-
+    public String getPassword() { return Password; }
+    public void deletePassword(){ Password = "";}
 }

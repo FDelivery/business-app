@@ -38,42 +38,31 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
     <Button
         android:id="@+id/DeliveryRequest"
         android:layout_width="150dp"
         android:layout_height="139dp"
         android:text="בקשת משלוח חדש"
-        app:backgroundTint="#009688"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:backgroundTint="#009688" />
 
     <Button
         android:id="@+id/DeliveryHistory"
         android:layout_width="150dp"
         android:layout_height="139dp"
         android:text="היסטורית משלוחים"
-        app:backgroundTint="#009688"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.856" />
+        app:backgroundTint="#009688" />
 
     <Button
         android:id="@+id/DeliveryList"
         android:layout_width="150dp"
         android:layout_height="139dp"
         android:text="מעקב משלוחים"
-        app:backgroundTint="#009688"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:backgroundTint="#009688" />
+</LinearLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
