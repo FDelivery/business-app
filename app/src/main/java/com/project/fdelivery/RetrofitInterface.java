@@ -18,4 +18,8 @@ public interface RetrofitInterface
 
     @GET("/user")
     Call<Void> getUser(@Query("id") String id );
+
+    @POST("/deliveries")
+    Call<Void> insertNewDelivery(@Body Delivery d);
+
 }

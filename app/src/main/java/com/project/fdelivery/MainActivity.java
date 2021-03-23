@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rtfBase = new RetrofitBase().getRetrofitInterface();
+        rtfBase = RetrofitBase.getRetrofitInterface();
         EmailEt = (EditText)findViewById(R.id.Email);
         PasswordEt = (EditText)findViewById(R.id.Password);
         Connect=(Button)findViewById(R.id.Connect);
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             handleConnect();
         });
         ForgotPassword.setOnClickListener((v)->{
-
 
         });
         NewBusiness.setOnClickListener((v) -> {

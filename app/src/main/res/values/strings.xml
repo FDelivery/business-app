@@ -2,4 +2,10 @@
     <string name="app_name">FDelivery</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="forgetPass">
+        <u>forgot your password?</u>
+    </string>
+    <string name="newBusiness">
+        <u>still not registered?</u>
+    </string>
 </resources>
