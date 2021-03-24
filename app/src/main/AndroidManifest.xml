@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FDelivery">
         <activity android:name=".newDelivery"></activity>
-        <activity android:name=".deliveryTable" />
-        <activity android:name=".deliveryHistory" />
+        <activity android:name=".DeliveryTable" />
+        <activity android:name=".DeliveryHistory" />
         <activity android:name=".RegisterNewBusiness" />
         <activity
             android:name=".BusinessMain"

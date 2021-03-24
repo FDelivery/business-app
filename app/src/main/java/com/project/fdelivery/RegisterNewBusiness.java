@@ -32,7 +32,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
         Address = (EditText)findViewById(R.id.Address);
         Phone2 = (EditText)findViewById(R.id.Phone2);
         Phone1 = (EditText)findViewById(R.id.Phone1);
-        Create=(Button)findViewById(R.id.Update);
+        Create=(Button)findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
 
 
