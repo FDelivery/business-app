@@ -47,21 +47,21 @@
         android:id="@+id/DeliveryRequest"
         android:layout_width="150dp"
         android:layout_height="139dp"
-        android:text="בקשת משלוח חדש"
+        android:text="@string/DeliveryRequest"
         app:backgroundTint="#009688" />
 
     <Button
         android:id="@+id/DeliveryHistory"
         android:layout_width="150dp"
         android:layout_height="139dp"
-        android:text="היסטורית משלוחים"
+        android:text="@string/DeliveryHistory"
         app:backgroundTint="#009688" />
 
     <Button
         android:id="@+id/DeliveryList"
         android:layout_width="150dp"
         android:layout_height="139dp"
-        android:text="מעקב משלוחים"
+        android:text="@string/DeliveryList"
         app:backgroundTint="#009688" />
 </LinearLayout>
 
