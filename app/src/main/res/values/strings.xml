@@ -2,10 +2,32 @@
     <string name="app_name">FDelivery</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="forgetPass">
-        <u>Forgot password?</u>
-    </string>
-    <string name="newBusiness">
-        <u>Create an account</u>
-    </string>
+    <string name="forgetPass"><u>Forgot password?</u></string>
+    <string name="newBusiness"><u>Create an account</u></string>
+    <string name="DeliveryRequest">Fill new delivery order</string>
+    <string name="DeliveryHistory">My delivery history</string>
+    <string name="DeliveryList">On-going deliveries</string>
+    <string name="password">Password</string>
+    <string name="Email">Email</string>
+    <string name="Connect">Sign in</string>
+    <string name="CPhone">050-000000</string>
+    <string name="CName">Name</string>
+    <string name="Caddress">address</string>
+    <string name="Cnotes">" Delivery notes"</string>
+    <string name="cost">payment</string>
+    <string name="Date">00/00/00</string>
+    <string name="Time">time</string>
+    <string name="preferd_vehicle">preferd vehicle</string>
+    <string name="bike">bike</string>
+    <string name="car">car</string>
+    <string name="ndsubmit">Submit delivery</string>
+    <string name="business_name">Business name</string>
+    <string name="business_address">Business address</string>
+    <string name="PasswordEt">Password</string>
+    <string name="Phone2">Additional phone number</string>
+    <string name="Phone1">Phone number</string>
+    <string name="Text">Create your account</string>
+    <string name="create">Create account</string>
+    <string name="EmailET">Email</string>
+    <string name="useremail">HERE need to be  the user email FROM database</string>
 </resources>
