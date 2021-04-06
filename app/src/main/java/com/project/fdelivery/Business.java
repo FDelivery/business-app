@@ -21,7 +21,7 @@ public class Business {
     }
 
     public String getEmail() { return email; }
-
+//In my opinion(sarah) you do not need it because in my opinion you should not allow the business / courier to change the email with which they registered
     public void setEmail(String email) { this.email = email; }
 
     public String getBusinessName() { return BusinessName; }
