@@ -5,119 +5,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgemptyactivity"
-    tools:context=".RegisterNewBusiness">
-
+    tools:context=".EditMyProfile">
 
     <EditText
-        android:id="@+id/BusinessName"
+        android:id="@+id/AddressEP"
         android:layout_width="352dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:hint="@string/business_name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168" />
-
-    <EditText
-        android:id="@+id/Address"
-        android:layout_width="352dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="@string/business_address"
+        android:hint="@string/AddressEP"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.499" />
+
 
     <EditText
-        android:id="@+id/PasswordEt"
+        android:id="@+id/Phone2EP"
         android:layout_width="352dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:hint="@string/PasswordEt"
-        android:inputType="textPassword"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
-
-    <EditText
-        android:id="@+id/Phone2"
-        android:layout_width="352dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:hint="@string/Phone2"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
-
-    <EditText
-        android:id="@+id/Phone1"
-        android:layout_width="352dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="@string/Phone1"
+        android:hint="@string/Phone2EP"
         android:inputType="phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.743" />
+
+    <EditText
+        android:id="@+id/Phone1EP"
+        android:layout_width="352dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/Phone1EP"
+        android:inputType="phone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.626" />
 
 
     <TextView
-        android:id="@+id/Text"
-        android:layout_width="262dp"
-        android:layout_height="47dp"
-        android:text="@string/Text"
+        android:id="@+id/TextEP"
+        android:layout_width="148dp"
+        android:layout_height="70dp"
+        android:text="@string/textEP"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <Button
-        android:id="@+id/Create"
-        android:layout_width="239dp"
-        android:layout_height="54dp"
-        android:text="@string/create"
+        android:id="@+id/ChangeEP"
+        android:layout_width="139dp"
+        android:layout_height="63dp"
+        android:text="@string/ChangeEP"
         android:textColor="#070707"
         app:backgroundTint="#C9FDD835"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintVertical_bias="0.856" />
 
     <EditText
-        android:id="@+id/EmailEt"
+        android:id="@+id/EmailEP"
         android:layout_width="352dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:hint="@string/EmailEt"
+        android:hint="@string/EmailEP"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,6 +94,21 @@
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.371" />
+
+    <EditText
+        android:id="@+id/NameEP"
+        android:layout_width="352dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/NameEP"
+        android:inputType="textEmailAddress"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,73 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgred"
     tools:context=".MainActivity">
 
 
         <Button
             android:id="@+id/Connect"
-            android:layout_width="269dp"
-            android:layout_height="67dp"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="129dp"
+            android:layout_height="60dp"
+            android:enabled="false"
+            android:linksClickable="true"
             android:text="@string/Connect"
-            app:backgroundTint="#009688"
+            android:textColor="#FD000000"
+            app:backgroundTint="#C9FDD835"
+            app:iconTint="#03A9F4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.453" />
+            app:layout_constraintVertical_bias="0.807" />
 
         <EditText
             android:id="@+id/Email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="337dp"
+            android:layout_height="72dp"
             android:ems="14"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintHorizontal_bias="0.472"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.099"/>
+            app:layout_constraintVertical_bias="0.534" />
 
         <EditText
             android:id="@+id/Password"
-            android:layout_width="342dp"
-            android:layout_height="73dp"
+            android:layout_width="340dp"
+            android:layout_height="69dp"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email"
-            app:layout_constraintVertical_bias="0.065" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.672" />
 
         <TextView
             android:id="@+id/forgotPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginLeft="132dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="140dp"
+            android:layout_height="35dp"
             android:clickable="true"
             android:text="@string/forgetPass"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="14sp"
             android:textStyle=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Connect" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.962" />
 
         <TextView
             android:id="@+id/newBusiness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="144dp"
-            android:layout_marginRight="144dp"
             android:clickable="true"
             android:text="@string/newBusiness"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forgotPass" />
+            app:layout_constraintHorizontal_bias="0.429"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.882" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

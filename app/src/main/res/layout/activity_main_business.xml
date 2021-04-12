@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgnewdelivery"
+    tools:context=".MainBusiness">
+
+    <ImageButton
+        android:id="@+id/deliveryList"
+        android:layout_width="122dp"
+        android:layout_height="128dp"
+        android:layout_marginBottom="14dp"
+        android:background="#C9FDD835"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.385"
+        app:srcCompat="@drawable/bikeicon" />
+
+    <ImageButton
+        android:id="@+id/myprofile"
+        android:layout_width="122dp"
+        android:layout_height="128dp"
+        android:layout_marginBottom="14dp"
+        android:background="#C9FDD835"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.385"
+        app:srcCompat="@drawable/myprofile" />
+
+    <ImageButton
+        android:id="@+id/deliveryHistory"
+        android:layout_width="122dp"
+        android:layout_height="128dp"
+        android:background="#C9FDD835"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769"
+        app:srcCompat="@drawable/schesuale" />
+
+    <ImageButton
+        android:id="@+id/deliveryRequest"
+        android:layout_width="122dp"
+        android:layout_height="128dp"
+        android:background="#C9FDD835"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769"
+        app:srcCompat="@drawable/treecoloredbox" />
+
+    <TextView
+        android:id="@+id/textViewDeliveryList"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:background="#C9FDD835"
+        android:text="@string/textViewDeliveryList"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#070707"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <TextView
+        android:id="@+id/textViewDeliveryRequest"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:background="#C9FDD835"
+        android:text="@string/textViewDeliveryRequest"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#070707"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625" />
+
+    <TextView
+        android:id="@+id/textViewDeliveryHistory"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:background="#C9FDD835"
+        android:text="@string/textViewDeliveryHistory"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#070707"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625" />
+
+    <TextView
+        android:id="@+id/textViewMyprofile"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:background="#C9FDD835"
+        android:text="@string/textViewMyprofile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#070707"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <TextView
+        android:id="@+id/textViewWelcom"
+        android:layout_width="292dp"
+        android:layout_height="34dp"
+        android:text="@string/textViewWelcom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
