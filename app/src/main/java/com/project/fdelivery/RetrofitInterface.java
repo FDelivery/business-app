@@ -13,8 +13,8 @@ public interface RetrofitInterface
     @POST("/connect")
     Call<Business> connect(@Body HashMap<String, String> map);
 
-    @POST("/register")
-    Call<Void> register(@Body HashMap<String, String> map);
+    @POST("/api/business/auth/register/")
+    Call<String> register(@Body HashMap<String, String> map);
 
     @GET("/user")
     Call<Void> getUser(@Query("id") String id );
