@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
     private EditText BusinessName, PasswordEt, Address, Phone2, Phone1, EmailEt;
     private Button Create;
-    private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
+    private RetrofitInterface rtfBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +76,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
             //check whether the given password is valid-Minimum eight characters, at least one letter and one number
             if(!validations.isValidPassword(password))
             {
-                PasswordEt.setError("This password is not valid, password needs minimum 8 characters, at least one letter");
+                PasswordEt.setError("This password is not valid, password needs minimum eight characters, at least one letter and one number");
                 return;
             }
 
@@ -101,17 +100,17 @@ public class RegisterNewBusiness extends AppCompatActivity {
         credentials.put("password", business.getPassword());
         credentials.put("address", business.getAddress());
         credentials.put("phone1", business.getPhoneNumber1());
-        if(business.getPhoneNumber2()!=null)
+        if(!business.getPhoneNumber2().isEmpty())
             credentials.put("phone2", business.getPhoneNumber2());
 
 
-        Call<String> call = rtfBase.register(credentials);
-        call.enqueue(new Callback<String>() {
+        Call<Void> call = rtfBase.register(credentials);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.code() == 200)
                 {
-                    Toast.makeText(getApplicationContext(), "registered successfully"+ response.body(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "registered successfully",Toast.LENGTH_LONG).show();
                 }
                 if(response.code() == 400)
                 {
@@ -120,7 +119,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(RegisterNewBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
