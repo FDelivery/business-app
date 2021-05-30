@@ -2,44 +2,80 @@ package com.project.fdelivery;
 
 public class Business {
 
-    private String email, BusinessName, PhoneNumber1 ,PhoneNumber2, Address, Password;
+    private String email, businessName, primaryPhone ,secondaryNumber, password, firstName, lastName, id,token, role = "BUSINESS";
+    private Address address;
 
-    Business(String e, String p1, String p2, String a, String name,String password)
+
+    public String getId() {
+        return id;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    Business(String e, String p1, String p2, Address a, String bn, String fn, String ln, String pass)
     {
         email = e;
-        PhoneNumber1 = p1;
-        PhoneNumber2 = p2;
-        Address = a;
-        BusinessName = name;
+        primaryPhone = p1;
+        secondaryNumber = p2;
+        address = a;
+        businessName = bn;
+        firstName=fn;
+        lastName=ln;
+        password = pass;
     }
-    Business(String e, String p1, String a, String name, String password)
+
+
+    Business(String e, String p1, Address a, String bn, String fn, String ln, String pass)
     {
         email = e;
-        PhoneNumber1 = p1;
-        Address = a;
-        BusinessName = name;
+        primaryPhone = p1;
+        address = a;
+        businessName = bn;
+        firstName=fn;
+        lastName=ln;
+        password = pass;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
 
     public String getEmail() { return email; }
 //In my opinion(sarah) you do not need it because in my opinion you should not allow the business / courier to change the email with which they registered
     public void setEmail(String email) { this.email = email; }
 
-    public String getBusinessName() { return BusinessName; }
+    public String getBusinessName() { return businessName; }
 
-    public void setBusinessName(String businessName) { BusinessName = businessName; }
+    public void setBusinessName(String businessName) { businessName = businessName; }
 
-    public String getPhoneNumber1() { return PhoneNumber1; }
+    public String getPrimaryPhone() { return primaryPhone; }
 
-    public void setPhoneNumber1(String phoneNumber1) { PhoneNumber1 = phoneNumber1; }
+    public void setPrimaryPhone(String phone) { primaryPhone = phone; }
 
-    public String getPhoneNumber2() { return PhoneNumber2; }
+    public String getPhoneNumber2() { return secondaryNumber; }
 
-    public void setPhoneNumber2(String phoneNumber2) { PhoneNumber2 = phoneNumber2; }
+    public void setPhoneNumber2(String phoneNumber2) { secondaryNumber = phoneNumber2; }
 
-    public String getAddress() { return Address; }
 
-    public void setAddress(String address) { Address = address; }
+    public String getPassword() { return password; }
+    public void deletePassword(){ password = "";}
 
-    public String getPassword() { return Password; }
-    public void deletePassword(){ Password = "";}
+    public void setId(String id) {
+        this.id =id;
+    }
 }

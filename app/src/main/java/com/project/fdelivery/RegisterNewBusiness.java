@@ -16,10 +16,11 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 
 public class RegisterNewBusiness extends AppCompatActivity {
 
-    private EditText BusinessName, PasswordEt, Address, Phone2, Phone1, EmailEt;
+    private EditText BusinessName, PasswordEt, Address, Phone2, Phone1, EmailEt, last, first;
     private Button Create;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
 
@@ -35,6 +36,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
+        last = (EditText)findViewById(R.id.last);
+        first = (EditText)findViewById(R.id.first);
 
 
         Create.setOnClickListener((v) -> {
@@ -45,6 +48,9 @@ public class RegisterNewBusiness extends AppCompatActivity {
             String phone1 = Phone1.getText().toString();
             String phone2 = Phone2.getText().toString();
             String address = Address.getText().toString();
+            String lastName = last.getText().toString();
+            String firstName = first.getText().toString();
+            String []AddressArr=address.split(",",6);
 
             //we need to check that the required fields are not empty
             if(email.isEmpty()) {
@@ -82,8 +88,9 @@ public class RegisterNewBusiness extends AppCompatActivity {
             }
 
 
-            Business business = phone2.isEmpty() ? new Business(email, phone1, address, bName, password)
-                    : new Business(email, phone1, phone2, address, bName,password);
+
+            Business business = phone2.isEmpty() ? new Business(email, phone1, new Address("f","qw","qw"), bName,firstName,lastName, password)
+                    : new Business(email, phone1, phone2, new Address("f","qw","qw"), bName, firstName, lastName, password);
 
             handleRegister(business);
 
@@ -93,31 +100,48 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
     //still need to handle password...
     private void handleRegister(Business business) {
-
+/*
         HashMap<String, String> credentials = new HashMap<>();
 
-        credentials.put("name",business.getBusinessName());
+
+        credentials.put("firstName",business.getBusinessName());
+        credentials.put("lastName",business.getBusinessName());
+        credentials.put("role","Business");
+        credentials.put("businessName",business.getBusinessName());
         credentials.put("email",business.getEmail());
         credentials.put("password", business.getPassword());
-        credentials.put("address", business.getAddress());
-        credentials.put("phone1", business.getPhoneNumber1());
+       // credentials.put("address", business.getAddress());
+        credentials.put("primaryPhone", business.getPhoneNumber1());
         if(business.getPhoneNumber2()!=null)
-            credentials.put("phone2", business.getPhoneNumber2());
+            credentials.put("secondaryPhone", business.getPhoneNumber2());
+*/
 
-
-        Call<String> call = rtfBase.register(credentials);
+        Call<String> call = rtfBase.register(business); //we get id
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.code() == 200)
                 {
-                    Toast.makeText(getApplicationContext(), "registered successfully"+ response.body(),Toast.LENGTH_LONG).show();
+                    business.setId(response.body());
+                    Toast.makeText(RegisterNewBusiness.this, "registered successfully",Toast.LENGTH_LONG).show();
+                   // System.out.println("--------------------"+business.getEmail()+business.getPassword());
+
+                    connectToApp(business);
+
+
                 }
                 if(response.code() == 400)
                 {
-                    Toast.makeText(getApplicationContext(), "you already registered",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterNewBusiness.this, "you already registered",Toast.LENGTH_LONG).show();
+
+                }
+                if(response.code() == 404)
+                {
+                    Toast.makeText(RegisterNewBusiness.this, "something wrong",Toast.LENGTH_LONG).show();
+
                 }
             }
+
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
@@ -125,5 +149,43 @@ public class RegisterNewBusiness extends AppCompatActivity {
             }
         });
     }
+    private void connectToApp(Business business){
+        Intent intent = new Intent(this, BusinessProfile.class);
 
+        HashMap<String, String> help = new HashMap<>();
+        help.put("email",business.getEmail()) ;
+        help.put("password",business.getPassword());
+        Call<String> call = rtfBase.connect(help); //we get token
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.code() == 200)
+                {
+                    business.setToken(response.body());
+                    Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
+                   // intent.putExtra("user",business);
+                   // System.out.println("--------------------"+business.getToken());
+                    startActivity(intent);
+
+                }
+                if(response.code() == 400)
+                {
+                    Toast.makeText(RegisterNewBusiness.this, "we have a problem",Toast.LENGTH_LONG).show();
+
+                }
+                if(response.code() == 401)
+                {
+                    Toast.makeText(RegisterNewBusiness.this, "Email or password invalid",Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(RegisterNewBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
 }

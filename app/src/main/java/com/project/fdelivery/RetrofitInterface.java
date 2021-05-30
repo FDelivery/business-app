@@ -10,11 +10,11 @@ import retrofit2.http.Query;
 
 public interface RetrofitInterface
 {
-    @POST("/connect")
-    Call<Business> connect(@Body HashMap<String, String> map);
+    @POST("/api/v1/auth/login/") //return token
+    Call<String> connect(@Body HashMap<String, String> map);
 
-    @POST("/api/business/auth/register/")
-    Call<String> register(@Body HashMap<String, String> map);
+    @POST("/api/v1/auth/register/") //return userid
+    Call<String> register(@Body Business b);
 
     @GET("/user")
     Call<Void> getUser(@Query("id") String id );
