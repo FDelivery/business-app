@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         rtfBase = RetrofitBase.getRetrofitInterface();
         EmailEt = (EditText)findViewById(R.id.Email);
-        
         PasswordEt = (EditText)findViewById(R.id.Password);
         on=findViewById(R.id.Connect);
         ForgotPassword = findViewById(R.id.forgotPass);
