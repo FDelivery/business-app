@@ -1,22 +1,18 @@
-package com.project.fdelivery;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Body;
 
 public class RegisterNewBusiness extends AppCompatActivity {
 

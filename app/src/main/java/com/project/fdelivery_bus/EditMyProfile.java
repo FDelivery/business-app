@@ -1,12 +1,12 @@
-package com.project.fdelivery;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditMyProfile extends AppCompatActivity {
     private EditText AddressEP;

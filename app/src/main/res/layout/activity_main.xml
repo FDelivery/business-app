@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".MainActivity">
+    tools:context="com.project.fdelivery_bus.MainActivity">
 
 
         <Button
@@ -13,7 +13,6 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="129dp"
             android:layout_height="60dp"
-            android:enabled="false"
             android:linksClickable="true"
             android:text="@string/Connect"
             android:textColor="#FD000000"

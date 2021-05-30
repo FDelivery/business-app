@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".newDelivery">
+    tools:context="com.project.fdelivery_bus.newDelivery">
 
     <EditText
         android:id="@+id/CPhone"

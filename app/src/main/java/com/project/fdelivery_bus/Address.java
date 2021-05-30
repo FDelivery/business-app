@@ -1,4 +1,4 @@
-package com.project.fdelivery;
+package com.project.fdelivery_bus;
 
 public class Address {
     private String floor;

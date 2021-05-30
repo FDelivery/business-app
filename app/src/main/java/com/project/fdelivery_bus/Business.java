@@ -1,8 +1,8 @@
-package com.project.fdelivery;
+package com.project.fdelivery_bus;
 
 public class Business {
 
-    private String email, businessName, primaryPhone ,secondaryNumber, password, firstName, lastName, id,token, role = "BUSINESS";
+    private String email, businessName, primaryPhone ,secondaryPhone, password, firstName, lastName, id,token, role = "BUSINESS";
     private Address address;
 
 
@@ -22,7 +22,7 @@ public class Business {
     {
         email = e;
         primaryPhone = p1;
-        secondaryNumber = p2;
+        secondaryPhone = p2;
         address = a;
         businessName = bn;
         firstName=fn;
@@ -67,9 +67,9 @@ public class Business {
 
     public void setPrimaryPhone(String phone) { primaryPhone = phone; }
 
-    public String getPhoneNumber2() { return secondaryNumber; }
+    public String getPhoneNumber2() { return secondaryPhone; }
 
-    public void setPhoneNumber2(String phoneNumber2) { secondaryNumber = phoneNumber2; }
+    public void setPhoneNumber2(String phoneNumber2) { secondaryPhone = phoneNumber2; }
 
 
     public String getPassword() { return password; }
