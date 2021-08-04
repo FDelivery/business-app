@@ -2,12 +2,15 @@ package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 
@@ -57,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
             handleConnect();
         });
         ForgotPassword.setOnClickListener((v)->{
+         //   GetUser("6106919d6ffd57c4090b6285"); // for my test
+            Intent i=new Intent(this,newDelivery.class);
+            startActivity(i);
+
 //need to complete
         });
         NewBusiness.setOnClickListener((v) -> {
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     //success
                     Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                    // business.setToken(response.body());
-                   // intent.putExtra("token",response.body().toString()); //נשמור את הטוקן לאקטיביטי הבא
+                   // intent.putExtra("token",response.body().toString()); //נשמור את הטוקן לאקטיביטי הבא?
                     startActivity(intent);
                 }
                 if(response.code() == 400 || response.code() == 401)
@@ -89,7 +96,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "log in failed-try again", Toast.LENGTH_LONG).show();
 
                 }
+                if(response.code() == 500)
+                {
+                    //failure
+                    Toast.makeText(MainActivity.this, "user do not exist", Toast.LENGTH_LONG).show();
 
+                }
             }
 
             @Override
@@ -98,4 +110,51 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    // get- in id, return user
+    private void GetUser (String id) // need to know how to use in accepted user
+    {
+        Call<String> call = rtfBase.getUser(id);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response)
+            {
+                if(response.code() == 200)
+                {
+                    //success
+                     // Business b=new Business(response.body().getEmail(), response.body().getPrimaryPhone(), new Address("f","qw","qw"),response.body().getBusinessName(),response.body().getFirstName(),response.body().getLastName(),response.body().getPassword());
+                      // Business c = new Business(response.body());
+                    Log.i("TEST1",response.body());
+                    Business GSON = new Gson().fromJson(response.body(),Business.class);
+                    Log.i("TEST2",GSON.getFirstName());
+
+                    Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
+                   }
+
+
+                if(response.code() == 400 || response.code()==500)
+                {
+                    //failure
+                    Toast.makeText(MainActivity.this, "this ID do not exist", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
+
+    private void updateUser(String id)
+    {
+
+    }
+
 }

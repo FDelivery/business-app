@@ -3,7 +3,18 @@ package com.project.fdelivery_bus;
 public class Delivery 
 {
 
-    private String clientAddress, clientPhone, clientName, Note, time, date;
+    private String clientAddress;
+    private String clientPhone;
+    private String clientName;
+    private String Note;
+    private String time;
+    private String date;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     public Delivery(String clientAddress, String clientPhone, String clientName, String clientNote, String time, String date) {
         this.clientAddress = clientAddress;
         this.clientName = clientName;

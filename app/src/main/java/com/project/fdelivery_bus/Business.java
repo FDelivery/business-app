@@ -2,8 +2,39 @@ package com.project.fdelivery_bus;
 
 public class Business {
 
-    private String email, businessName, primaryPhone ,secondaryPhone, password, firstName, lastName, id,token, role = "BUSINESS";
+    private String email;
+    private String businessName;
+    private String primaryPhone;
+    private String secondaryPhone;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String id;
+    private String token;
+    private String role = "BUSINESS";
     private Address address;
+
+    public Business(Business b) {
+      //  this.email = b.email;
+       // this.businessName = b.businessName;
+      //  this.primaryPhone = b.primaryPhone;
+     //   this.secondaryPhone = b.secondaryPhone;
+       // this.password = b.password;
+        this.firstName = b.firstName;
+        this.lastName = b.lastName;
+      //  this.role = b.role;
+
+    }
+
+    public String getSecondaryPhone() {
+        return secondaryPhone;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+
 
 
     public String getId() {

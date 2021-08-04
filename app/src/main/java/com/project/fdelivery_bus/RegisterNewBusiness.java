@@ -2,6 +2,7 @@ package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -158,6 +159,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 if(response.code() == 200)
                 {
                     business.setToken(response.body());
+                    Log.i("ffff",response.body());
                     Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
                    // intent.putExtra("user",business);
                    // System.out.println("--------------------"+business.getToken());
@@ -178,7 +180,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(RegisterNewBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterNewBusiness.this, "---------"+t.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });
