@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,8 @@ import retrofit2.Response;
 
 public class RegisterNewBusiness extends AppCompatActivity {
 
-    private EditText BusinessName, PasswordEt, Address, Phone2, Phone1, EmailEt, last, first;
+    private EditText BusinessName, PasswordEt, Phone2, Phone1, EmailEt, last, first;
+    private EditText city,street,number,floor,apartment,entrance;
     private Button Create;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
 
@@ -28,7 +30,13 @@ public class RegisterNewBusiness extends AppCompatActivity {
         setContentView(R.layout.activity_register_new_business);
         BusinessName = (EditText)findViewById(R.id.BusinessName);
         PasswordEt = (EditText)findViewById(R.id.PasswordEt);
-        Address = (EditText)findViewById(R.id.Address);
+        city = (EditText) findViewById(R.id.city);
+        street = (EditText) findViewById(R.id.street);
+        number = (EditText) findViewById(R.id.number);
+        floor = (EditText) findViewById(R.id.floor);
+        apartment = (EditText) findViewById(R.id.aprt);
+        entrance = (EditText)findViewById(R.id.entrance);
+
         Phone2 = (EditText)findViewById(R.id.Phone2);
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
@@ -44,10 +52,17 @@ public class RegisterNewBusiness extends AppCompatActivity {
             String bName = BusinessName.getText().toString();
             String phone1 = Phone1.getText().toString();
             String phone2 = Phone2.getText().toString();
-            String address = Address.getText().toString();
             String lastName = last.getText().toString();
             String firstName = first.getText().toString();
-            String []AddressArr=address.split(",",6);
+
+            String City = city.getText().toString();
+            String Street = street.getText().toString();
+            String Floor = floor.getText().toString();
+            String Apartment = apartment.getText().toString();
+            String Entrance = entrance.getText().toString();
+            String Number = number.getText().toString();
+
+
 
             //we need to check that the required fields are not empty
             if(email.isEmpty()) {
@@ -66,10 +81,20 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 Phone1.setError("This field is necessary");
                 return;
             }
-            if(address.isEmpty()) {
-                Address.setError("This field is necessary");
+            if(Number.isEmpty()) {
+                number.setError("This field is necessary");
                 return;
             }
+            if(Street.isEmpty()) {
+                street.setError("This field is necessary");
+                return;
+            }
+            if(City.isEmpty()) {
+                city.setError("This field is necessary");
+                return;
+            }
+
+
 
             //check whether the given email address is valid
             if(!validations.isValidEmail(email))
@@ -83,11 +108,25 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 PasswordEt.setError("This password is not valid, password needs minimum 8 characters, at least one letter");
                 return;
             }
+            Address adr;
+            if(!Floor.isEmpty() && !Apartment.isEmpty() && !Entrance.isEmpty()) {
+                adr = new Address(City, Street, Number, Apartment, Floor, Entrance);
+            }
+            else if (!Floor.isEmpty() && !Apartment.isEmpty())
+            {
+                adr = new Address(City, Street, Number, Apartment, Floor);
+            }
+            else if (!Apartment.isEmpty())
+            {
+                adr = new Address(City, Street, Number, Apartment);
+            }
+            else{
+                adr = new Address(City, Street, Number);
 
+            }
 
-
-            Business business = phone2.isEmpty() ? new Business(email, phone1, new Address("f","qw","qw"), bName,firstName,lastName, password)
-                    : new Business(email, phone1, phone2, new Address("f","qw","qw"), bName, firstName, lastName, password);
+            Business business = phone2.isEmpty() ? new Business(email, phone1, adr, bName,firstName,lastName, password)
+                    : new Business(email, phone1, phone2, adr, bName, firstName, lastName, password);
 
             handleRegister(business);
 

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +19,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class newDelivery extends AppCompatActivity {
-    private EditText CPhone, CName, Caddress, Cnote, Date, Time;
+    private EditText CPhone, CName, Cnote, Date, Time;
+    private EditText city,street,number,floor,apartment,entrance;
     private CheckBox Bike, Car;
     private Button submit, getDelivery;
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,14 @@ public class newDelivery extends AppCompatActivity {
 
         CPhone = (EditText)findViewById(R.id.CPhone);
         CName = (EditText)findViewById(R.id.CName);
-        Caddress = (EditText)findViewById(R.id.Caddress);
+
+        entrance = (EditText)findViewById(R.id.entrance);
+        city = (EditText)findViewById(R.id.city);
+        street = (EditText)findViewById(R.id.street);
+        number = (EditText)findViewById(R.id.number);
+        floor = (EditText)findViewById(R.id.floor);
+        apartment = (EditText)findViewById(R.id.aprt);
+
         Cnote = (EditText)findViewById(R.id.Cnote);
         Date = (EditText)findViewById(R.id.Date);
         Time = (EditText)findViewById(R.id.Time);
@@ -38,12 +48,18 @@ public class newDelivery extends AppCompatActivity {
         submit = findViewById(R.id.ndSubmit);
         getDelivery = findViewById(R.id.forGetDelivery);
 
-        getDelivery.setOnClickListener(v -> GetDeliveries("610a910c0a590b7dab5658ee"));
+        getDelivery.setOnClickListener(v -> GetDeliveries("610803dc57237f3532b78d70"));
 
         submit.setOnClickListener((v) -> {
                     String clientPhone = CPhone.getText().toString();
                     String clientName = CName.getText().toString();
-                    Address clientAddress = new Address(Caddress.getText().toString(),"gff","gg");
+                    String City = city.getText().toString();
+                    String Street = street.getText().toString();
+                    String Floor = floor.getText().toString();
+                    String Apartment = apartment.getText().toString();
+                    String Entrance = entrance.getText().toString();
+                    String Number = number.getText().toString();
+                    Address clientAddress = new Address(City,Street,Number,Apartment,Floor,Entrance);
                     String clientNote = Cnote.getText().toString();
                     String date = Date.getText().toString();
                     String time = Time.getText().toString();
@@ -54,11 +70,30 @@ public class newDelivery extends AppCompatActivity {
                         CPhone.setError("This field is necessary");
                         return;
                     }
-                   /* if(clientAddress.getApartment().isEmpty())                           /// לבדוק שלא ריק כל החלקים בכתובת
-                    {
-                        Caddress.setError("This field is necessary");
+                    if(Apartment.isEmpty()) {
+                        apartment.setError("This field is necessary");
                         return;
-                    }*/
+                    }
+                    if(Floor.isEmpty()) {
+                        floor.setError("This field is necessary");
+                        return;
+                    }
+                    if(Street.isEmpty()) {
+                        street.setError("This field is necessary");
+                        return;
+                    }
+                    if(Entrance.isEmpty()) {
+                        entrance.setError("This field is necessary");
+                        return;
+                    }
+                    if(Number.isEmpty()) {
+                        number.setError("This field is necessary");
+                        return;
+                    }
+                    if(City.isEmpty()) {
+                        city.setError("This field is necessary");
+                        return;
+                    }
                     if(clientName.isEmpty())
                     {
                         CName.setError("This field is necessary");
@@ -86,7 +121,7 @@ public class newDelivery extends AppCompatActivity {
     private void handleSubmit(Delivery delivery)
     {
 
-        Call<String> call = rtfBase.insertNewDelivery("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyODA4MjQ0NSwianRpIjoiMTJjZWI0ZjgtNTY3NC00MTQwLTg5NzMtOTUzNmM5YmYzNWEyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYxMGE5MTBjMGE1OTBiN2RhYjU2NThlZSIsIm5iZiI6MTYyODA4MjQ0NSwiZXhwIjoxNjI4Njg3MjQ1fQ.1ZwkR1jWQ7i8FI-6HyPZquNgTLx1OzSAuHH42br0B34",delivery);
+        Call<String> call = rtfBase.insertNewDelivery("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyODE4ODY3MywianRpIjoiYjA4Zjc0ODYtMzY4Yy00NzQwLWI1OTgtZWY5NmQwMWRlMTNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYxMDgwM2RjNTcyMzdmMzUzMmI3OGQ3MCIsIm5iZiI6MTYyODE4ODY3MywiZXhwIjoxNjI4NzkzNDczfQ.cguZk7JFCehGHVeuoFQaXcfEii3s1mbz3MSwrzdfAnY",delivery);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response)
@@ -117,7 +152,7 @@ public class newDelivery extends AppCompatActivity {
 
 
 
-    private void GetDelivery(String id)
+    private void GetDelivery(String id) //put delivery id and this return you the delivery
     {
         Call<String> call = rtfBase.getDelivery(id);
 
@@ -149,7 +184,7 @@ public class newDelivery extends AppCompatActivity {
         });
     }
 
-    private void GetDeliveries(String id)
+    private void GetDeliveries(String id) //this give us all deliveries that this id-user added
     {
         Call<List<String>> call = rtfBase.getDeliveries(id);
 

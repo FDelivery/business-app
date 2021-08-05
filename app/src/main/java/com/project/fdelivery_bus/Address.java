@@ -1,16 +1,18 @@
 package com.project.fdelivery_bus;
 
 public class Address {
-    private String floor;
-    private String number;
-    private String apartment;
-    private String entrance;
     private String city;
     private String street;
+    private String number;
+    private String apartment;
+    private String floor;
+    private String entrance;
 
 
 
-    public Address(String city, String street, String floor, String number, String apartment, String entrance) {
+
+
+    public Address(String city, String street, String number, String apartment, String floor, String entrance) {
         this.city = city;
         this.street = street;
         this.floor = floor;
@@ -25,6 +27,23 @@ public class Address {
         this.city = city;
         this.street = street;
         this.number = number;
+    }
+
+    public Address(String city, String street, String number, String apartment,String floor) {
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.apartment = apartment;
+        this.floor = floor;
+
+    }
+    public Address(String city, String street, String number, String apartment) {
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.apartment = apartment;
+
+
     }
 
     public void setFloor(String floor) {
