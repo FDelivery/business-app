@@ -16,6 +16,8 @@ public class BusinessProfile extends AppCompatActivity {
     private TextView TextMP;
     private EditText Phone1MP;
     private EditText Phone2MP;
+    private Button addDelivery;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,8 @@ public class BusinessProfile extends AppCompatActivity {
         ChangeMP=(Button)findViewById(R.id.ChangeMP);
         EmailMP=(EditText) findViewById(R.id.EmailMP);
         PassChangeMP=(Button)findViewById(R.id.PassChangeMP);
+        addDelivery=(Button)findViewById(R.id.buttonForAddDeliver);
+
         TextMP=(TextView)findViewById(R.id.TextMP);
         Phone1MP=(EditText)findViewById(R.id.Phone1MP);
         Phone2MP=(EditText)findViewById(R.id.Phone2MP);
@@ -33,6 +37,9 @@ public class BusinessProfile extends AppCompatActivity {
             startActivity(new Intent(this, EditMyProfile.class));
         });
 
+        addDelivery.setOnClickListener((v) -> {
+            startActivity(new Intent(this, newDelivery.class));
+        });
         PassChangeMP.setOnClickListener((v) -> {
             startActivity(new Intent(this, ChangePassword.class));
         });

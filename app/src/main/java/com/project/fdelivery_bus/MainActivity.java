@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         ForgotPassword.setOnClickListener((v)->{
          //   GetUser("6106919d6ffd57c4090b6285"); // for my test
             Intent i=new Intent(this,newDelivery.class);
+        //    i.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
+
             startActivity(i);
 
 //need to complete
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     //success
                     Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                    // business.setToken(response.body());
-                   // intent.putExtra("token",response.body().toString()); //נשמור את הטוקן לאקטיביטי הבא?
+                    intent.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
                     startActivity(intent);
                 }
                 if(response.code() == 400 || response.code() == 401)

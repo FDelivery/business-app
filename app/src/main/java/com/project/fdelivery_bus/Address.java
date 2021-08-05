@@ -27,9 +27,29 @@ public class Address {
         this.number = number;
     }
 
+    public void setFloor(String floor) {
+        this.floor = floor;
+    }
 
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
 
+    public void setEntrance(String entrance) {
+        this.entrance = entrance;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
     public String getCity() {
         return city;

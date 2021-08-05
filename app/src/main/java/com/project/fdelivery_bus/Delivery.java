@@ -1,27 +1,29 @@
 package com.project.fdelivery_bus;
 
-public class Delivery 
+public class Delivery
 {
 
-    private String clientAddress;
+    private Address destAddress;
     private String clientPhone;
     private String clientName;
     private String Note;
-    private String time;
-    private String date;
+    private String Time;
+    private String deliveredDate;
+    private String pickedDate;
+    private double price;
 
     public void setId(String id) {
         this.id = id;
     }
 
     private String id;
-    public Delivery(String clientAddress, String clientPhone, String clientName, String clientNote, String time, String date) {
-        this.clientAddress = clientAddress;
+    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date) {
+        this.destAddress= clientAddress;
         this.clientName = clientName;
         this.clientPhone = clientPhone;
-        this.time = time;
+        this.Time = time;
         this.Note = clientNote;
-        this.date = date;
+        this.deliveredDate = date;
     }
 
     public String getClientPhone() {
@@ -32,8 +34,8 @@ public class Delivery
         this.clientPhone = clientPhone;
     }
 
-    public String getClientAddress() {
-        return clientAddress;
+    public Address getClientAddress() {
+        return destAddress;
     }
 
     public String getClientName() {
@@ -45,19 +47,19 @@ public class Delivery
     }
 
     public String getDate() {
-        return date;
+        return deliveredDate;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.deliveredDate = date;
     }
 
     public String getTime() {
-        return time;
+        return Time;
     }
 
     public void setTime(String time) {
-        this.time = time;
+        this.Time = time;
     }
 
     public String getNote() {
@@ -68,7 +70,7 @@ public class Delivery
         Note = note;
     }
 
-    public void setClientAddress(String clientAddress) {
-        this.clientAddress = clientAddress;
+    public void setClientAddress(Address clientAddress) {
+        this.destAddress = clientAddress;
     }
 }
