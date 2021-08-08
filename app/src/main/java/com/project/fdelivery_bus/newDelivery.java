@@ -48,7 +48,19 @@ public class newDelivery extends AppCompatActivity {
         submit = findViewById(R.id.ndSubmit);
         getDelivery = findViewById(R.id.forGetDelivery);
 
-        getDelivery.setOnClickListener(v -> GetDeliveries("610803dc57237f3532b78d70"));
+        getDelivery.setOnClickListener((v) ->
+              //  GetDeliveries("610803dc57237f3532b78d70")
+
+                {
+                 //   Delivery d = new Delivery(new Address("cx", "cx", "cx"), "d", "dd", "dd", "ddds", "dd");
+                 //   UpdateDelivery("610c32f3312fea4bd16bad27", d);
+
+                    deleteDelivery("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyODE4ODY3MywianRpIjoiYjA4Zjc0ODYtMzY4Yy00NzQwLWI1OTgtZWY5NmQwMWRlMTNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYxMDgwM2RjNTcyMzdmMzUzMmI3OGQ3MCIsIm5iZiI6MTYyODE4ODY3MywiZXhwIjoxNjI4NzkzNDczfQ.cguZk7JFCehGHVeuoFQaXcfEii3s1mbz3MSwrzdfAnY",
+                            "610fb11403c23e60157e2d07");
+
+                }
+
+        );
 
         submit.setOnClickListener((v) -> {
                     String clientPhone = CPhone.getText().toString();
@@ -184,6 +196,39 @@ public class newDelivery extends AppCompatActivity {
         });
     }
 
+
+    private void deleteDelivery(String token,String id)
+    {
+        Call<Void> call =rtfBase.deleteDelivery(token,id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                if(response.code() == 404 || response.code() == 400)
+                {
+                    Toast.makeText(newDelivery.this, "this ID do not exist",Toast.LENGTH_LONG).show();
+
+                }
+
+                if(response.code() == 200)
+                {
+                    Toast.makeText(newDelivery.this, "we delete this delivery successfully",Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+                Toast.makeText(newDelivery.this, t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+
     private void GetDeliveries(String id) //this give us all deliveries that this id-user added
     {
         Call<List<String>> call = rtfBase.getDeliveries(id);
@@ -218,12 +263,14 @@ public class newDelivery extends AppCompatActivity {
 
 
 
-    private void UpdateDelivery(String id)
+    private void UpdateDelivery(String token,String id,Delivery d)  //we got id-delivery, user-token and  new delivery and we update parameters
     {
-        Call<String> call = rtfBase.updateDelivery(id);
-        call.enqueue(new Callback<String>() {
+
+
+        Call<Void> call = rtfBase.updateDelivery("Bearer "+token,id,d);
+        call.enqueue(new Callback<Void>() {
           @Override
-          public void onResponse(Call<String> call, Response<String> response)
+          public void onResponse(Call<Void> call, Response<Void> response)
          {
              {
 
@@ -242,7 +289,7 @@ public class newDelivery extends AppCompatActivity {
          }
 
          @Override
-         public void onFailure(Call<String> call, Throwable t) {
+         public void onFailure(Call<Void> call, Throwable t) {
              Toast.makeText(newDelivery.this, t.getMessage(),Toast.LENGTH_LONG).show();
 
          }

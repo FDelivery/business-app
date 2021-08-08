@@ -5,6 +5,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -36,7 +37,10 @@ public interface RetrofitInterface
     Call<String> insertNewDelivery(@Header("Authorization") String token, @Body Delivery d);
 
 
+    @PUT("/api/v1/deliveriesRef/{delivery_id}/") //return deliveryID
+    Call<Void> updateDelivery(@Header("Authorization") String token, @Path("delivery_id") String id, @Body Delivery d);
 
-    @PUT("/api/v1/deliveriesRef/<string:delivery_id>/") //return deliveryID
-    Call<String> updateDelivery(@Path("user_id") String id );
+
+    @DELETE("/api/v1/deliveriesRef/{delivery_id}/") //we put deliveryId and delete it
+    Call<Void> deleteDelivery(@Header("Authorization") String token, @Path("delivery_id") String id);
 }
