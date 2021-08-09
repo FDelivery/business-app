@@ -2,8 +2,8 @@
     <string name="app_name">FDelivery</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="forgetPass"><u>Forgot password?</u></string>
-    <string name="newBusiness"><u>Create an account</u></string>
+    <string name="forgetPass"><u>FORGOT PASSWORD?</u></string>
+    <string name="newBusiness"><u>New User? Register Now</u></string>
     <string name="textViewDeliveryRequest"> Request New Delivery</string>
     <string name="textViewDeliveryHistory"> My Delivery History</string>
     <string name="textViewWelcom">hello (user name)</string>
@@ -11,7 +11,7 @@
     <string name="textViewDeliveryList"> My Deliveries</string>
     <string name="password">Password</string>
     <string name="Email">Email</string>
-    <string name="Connect">Sign in</string>
+    <string name="Connect">LOG IN</string>
     <string name="CPhone">050-000000</string>
     <string name="CName">Name</string>
     <string name="Caddress">address</string>
