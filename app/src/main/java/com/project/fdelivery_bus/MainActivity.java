@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
             }
             handleConnect();
         });
-        ForgotPassword.setOnClickListener((v)->{
+        ForgotPassword.setOnClickListener((v)->{                     //need to complete
          //   GetUser("6106919d6ffd57c4090b6285"); // for my test
-            Intent i=new Intent(this,newDelivery.class);
+        //    Intent i=new Intent(this,newDelivery.class);
         //    i.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
 
-            startActivity(i);
+        //    startActivity(i);
 
-//need to complete
+
         });
         NewBusiness.setOnClickListener((v) -> {
             startActivity(new Intent(this, RegisterNewBusiness.class));
@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void handleConnect() { //צריך שהשרת יחזיר לי אוביקט יוזר ואז אוכל להוסיף מה שצריך לפונקציה
+    private void handleConnect() {
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email",EmailEt.getText().toString());
         credentials.put("password",PasswordEt.getText().toString());
         Call<String> call = rtfBase.connect(credentials);
-        Intent intent = new Intent(this, BusinessProfile.class);
+
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -89,8 +89,11 @@ public class MainActivity extends AppCompatActivity {
                     //success
                     Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                    // business.setToken(response.body());
-                    intent.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
-                    startActivity(intent);
+                   // intent.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
+
+
+                   // Log.i("TESSSSSTTT",credentials.get("password"));
+                    useUser(credentials);
                 }
                 if(response.code() == 400 || response.code() == 401)
                 {
@@ -111,52 +114,50 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Something went wrong" +t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
 
-
-    // get- in id, return user
-    private void GetUser (String id) // need to know how to use in accepted user
-    {
-        Call<String> call = rtfBase.getUser(id);
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response)
-            {
-                if(response.code() == 200)
-                {
-                    //success
-                     // Business b=new Business(response.body().getEmail(), response.body().getPrimaryPhone(), new Address("f","qw","qw"),response.body().getBusinessName(),response.body().getFirstName(),response.body().getLastName(),response.body().getPassword());
-                      // Business c = new Business(response.body());
-                    Log.i("TEST1",response.body());
-                    Business GSON = new Gson().fromJson(response.body(),Business.class);
-                    Log.i("TEST2",GSON.getFirstName());
-
-                    Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
-                   }
-
-
-                if(response.code() == 400 || response.code()==500)
-                {
-                    //failure
-                    Toast.makeText(MainActivity.this, "this ID do not exist", Toast.LENGTH_LONG).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        });
 
 
     }
 
-    private void updateUser(String id)
-    {
 
-    }
+
+
+
+ private void useUser(HashMap<String, String> credentials) // we get the user-id after login
+ {
+
+     Intent intent = new Intent(this, BusinessProfile.class);
+     Call<String> call = rtfBase.getUserId(credentials);
+     call.enqueue(new Callback<String>() {
+         @Override
+         public void onResponse(Call<String> call, Response<String> response) {
+             if(response.code() == 400 || response.code() == 401)
+             {
+                 //failure
+                 Toast.makeText(MainActivity.this, "log in failed-try again", Toast.LENGTH_LONG).show();
+             }
+             if(response.code() == 500)
+             {
+                 //failure
+                 Toast.makeText(MainActivity.this, "user do not exist", Toast.LENGTH_LONG).show();
+
+             }
+             if(response.code() == 200)
+             {
+                // Log.i("TESSSSSTTT",response.body());
+                 intent.putExtra("id",response.body());
+                 startActivity(intent);
+
+             }
+         }
+
+         @Override
+         public void onFailure(Call<String> call, Throwable t) {
+             Toast.makeText(MainActivity.this, "Something went wrong" +t.getMessage(), Toast.LENGTH_LONG).show();
+
+         }
+     });
+ }
+
 
 }

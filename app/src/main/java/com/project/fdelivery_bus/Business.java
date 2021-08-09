@@ -15,14 +15,17 @@ public class Business {
     private Address address;
 
     public Business(Business b) {
-      //  this.email = b.email;
-       // this.businessName = b.businessName;
-      //  this.primaryPhone = b.primaryPhone;
-     //   this.secondaryPhone = b.secondaryPhone;
-       // this.password = b.password;
+        this.email = b.email;
+        this.businessName = b.businessName;
+        this.primaryPhone = b.primaryPhone;
+        if(!b.secondaryPhone.isEmpty()) {
+            this.secondaryPhone = b.secondaryPhone;
+        }
+        this.password = b.password;
         this.firstName = b.firstName;
         this.lastName = b.lastName;
-      //  this.role = b.role;
+        this.role = b.role;
+        this.id=b.id;
 
     }
 

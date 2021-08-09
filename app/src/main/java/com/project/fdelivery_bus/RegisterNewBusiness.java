@@ -136,21 +136,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
     //still need to handle password...
     private void handleRegister(Business business) {
-/*
-        HashMap<String, String> credentials = new HashMap<>();
 
-
-        credentials.put("firstName",business.getBusinessName());
-        credentials.put("lastName",business.getBusinessName());
-        credentials.put("role","Business");
-        credentials.put("businessName",business.getBusinessName());
-        credentials.put("email",business.getEmail());
-        credentials.put("password", business.getPassword());
-       // credentials.put("address", business.getAddress());
-        credentials.put("primaryPhone", business.getPhoneNumber1());
-        if(business.getPhoneNumber2()!=null)
-            credentials.put("secondaryPhone", business.getPhoneNumber2());
-*/
 
         Call<String> call = rtfBase.register(business); //we get id
         call.enqueue(new Callback<String>() {
@@ -160,7 +146,6 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 {
                     business.setId(response.body());
                     Toast.makeText(RegisterNewBusiness.this, "registered successfully",Toast.LENGTH_LONG).show();
-                   // System.out.println("--------------------"+business.getEmail()+business.getPassword());
 
                     connectToApp(business);
 
@@ -198,10 +183,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 if(response.code() == 200)
                 {
                     business.setToken(response.body());
-                    Log.i("ffff",response.body());
                     Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
-                   // intent.putExtra("user",business);
-                   // System.out.println("--------------------"+business.getToken());
+                    intent.putExtra("id",business.getId());
                     startActivity(intent);
 
                 }
@@ -219,7 +202,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(RegisterNewBusiness.this, "---------"+t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterNewBusiness.this,t.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });
