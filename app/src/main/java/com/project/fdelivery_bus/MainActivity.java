@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                    // Log.i("TESSSSSTTT",credentials.get("password"));
                     useUser(credentials);
+
                 }
                 if(response.code() == 400 || response.code() == 401)
                 {
@@ -120,13 +121,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // get- in id, return user
+    private void GetUser(String id) // need to know how to use in accepted user
+    {
 
+        Intent intent = new Intent(this, BusinessProfile.class);
+
+        Log.i("myTest2",id);
+
+        Call<String> call = rtfBase.getUser(id);
+
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response)
+            {
+
+                if(response.code() == 200)
+                {
+
+                    //success
+
+                    Log.i("TEST1",response.body());
+                    Business businessUser = new Gson().fromJson(response.body(),Business.class);
+                    Log.i("TEST2",businessUser.getFirstName());
+                  //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
+                    intent.putExtra("businessUserInGson",response.body());
+                    startActivity(intent);
+
+
+                }
+
+
+                if(response.code() == 400 || response.code()==500)
+                {
+                    //failure
+                    Toast.makeText(MainActivity.this, "this ID do not exist", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
 
 
  private void useUser(HashMap<String, String> credentials) // we get the user-id after login
  {
 
-     Intent intent = new Intent(this, BusinessProfile.class);
      Call<String> call = rtfBase.getUserId(credentials);
      call.enqueue(new Callback<String>() {
          @Override
@@ -145,8 +193,10 @@ public class MainActivity extends AppCompatActivity {
              if(response.code() == 200)
              {
                 // Log.i("TESSSSSTTT",response.body());
-                 intent.putExtra("id",response.body());
-                 startActivity(intent);
+
+                 GetUser(response.body());
+
+
 
              }
          }
