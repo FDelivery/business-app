@@ -39,17 +39,17 @@ public class BusinessProfile extends AppCompatActivity {
         EmailMP=(EditText) findViewById(R.id.EmailMP);
         PassChangeMP=(Button)findViewById(R.id.PassChangeMP);
         addDelivery=(Button)findViewById(R.id.buttonForAddDeliver);
-
+        rtfBase = RetrofitBase.getRetrofitInterface();
         TextMP=(TextView)findViewById(R.id.TextMP);
         Phone1MP=(EditText)findViewById(R.id.Phone1MP);
         Phone2MP=(EditText)findViewById(R.id.Phone2MP);
 
-        Bundle extras = getIntent().getExtras();
-        String idFromIntent= extras.getString("id");
+     //   Bundle extras = getIntent().getExtras();
+    //    String idFromIntent= extras.getString("id");
 
-Log.i("myTest",idFromIntent);
+//Log.i("myTest",idFromIntent);
 
-        GetUser(idFromIntent);
+      //  GetUser(idFromIntent);
 
 
 
@@ -74,14 +74,12 @@ Log.i("myTest",idFromIntent);
 
 
 
-    private void updateUser(String id)
-    {
 
-    }
 
     // get- in id, return user
     private void GetUser(String id) // need to know how to use in accepted user
     {
+
 
         Log.i("myTest2",id);
 
@@ -100,8 +98,8 @@ Log.i("myTest",idFromIntent);
                     // Business b=new Business(response.body().getEmail(), response.body().getPrimaryPhone(), new Address("f","qw","qw"),response.body().getBusinessName(),response.body().getFirstName(),response.body().getLastName(),response.body().getPassword());
                     // Business c = new Business(response.body());
                     Log.i("TEST1",response.body());
-                    Business GSON = new Gson().fromJson(response.body(),Business.class);
-                    Log.i("TEST2",GSON.getFirstName());
+                    Business businessUser = new Gson().fromJson(response.body(),Business.class);
+                    Log.i("TEST2",businessUser.getFirstName());
                     Toast.makeText(BusinessProfile.this, "We found your user", Toast.LENGTH_LONG).show();
 
                    //   business = new Business(GSON);
