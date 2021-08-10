@@ -21,10 +21,13 @@ public interface RetrofitInterface
     @POST("/api/v1/auth/register/") //return userid
     Call<String> register(@Body Business b);
 
-    @GET("/api/v1/users/{user_id}/") //return gson string (user)
+    @GET("/api/v1/users/{user_id}/") //return gson string (user)                   לבדוק.. משהו לא עובד
     Call<String> getUser(@Path("user_id") String id);
 
-    @PUT("/api/v1/users/{user_id}/") //return void
+    @POST("/api/v1/users/") //return id string (user)
+    Call<String> getUserId(@Body HashMap<String, String> map);
+
+    @PUT("/api/v1/users/{user_id}/") //return void                               צריך לטפל
     Call<Void> updateUser(@Path("user_id") String id);
 
     @GET("/api/v1/deliveriesRef/{delivery_id}/") ////return gson string (Delivery)
@@ -37,7 +40,7 @@ public interface RetrofitInterface
     Call<String> insertNewDelivery(@Header("Authorization") String token, @Body Delivery d);
 
 
-    @PUT("/api/v1/deliveriesRef/{delivery_id}/") //return deliveryID
+    @PUT("/api/v1/deliveriesRef/{delivery_id}/") //return void
     Call<Void> updateDelivery(@Header("Authorization") String token, @Path("delivery_id") String id, @Body Delivery d);
 
 
