@@ -26,7 +26,7 @@ public class BusinessProfile extends AppCompatActivity {
     private EditText Phone2MP;
     private Button addDelivery;
     private RetrofitInterface rtfBase;
-     Business business;
+     Business businessUser;
 
 
     @Override
@@ -43,23 +43,22 @@ public class BusinessProfile extends AppCompatActivity {
         TextMP=(TextView)findViewById(R.id.TextMP);
         Phone1MP=(EditText)findViewById(R.id.Phone1MP);
         Phone2MP=(EditText)findViewById(R.id.Phone2MP);
-
         Bundle extras = getIntent().getExtras();
         if(extras!=null)
         {
-            String idFromIntent = extras.getString("businessUserInGson");
-            Business businessUser = new Gson().fromJson(idFromIntent,Business.class);
-            Log.i("ttt",businessUser.getBusinessName());
+                String idFromIntent = extras.getString("businessUserInGson");
+                businessUser = new Gson().fromJson(idFromIntent, Business.class);
+                Log.i("ttt", businessUser.getBusinessName());
+
         }
-//Log.i("myTest",idFromIntent);
-
-      //  GetUser(idFromIntent);
+        Log.i("ttt2", businessUser.getBusinessName());
 
 
 
 
 
-       // TextMP.setText("welcome "+business.getFirstName()+ " "+business.getLastName());
+
+        TextMP.setText("welcome "+businessUser.getFirstName()+ " "+businessUser.getLastName());
 
 
         ChangeMP.setOnClickListener((v) -> {

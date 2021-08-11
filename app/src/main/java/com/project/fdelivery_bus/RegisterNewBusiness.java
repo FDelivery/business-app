@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,6 +72,14 @@ public class RegisterNewBusiness extends AppCompatActivity {
             }
             if(password.isEmpty()) {
                 PasswordEt.setError("This field is necessary");
+                return;
+            }
+            if(lastName.isEmpty()) {
+                last.setError("This field is necessary");
+                return;
+            }
+            if(firstName.isEmpty()) {
+                first.setError("This field is necessary");
                 return;
             }
             if(bName.isEmpty()) {
@@ -171,21 +180,24 @@ public class RegisterNewBusiness extends AppCompatActivity {
         });
     }
     private void connectToApp(Business business){
-        Intent intent = new Intent(this, BusinessProfile.class);
 
         HashMap<String, String> help = new HashMap<>();
         help.put("email",business.getEmail()) ;
         help.put("password",business.getPassword());
-        Call<String> call = rtfBase.connect(help); //we get token
-        call.enqueue(new Callback<String>() {
+        Call<String[]> call = rtfBase.connect(help); //we get token
+        call.enqueue(new Callback<String[]>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<String[]> call, Response<String[]> response) {
                 if(response.code() == 200)
                 {
-                    business.setToken(response.body());
+                    assert response.body() != null;
+                    business.setToken(response.body()[0]);
+                    business.setId(response.body()[1]);
+                  //  Log.i("iddd",business.getId());
                     Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
-                    intent.putExtra("id",business.getId());
-                    startActivity(intent);
+
+                    GetUser(business.getId());
+
 
                 }
                 if(response.code() == 400)
@@ -201,11 +213,65 @@ public class RegisterNewBusiness extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<String[]> call, Throwable t) {
                 Toast.makeText(RegisterNewBusiness.this,t.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });
 
     }
+
+
+    // get- in id, return user
+    public void GetUser(String id) // need to know how to use in accepted user
+    {
+
+        Intent intent = new Intent(this, BusinessProfile.class);
+
+       // Log.i("myTest2",id);
+
+        Call<String> call = rtfBase.getUser(id);
+
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response)
+            {
+
+                if(response.code() == 200)
+                {
+
+                    //success
+
+                      Log.i("TEST123",response.body());
+                    //  Business businessUser = new Gson().fromJson(response.body(),Business.class);
+                    //   Log.i("TEST2",businessUser.getFirstName());
+                    //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
+                    intent.putExtra("businessUserInGson",response.body());
+                    startActivity(intent);
+
+
+                }
+
+
+                if(response.code() == 400 || response.code()==500)
+                {
+                    //failure
+                    Toast.makeText(RegisterNewBusiness.this, "this ID do not exist", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(RegisterNewBusiness.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
+
+
+
 }

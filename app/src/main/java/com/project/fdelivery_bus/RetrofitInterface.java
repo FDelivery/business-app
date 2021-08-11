@@ -15,17 +15,14 @@ import retrofit2.http.Query;
 
 public interface RetrofitInterface
 {
-    @POST("/api/v1/auth/login/") //return token
-    Call<String> connect(@Body HashMap<String, String> map);
+    @POST("/api/v1/auth/login/") //return array [token,id]->user
+    Call<String[]> connect(@Body HashMap<String, String> map);
 
     @POST("/api/v1/auth/register/") //return userid
     Call<String> register(@Body Business b);
 
     @GET("/api/v1/users/{user_id}") //return gson string (user)
     Call<String> getUser(@Path("user_id") String id);
-
-    @POST("/api/v1/users/") //return id string (user)                     ///get ~ לטפל בזה
-    Call<String> getUserId(@Body HashMap<String, String> map);
 
     @PUT("/api/v1/users/{user_id}") //return void
     Call<Void> updateUser(@Path("user_id") String id,@Body HashMap<String, String> map);

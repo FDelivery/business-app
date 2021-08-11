@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email",EmailEt.getText().toString());
         credentials.put("password",PasswordEt.getText().toString());
-        Call<String> call = rtfBase.connect(credentials);
+        Call<String[]> call = rtfBase.connect(credentials);
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<String[]>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<String[]> call, Response<String[]> response) {
                 if(response.code() == 200)
                 {
                     //success
@@ -91,9 +91,15 @@ public class MainActivity extends AppCompatActivity {
                    // business.setToken(response.body());
                    // intent.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
 
+                    String[] arr = new String[2];
 
-                   // Log.i("TESSSSSTTT",credentials.get("password"));
-                    useUser(credentials);
+                    arr=response.body();
+                  //  Log.i("token1",arr[0]);
+                   // Log.i("id1",arr[1]);
+
+                    // Log.i("TESSSSSTTT",credentials.get("password"));
+                    GetUser(arr[1]);
+
 
                 }
                 if(response.code() == 400 || response.code() == 401)
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<String[]> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Something went wrong" +t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -122,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // get- in id, return user
-    private void GetUser(String id) // need to know how to use in accepted user
+    public void GetUser(String id) // need to know how to use in accepted user
     {
 
         Intent intent = new Intent(this, BusinessProfile.class);
@@ -142,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
 
                     //success
 
-                    Log.i("TEST1",response.body());
-                    Business businessUser = new Gson().fromJson(response.body(),Business.class);
-                    Log.i("TEST2",businessUser.getFirstName());
+                  //  Log.i("TEST1",response.body());
+                  //  Business businessUser = new Gson().fromJson(response.body(),Business.class);
+                 //   Log.i("TEST2",businessUser.getFirstName());
                   //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
                     intent.putExtra("businessUserInGson",response.body());
                     startActivity(intent);
@@ -171,11 +177,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+/*
 
  private void useUser(HashMap<String, String> credentials) // we get the user-id after login
  {
 
-     Call<String> call = rtfBase.getUserId(credentials);
+     Call<String> call = rtfBase.getUserId(credentials.get("email"));
      call.enqueue(new Callback<String>() {
          @Override
          public void onResponse(Call<String> call, Response<String> response) {
@@ -192,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
              }
              if(response.code() == 200)
              {
-                // Log.i("TESSSSSTTT",response.body());
+                 Log.i("TESSSSSTTT",response.body());
 
                  GetUser(response.body());
 
@@ -208,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
          }
      });
  }
+*/
 
 
 }
