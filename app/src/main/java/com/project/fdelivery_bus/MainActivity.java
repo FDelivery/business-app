@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // get- in id, return user
-    public void GetUser(String id) // need to know how to use in accepted user
+    public void GetUser(String id)
     {
 
         Intent intent = new Intent(this, BusinessProfile.class);
@@ -153,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
                  //   Log.i("TEST2",businessUser.getFirstName());
                   //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
                     intent.putExtra("businessUserInGson",response.body());
+                    intent.putExtra("id",id);
+
                     startActivity(intent);
 
 

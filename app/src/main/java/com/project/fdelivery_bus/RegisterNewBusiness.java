@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -184,7 +184,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
         HashMap<String, String> help = new HashMap<>();
         help.put("email",business.getEmail()) ;
         help.put("password",business.getPassword());
-        Call<String[]> call = rtfBase.connect(help); //we get token
+        Call<String[]> call = rtfBase.connect(help); //we get token and id
         call.enqueue(new Callback<String[]>() {
             @Override
             public void onResponse(Call<String[]> call, Response<String[]> response) {
