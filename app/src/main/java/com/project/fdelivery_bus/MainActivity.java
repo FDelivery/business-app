@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView ForgotPassword;
     private TextView NewBusiness;
     private RetrofitInterface rtfBase;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ForgotPassword = findViewById(R.id.forgotPass);
         NewBusiness = findViewById(R.id.newBusiness);
 
-
+        intent = new Intent(this, MainBusiness.class);
         on.setOnClickListener((v) -> {
             String email = EmailEt.getText().toString();
             if(email.isEmpty())
@@ -89,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
                     //success
                     Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                    // business.setToken(response.body());
-                   // intent.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
 
                     String[] arr = new String[2];
 
                     arr=response.body();
                   //  Log.i("token1",arr[0]);
                    // Log.i("id1",arr[1]);
+                    intent.putExtra("token",arr[0]);
 
                     // Log.i("TESSSSSTTT",credentials.get("password"));
                     GetUser(arr[1]);
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public void GetUser(String id)
     {
 
-        Intent intent = new Intent(this, BusinessProfile.class);
+
 
         Log.i("myTest2",id);
 

@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.fdelivery_bus">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="business-app"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.FDelivery">
-        <activity android:name=".ChangePassword"></activity>
+        android:theme="@style/Theme.FDelivery"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".editDelivery"></activity>
+        <activity android:name=".showCoosenActivity" />
+        <activity android:name=".ChangePassword" />
         <activity android:name=".EditMyProfile" />
         <activity android:name=".BusinessProfile" />
         <activity android:name=".MainBusiness" />
-        <activity android:name="newDelivery" />
+        <activity android:name=".newDelivery" />
         <activity android:name=".DeliveryTable" />
         <activity android:name=".DeliveryHistory" />
-        <activity android:name="RegisterNewBusiness" />
+        <activity android:name=".RegisterNewBusiness" />
         <activity
-            android:name="MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.FDelivery.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

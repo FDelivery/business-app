@@ -12,11 +12,29 @@ public class Delivery
     private String pickedDate;
     private double price;
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    private String id;
+
+    @Override
+    public String toString() {
+        return  " client name: "+clientName+ "\n client phone: "+clientPhone+"\n ADDRESS- city:"+destAddress.getCity()+
+                "\n apartment: "+destAddress.getApartment()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note;
+    }
+
+
+
+    public String getId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    private String id;
+
     public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date) {
         this.destAddress= clientAddress;
         this.clientName = clientName;

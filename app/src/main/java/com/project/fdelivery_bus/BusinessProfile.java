@@ -22,10 +22,9 @@ public class BusinessProfile extends AppCompatActivity {
     private TextView TextMP;
     private TextView Phone1MP;
     private TextView Phone2MP;
-    private Button addDelivery;
     private RetrofitInterface rtfBase;
      Business businessUser;
-
+    String FromIntent,ID,TOKEN;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -37,21 +36,22 @@ public class BusinessProfile extends AppCompatActivity {
         ChangeMP=(Button)findViewById(R.id.ChangeMP);
         EmailMP=(TextView) findViewById(R.id.EmailMP);
         PassChangeMP=(Button)findViewById(R.id.PassChangeMP);
-        addDelivery=(Button)findViewById(R.id.buttonForAddDeliver);
         rtfBase = RetrofitBase.getRetrofitInterface();
         TextMP=(TextView)findViewById(R.id.TextMP);
         Phone1MP=(TextView)findViewById(R.id.Phone1MP);
         Phone2MP=(TextView)findViewById(R.id.Phone2MP);
         Bundle extras = getIntent().getExtras();
-        String FromIntent,ID;
+
         if(extras!=null)
         {
                 FromIntent = extras.getString("businessUserInGson");
                 ID =extras.getString("id");
-                businessUser = new Gson().fromJson(FromIntent, Business.class);
-                Log.i("ttt", businessUser.getFirstName());
-                businessUser.setId(ID);
+                TOKEN =extras.getString("token");
 
+            businessUser = new Gson().fromJson(FromIntent, Business.class);
+               // Log.i("ttt", businessUser.getFirstName());
+                businessUser.setId(ID);
+                businessUser.setToken(TOKEN);
 
         }
 
@@ -74,15 +74,14 @@ public class BusinessProfile extends AppCompatActivity {
         ChangeMP.setOnClickListener((v) -> {
 
             Intent intent2 =new Intent(this, EditMyProfile.class);
-            intent2.putExtra("id",businessUser.getId());
+            intent2.putExtra("id",ID);
+            Log.i("xxxx1",ID);
             Toast.makeText(BusinessProfile.this, "fill JUST what you need", Toast.LENGTH_LONG).show();
             startActivity(intent2);
 
         });
 
-        addDelivery.setOnClickListener((v) -> {
-            startActivity(new Intent(this, newDelivery.class));
-        });
+
         PassChangeMP.setOnClickListener((v) -> {
             startActivity(new Intent(this, ChangePassword.class));
         });
