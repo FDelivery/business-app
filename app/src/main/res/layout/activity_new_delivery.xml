@@ -29,7 +29,7 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/CName"
+        android:hint="@string/CName"
         android:textColor="#FD000000"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,12 +40,12 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <EditText
-        android:id="@+id/entrance"
+        android:id="@+id/CNentrance"
         android:layout_width="84dp"
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="entrance"
+        android:hint="@string/CNentrance"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FD000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,10 +56,10 @@
         app:layout_constraintVertical_bias="0.23" />
 
     <EditText
-        android:id="@+id/city"
+        android:id="@+id/CNcity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="city"
+        android:hint="@string/CNcity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.172"
@@ -68,10 +68,10 @@
         app:layout_constraintVertical_bias="0.221" />
 
     <EditText
-        android:id="@+id/number"
+        android:id="@+id/CNnumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="number"
+        android:hint="@string/CNnumber"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.661"
@@ -80,10 +80,10 @@
         app:layout_constraintVertical_bias="0.221" />
 
     <EditText
-        android:id="@+id/street"
+        android:id="@+id/CNstreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="street"
+        android:hint="@string/CNstreet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.647"
@@ -92,10 +92,10 @@
         app:layout_constraintVertical_bias="0.258" />
 
     <EditText
-        android:id="@+id/aprt"
+        android:id="@+id/CNaprt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="aprt"
+        android:hint="@string/CNaprt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
@@ -105,10 +105,10 @@
 
 
     <EditText
-        android:id="@+id/floor"
+        android:id="@+id/CNfloor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="floor"
+        android:hint="@string/CNfloor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.795"
@@ -122,9 +122,9 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/Cnotes"
+        android:hint="@string/Cnotes"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.423"
@@ -139,7 +139,7 @@
         android:text="@string/cost"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +155,7 @@
         android:hint="@string/Date"
         android:inputType="date"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.423"
@@ -170,7 +170,7 @@
         android:ems="10"
         android:hint="@string/Time"
         android:inputType="time"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -184,7 +184,7 @@
         android:layout_width="142dp"
         android:layout_height="41dp"
         android:text="@string/preferd_vehicle"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +198,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bike"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/car"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -230,7 +230,7 @@
         android:layout_marginRight="44dp"
         android:text="@string/ndsubmit"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         app:backgroundTint="#C9FDD835"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -242,7 +242,7 @@
         android:text="@string/textViewNewdelivery"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="26sp"
-        android:textColor="#FD000000"
+        android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

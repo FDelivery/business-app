@@ -1,54 +1,112 @@
 <resources>
-    <string name="app_name">FDelivery</string>
+    <string name="app_name">business-app</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="forgetPass"><u>FORGOT PASSWORD?</u></string>
-    <string name="newBusiness"><u>New User? Register Now</u></string>
-    <string name="textViewDeliveryRequest"> Request New Delivery</string>
-    <string name="textViewDeliveryHistory"> My Delivery History</string>
-    <string name="textViewWelcom">hello (user name)</string>
-    <string name="textViewMyprofile"> My Profile</string>
-    <string name="textViewDeliveryList"> My Deliveries</string>
-    <string name="password">Password</string>
-    <string name="Email">Email</string>
-    <string name="Connect">LOG IN</string>
-    <string name="CPhone">050-000000</string>
-    <string name="CName">Name</string>
-    <string name="Caddress">address</string>
-    <string name="Cnotes"> Delivery notes</string>
-    <string name="cost">payment</string>
-    <string name="Date">00/00/00</string>
-    <string name="Time">time</string>
-    <string name="preferd_vehicle">preferd vehicle</string>
-    <string name="bike">bike</string>
-    <string name="car">car</string>
-    <string name="textViewNewdelivery">Please fill in the following details</string>
-    <string name="ndsubmit">Submit delivery</string>
-    <string name="business_name">Business name</string>
-    <string name="business_address">Business address</string>
-    <string name="PasswordEt">Password</string>
-    <string name="EmailEt">Email</string>
-    <string name="Phone2">Additional phone number</string>
-    <string name="Phone1">Phone number</string>
-    <string name="Text">Create your account</string>
-    <string name="create">Create account</string>
-    <string name="AddressMP">HERE WE NEED THE BUSINESS ADDRESS FOR DB</string>
-    <string name="Phone1MP">HERE WE NEED THE BUSINESS PHONE 1 FORM DB</string>
-    <string name="phone2MP">HERE WE NEED THE BUSINESS PHONE 2 FORM DB</string>
-    <string name="textMP">HERE WE NEED THE BUSINESS NAME FORM DB</string>
-    <string name="EmailMP">HERE WE NEED THE BUSINESS EMAIL FORM DB</string>
-    <string name="ChangeMP">Edit</string>
-    <string name="PassChangeMP">change password</string>
+
+    <!-- activity change password -->
     <string name="ConfirmNewPassword">Confirm new password</string>
     <string name="NewPassword">Enter new password</string>
-    <string name="ConformPasswordChange">Save</string>
+    <string name="ConformPasswordChange">SAVE</string>
+
+
+    <!-- activity main business -->
+    <string name="textViewWelcom">hello (user name)</string>
+
+    <!-- activity business profile -->
+    <string name="AddressMP">karmiel</string>
+    <string name="Phone1MP">0524338245</string>
+    <string name="phone2MP">0524338244</string>
+    <string name="textMP">cake for all</string>
+    <string name="EmailMP">cake@c.com</string>
+    <string name="ChangeMP">EDIT</string>
+    <string name="PassChangeMP">CHANGE PASSWORD</string>
+
+    <!-- activity edit my profile -->
     <string name="AddressEP">HERE WE NEED THE BUSINESS ADDRESS FOR DB</string>
     <string name="Phone1EP">HERE WE NEED THE BUSINESS PHONE 1 FORM DB</string>
     <string name="Phone2EP">HERE WE NEED THE BUSINESS PHONE 2 FORM DB</string>
     <string name="textEP">Edit Profile</string>
     <string name="EmailEP">HERE WE NEED THE BUSINESS EMAIL FORM DB</string>
-    <string name="ChangeEP">Save</string>
+    <string name="ChangeEP">SAVE</string>
     <string name="NameEP">HERE WE NEED THE BUSINESS NAME FORM DB</string>
+
+    <!-- activity main -->
+    <string name="password">Password</string>
+    <string name="Email">Email</string>
+    <string name="Connect">LOG IN</string>
+    <string name="forgetPass"><u>FORGOT PASSWORD?</u></string>
+    <string name="newBusiness"><u>New User? Register Now</u></string>
+
+
+    <!-- activity register new business -->
+    <string name="business_name">Business name</string>
+    <string name="PasswordEt">Password</string>
+    <string name="EmailEt">Email</string>
+    <string name="Phone2">Additional phone number</string>
+    <string name="Phone1">Phone number</string>
+    <string name="Text">NEW USER</string>
+    <string name="create">CREATE ACCOUNT</string>
+    <string name="city">city</string>
+    <string name="entrance">entrance</string>
+    <string name="number">number</string>
+    <string name="street">street</string>
+    <string name="aprt">apartment</string>
+    <string name="floor">floor</string>
+    <string name="contactname">contact name</string>
+
+
+    <!-- activity  new delivery-->
+    <string name="CPhone">client phone</string>
+    <string name="CName">client name</string>
+    <string name="Cnotes">notes about the delivery</string>
+    <string name="cost">0₪</string>
+    <string name="Date">00/00/00</string>
+    <string name="Time">time</string>
+    <string name="preferd_vehicle">choose preferd vehicle</string>
+    <string name="bike">bike</string>
+    <string name="car">car</string>
+    <string name="textViewNewdelivery">fill in the following details</string>
+    <string name="ndsubmit">SUBMIT</string>
+    <string name="CNcity">city</string>
+    <string name="CNentrance">entrance</string>
+    <string name="CNnumber">number</string>
+    <string name="CNstreet">street</string>
+    <string name="CNaprt">apartment</string>
+    <string name="CNfloor">floor</string>
+
+
+    <!-- activity  edit delivery -->
+    <string name="EThone">client phone</string>
+    <string name="ETame">client name</string>
+    <string name="ETnotes">notes about the delivery</string>
+    <string name="ETcost">0₪</string>
+    <string name="ETDate">00/00/00</string>
+    <string name="ETTime">time</string>
+    <string name="ETpreferd_vehicle">choose preferd vehicle</string>
+    <string name="ETbike">bike</string>
+    <string name="ETcar">car</string>
+    <string name="ETtextViewNewdelivery">What details would you like to change?</string>
+    <string name="ETndsubmit">SUBMIT</string>
+    <string name="ETcity">city</string>
+    <string name="ETentrance">entrance</string>
+    <string name="ETnumber">number</string>
+    <string name="ETstreet">street</string>
+    <string name="ETaprt">apartment</string>
+    <string name="ETfloor">floor</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </resources>
