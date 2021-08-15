@@ -8,77 +8,170 @@ android:background="@drawable/circule"
     tools:context=".BusinessProfile">
 
 
-    <TextView
-        android:id="@+id/AddressMP"
-        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+    <EditText
+        android:id="@+id/entranceMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+        android:layout_width="82dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:ems="14"
+        android:hint="@string/entranceMP"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#040404"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
+
+    <EditText
+        android:id="@+id/cityMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="352dp"
         android:layout_height="40dp"
         android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="@string/AddressMP"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
+        android:ems="14"
+        android:hint="@string/cityMP"
         android:padding="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#040404"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.379" />
+
+    <EditText
+        android:id="@+id/numberMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:ems="14"
+        android:hint="@string/numberMP"
+        android:padding="10dp"
+        android:textColor="#040404"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
+
+
+    <EditText
+        android:id="@+id/streetMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+        android:layout_width="352dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:ems="14"
+        android:hint="@string/streetMP"
+        android:padding="10dp"
+        android:textColor="#040404"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.461" />
+
+    <EditText
+        android:id="@+id/aprtMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:ems="14"
+        android:hint="@string/aprtMP"
+        android:padding="10dp"
+        android:textColor="#040404"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
+
+    <EditText
+        android:id="@+id/floorMP"
+        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_border"
+        android:ems="14"
+        android:hint="@string/floorMP"
+        android:padding="10dp"
+        android:textColor="#040404"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
 
     <TextView
         android:id="@+id/Phone2MP"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="352dp"
         android:layout_height="40dp"
+        android:background="@drawable/round_border"
         android:ems="10"
         android:hint="@string/phone2MP"
-        android:background="@drawable/round_border"
         android:inputType="phone"
-        android:textSize="16sp"
         android:padding="10dp"
-        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743" />
+        app:layout_constraintVertical_bias="0.804" />
 
     <TextView
         android:id="@+id/Phone1MP"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="352dp"
         android:layout_height="40dp"
+        android:background="@drawable/round_border"
         android:ems="10"
         android:hint="@string/Phone1MP"
-        android:background="@drawable/round_border"
         android:inputType="phone"
-        android:textSize="16sp"
         android:padding="10dp"
-        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        app:layout_constraintVertical_bias="0.723" />
 
     <TextView
         android:id="@+id/TextMP"
-        android:layout_width="297dp"
-        android:layout_height="60dp"
+        android:layout_width="305dp"
+        android:layout_height="105dp"
         android:text="@string/textMP"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="32sp"
         android:textColor="#abe3fd"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <Button
         android:id="@+id/ChangeMP"
@@ -111,25 +204,25 @@ android:background="@drawable/circule"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955" />
 
+
     <TextView
         android:id="@+id/EmailMP"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="352dp"
         android:layout_height="40dp"
+        android:background="@drawable/round_border"
         android:ems="10"
         android:hint="@string/EmailMP"
-        android:background="@drawable/round_border"
-        android:padding="10dp"
-        android:textSize="16sp"
-        style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:inputType="textEmailAddress"
+        android:padding="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
-
+        app:layout_constraintVertical_bias="0.639" />
 
     <ImageView
         android:id="@+id/imageView2"
