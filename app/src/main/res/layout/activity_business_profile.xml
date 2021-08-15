@@ -137,7 +137,8 @@ android:background="@drawable/circule"
         android:layout_height="106dp"
         app:srcCompat="@drawable/deliveryman"
         tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ public class Delivery
     private String deliveredDate;
     private String pickedDate;
     private double price;
+    private String status;
 
     public void setPrice(double price) {
         this.price = price;
@@ -35,13 +36,14 @@ public class Delivery
     }
 
 
-    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date) {
+    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date,String status) {
         this.destAddress= clientAddress;
         this.clientName = clientName;
         this.clientPhone = clientPhone;
         this.Time = time;
         this.Note = clientNote;
         this.deliveredDate = date;
+        this.status=status;
     }
 
     public String getClientPhone() {

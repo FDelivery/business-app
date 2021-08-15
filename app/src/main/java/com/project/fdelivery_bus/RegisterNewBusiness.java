@@ -42,8 +42,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
-        last = (EditText)findViewById(R.id.last);
-        first = (EditText)findViewById(R.id.first);
+      //  last = (EditText)findViewById(R.id.last);
+      //  first = (EditText)findViewById(R.id.first);
 
 
         Create.setOnClickListener((v) -> {

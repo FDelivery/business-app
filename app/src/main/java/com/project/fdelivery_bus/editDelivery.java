@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -19,9 +21,16 @@ public class editDelivery extends AppCompatActivity {
     String deliveryFromIntent,IDDELIVERY,TOKEN;
     private EditText name;
     private EditText phone;
-    private EditText price;
+    private TextView price;
     private EditText note;
     private Button save;
+    private EditText city;
+    private EditText aprt;
+    private EditText number;
+    private EditText street;
+    private EditText entrance;
+
+    //private CheckBox Bike, Car;
     Delivery delivery;
     String FromIntent,ID;
 
@@ -29,11 +38,18 @@ public class editDelivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delivery);
-        save=(Button)findViewById(R.id.OK);
-        name=(EditText) findViewById(R.id.Name);
-        price=(EditText)findViewById(R.id.price);
-        note=(EditText)findViewById(R.id.note);
-        phone=(EditText)findViewById(R.id.phone);
+        save=(Button)findViewById(R.id.ETndSubmit);
+        name=(EditText) findViewById(R.id.ETame);
+        price=(TextView)findViewById(R.id.ETcost);
+        note=(EditText)findViewById(R.id.ETnote);
+        phone=(EditText)findViewById(R.id.EThone);
+        city=(EditText)findViewById(R.id.ETcity);
+        number=(EditText)findViewById(R.id.ETnumber);
+        entrance=(EditText)findViewById(R.id.ETentrance);
+        street=(EditText)findViewById(R.id.ETstreet);
+        aprt=(EditText)findViewById(R.id.ETaprt);
+      //  Car = (CheckBox)findViewById(R.id.ETcar);
+       // Bike = (CheckBox)findViewById(R.id.ETbike);
         Bundle extras = getIntent().getExtras();
 
         if(extras!=null)
@@ -55,6 +71,15 @@ public class editDelivery extends AppCompatActivity {
             String noteText= note.getText().toString();
             String priceText=price.getText().toString();
 
+            String CityText= city.getText().toString();
+            String AprtText= aprt.getText().toString();
+            String NumberText= number.getText().toString();
+            String EntranceText=entrance.getText().toString();
+            String StreetText=street.getText().toString();
+            Address address=delivery.getClientAddress();
+            //  Boolean car = Car.isChecked();
+          //  Boolean bike = Bike.isChecked();
+
             if(!PhoneText.isEmpty()) {
                 delivery.setClientPhone(PhoneText);
             }
@@ -64,11 +89,43 @@ public class editDelivery extends AppCompatActivity {
             if(!noteText.isEmpty()) {
                 delivery.setNote(noteText);
             }
-            if(!priceText.isEmpty()) {
+            if(!CityText.isEmpty()) {
+                address.setCity(CityText);
+            }else{
+                address.setCity(delivery.getClientAddress().getCity());
+
+            }
+            if(!AprtText.isEmpty()) {
+                address.setApartment(AprtText);
+            }
+                else{
+                    address.setApartment(delivery.getClientAddress().getApartment());
+
+                }
+            if(!NumberText.isEmpty()) {
+                address.setNumber(NumberText);
+            }else{
+                address.setNumber(delivery.getClientAddress().getNumber());
+
+            }
+            if(!StreetText.isEmpty()) {
+                address.setStreet(StreetText);
+            }else{
+                address.setStreet(delivery.getClientAddress().getStreet());
+
+            }
+            if(!EntranceText.isEmpty()) {
+                address.setEntrance(EntranceText);
+            }else{
+                address.setEntrance(delivery.getClientAddress().getEntrance());
+
+            }
+          /*  if(!priceText.isEmpty()) {                      ///משהו השתנה בxml
                 double str1 = Double.parseDouble(priceText);
                 delivery.setPrice(str1);
-            }
+            }*/
 
+            delivery.setClientAddress(address);
             UpdateDelivery(TOKEN, IDDELIVERY, delivery);
 
 
