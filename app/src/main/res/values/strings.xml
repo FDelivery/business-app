@@ -64,6 +64,7 @@
     <string name="street">street</string>
     <string name="aprt">apartment</string>
     <string name="floor">floor</string>
+    <string name="pay">CREDIT CARD DETAILS</string>
 
 
 
@@ -75,6 +76,7 @@
     <string name="Date">00/00/00</string>
     <string name="Time">time</string>
     <string name="preferd_vehicle">choose preferred vehicle:</string>
+    <string name="bicycle">bicycle</string>
     <string name="bike">bike</string>
     <string name="car">car</string>
     <string name="textViewNewdelivery">fill in the following details</string>
@@ -90,13 +92,14 @@
     <!-- activity  edit delivery -->
     <string name="ETphone">client phone</string>
     <string name="ETname">client name</string>
-    <string name="ETnotes">notes about the delivery</string>
+    <string name="ETnote">notes about the delivery</string>
     <string name="ETcost">0₪</string>
     <string name="ETDate">00/00/00</string>
     <string name="ETTime">time</string>
     <string name="ETpreferd_vehicle">change preferd vehicle</string>
     <string name="ETbike">bike</string>
     <string name="ETcar">car</string>
+    <string name="ETbicycle">bicycle</string>
     <string name="ETtextViewNewdelivery">What details would you like to change?</string>
     <string name="ETndsubmit">SAVE CHANGE</string>
     <string name="ETcity">city</string>
@@ -106,6 +109,15 @@
     <string name="ETaprt">apartment</string>
     <string name="ETfloor">floor</string>
 
+
+
+    <!-- activity  payment card detailes -->
+    <string name="card">Enter card details </string>
+    <string name="messege">This information is stored for reuse</string>
+
+
+    <!-- activity  show coosen -->
+    <string name="printall"> examle of delivery</string>
 
 
 
