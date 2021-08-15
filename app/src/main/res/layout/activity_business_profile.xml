@@ -8,7 +8,7 @@ android:background="@drawable/circule"
     tools:context=".BusinessProfile">
 
 
-    <EditText
+    <TextView
         android:id="@+id/entranceMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="82dp"
@@ -28,7 +28,7 @@ android:background="@drawable/circule"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544" />
 
-    <EditText
+    <TextView
         android:id="@+id/cityMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="352dp"
@@ -46,7 +46,7 @@ android:background="@drawable/circule"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.379" />
 
-    <EditText
+    <TextView
         android:id="@+id/numberMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="76dp"
@@ -65,7 +65,7 @@ android:background="@drawable/circule"
         app:layout_constraintVertical_bias="0.544" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/streetMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="352dp"
@@ -83,7 +83,7 @@ android:background="@drawable/circule"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.461" />
 
-    <EditText
+    <TextView
         android:id="@+id/aprtMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="95dp"
@@ -101,7 +101,7 @@ android:background="@drawable/circule"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544" />
 
-    <EditText
+    <TextView
         android:id="@+id/floorMP"
         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
         android:layout_width="76dp"

@@ -38,11 +38,11 @@ public class editDelivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delivery);
-        save=(Button)findViewById(R.id.ETndSubmit);
-        name=(EditText) findViewById(R.id.ETame);
+        save=(Button)findViewById(R.id.ETndsubmit);
+        name=(EditText) findViewById(R.id.ETname);
         price=(TextView)findViewById(R.id.ETcost);
         note=(EditText)findViewById(R.id.ETnote);
-        phone=(EditText)findViewById(R.id.EThone);
+        phone=(EditText)findViewById(R.id.ETphone);
         city=(EditText)findViewById(R.id.ETcity);
         number=(EditText)findViewById(R.id.ETnumber);
         entrance=(EditText)findViewById(R.id.ETentrance);

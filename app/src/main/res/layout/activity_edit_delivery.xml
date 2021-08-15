@@ -168,7 +168,7 @@
         android:layout_height="80dp"
         android:background="@drawable/round_border"
         android:ems="14"
-        android:hint="@string/ETnote"
+        android:hint="@string/ETnotes"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"

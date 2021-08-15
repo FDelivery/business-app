@@ -1,14 +1,21 @@
 package com.project.fdelivery_bus;
-
+import io.socket.client.IO;
+import io.socket.client.Socket;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import io.socket.emitter.Emitter;
+
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+
+import java.net.URISyntaxException;
+
 
 public class MainBusiness extends AppCompatActivity {
     private ImageButton deliveryHistory;
@@ -18,6 +25,12 @@ public class MainBusiness extends AppCompatActivity {
     private Business businessUser;
     private TextView welcome;
     String FromIntent,ID,TOKEN;
+
+    protected void onPause() {
+    mSocket.off("delivery accepted");
+        super.onPause();
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +44,8 @@ public class MainBusiness extends AppCompatActivity {
         welcome=(TextView)findViewById(R.id.textViewWelcom);
 
         Bundle extras = getIntent().getExtras();
-
+        mSocket.connect();
+        mSocket.on("delivery accepted",deliveryAcceptedListener);
         if(extras!=null)
         {
             FromIntent = extras.getString("businessUserInGson");
@@ -43,7 +57,7 @@ public class MainBusiness extends AppCompatActivity {
            // businessUser.setId(ID);
            // businessUser.setToken(TOKEN);
 
-            welcome.setText("welcome "+businessUser.getFirstName()+" "+businessUser.getLastName());
+            welcome.setText("welcome "+businessUser.getBusinessName());
 
         }
 
@@ -78,4 +92,27 @@ public class MainBusiness extends AppCompatActivity {
             startActivity(intent);
         });
     }
+    private Socket mSocket;
+    {
+        try {
+            mSocket = IO.socket("http://10.0.0.19:5000");
+        } catch (URISyntaxException e) {}
+    }
+
+
+    private Emitter.Listener deliveryAcceptedListener = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("test", "11111");
+
+                }
+            });
+        }
+    };
+
+
+
 }

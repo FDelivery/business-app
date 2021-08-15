@@ -7,8 +7,8 @@ public class Business {
     private String primaryPhone;
     private String secondaryPhone;
     private String password;
-    private String firstName;
-    private String lastName;
+  //  private String firstName;
+  //  private String lastName;
     private String id;
     private String token;
     private String role = "BUSINESS";
@@ -22,8 +22,8 @@ public class Business {
             this.secondaryPhone = b.secondaryPhone;
         }
         this.password = b.password;
-        this.firstName = b.firstName;
-        this.lastName = b.lastName;
+       // this.firstName = b.firstName;
+       // this.lastName = b.lastName;
         this.role = b.role;
         this.id=b.id;
 
@@ -59,8 +59,8 @@ public class Business {
         secondaryPhone = p2;
         address = a;
         businessName = bn;
-        firstName=fn;
-        lastName=ln;
+       // firstName=fn;
+      //  lastName=ln;
         password = pass;
     }
 
@@ -71,18 +71,18 @@ public class Business {
         primaryPhone = p1;
         address = a;
         businessName = bn;
-        firstName=fn;
-        lastName=ln;
+      //  firstName=fn;
+      //  lastName=ln;
         password = pass;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+   // public String getFirstName() {
+  ///      return firstName;
+  //  }
 
-    public String getLastName() {
-        return lastName;
-    }
+ //   public String getLastName() {
+  ////      return lastName;
+  //  }
 
     public Address getAddress() {
         return address;

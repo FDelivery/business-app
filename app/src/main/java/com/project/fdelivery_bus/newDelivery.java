@@ -20,10 +20,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class newDelivery extends AppCompatActivity {
-    private EditText CPhone, CName, Cnote, Date, Time;
-    private EditText city,street,number,floor,apartment,entrance;
+    private EditText CPhone, CName, Date, Time;
+    private EditText city,street,Cnote,number,floor,apartment,entrance;
     private CheckBox Bike, Car;
     private Button submit;
+
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
     String FromIntent,ID,TOKEN;
 
@@ -37,12 +38,12 @@ public class newDelivery extends AppCompatActivity {
         CPhone = (EditText)findViewById(R.id.CPhone);
         CName = (EditText)findViewById(R.id.CName);
 
-        entrance = (EditText)findViewById(R.id.entrance);
-        city = (EditText)findViewById(R.id.city);
-        street = (EditText)findViewById(R.id.street);
-        number = (EditText)findViewById(R.id.number);
-        floor = (EditText)findViewById(R.id.floor);
-        apartment = (EditText)findViewById(R.id.aprt);
+        entrance = (EditText)findViewById(R.id.CNentrance);
+        city = (EditText)findViewById(R.id.CNcity);
+        street = (EditText)findViewById(R.id.CNstreet);
+        number = (EditText)findViewById(R.id.CNnumber);
+        floor = (EditText)findViewById(R.id.CNfloor);
+        apartment = (EditText)findViewById(R.id.CNaprt);
 
         Cnote = (EditText)findViewById(R.id.Cnote);
         Date = (EditText)findViewById(R.id.Date);

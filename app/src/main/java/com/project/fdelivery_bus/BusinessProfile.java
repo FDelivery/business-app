@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 
 public class BusinessProfile extends AppCompatActivity {
-    private TextView AddressMP;
+    private TextView CityMP,StreetMP,NumberMP,FlootMP,AprtMP,EntranceMP;
     private TextView EmailMP;
     private Button ChangeMP;
     private Button PassChangeMP;
@@ -32,7 +32,12 @@ public class BusinessProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_profile);
 
-        AddressMP=(TextView)findViewById(R.id.AddressMP);
+        CityMP=(TextView) findViewById(R.id.cityMP);
+        StreetMP=(TextView) findViewById(R.id.streetMP);
+        NumberMP=(TextView) findViewById(R.id.numberMP);
+        FlootMP=(TextView) findViewById(R.id.floorMP);
+        AprtMP=(TextView) findViewById(R.id.aprtMP);
+        EntranceMP=(TextView) findViewById(R.id.entranceMP);
         ChangeMP=(Button)findViewById(R.id.ChangeMP);
         EmailMP=(TextView) findViewById(R.id.EmailMP);
         PassChangeMP=(Button)findViewById(R.id.PassChangeMP);
@@ -56,10 +61,14 @@ public class BusinessProfile extends AppCompatActivity {
         }
 
 
-        TextMP.setText("welcome "+businessUser.getFirstName()+ " "+businessUser.getLastName());
+        TextMP.setText("welcome "+businessUser.getBusinessName());
         EmailMP.setText("My email is: "+businessUser.getEmail());
-        AddressMP.setText("My address is:\n"+ "City: "+businessUser.getAddress().getCity()+"\nstreet: "+businessUser.getAddress().getStreet()
-        +"\nnumber: "+businessUser.getAddress().getNumber());
+        CityMP.setText("City: "+businessUser.getAddress().getCity());
+        StreetMP.setText("\nstreet: "+businessUser.getAddress().getStreet());
+        NumberMP.setText("\nnumber: "+businessUser.getAddress().getNumber());
+        FlootMP.setText("\n floor: "+businessUser.getAddress().getFloor());
+        AprtMP.setText("\n apartment: "+businessUser.getAddress().getApartment());
+        EntranceMP.setText("\n entrance :"+businessUser.getAddress().getEntrance());
         Phone1MP.setText("My phone is: "+businessUser.getPrimaryPhone());
         if(!businessUser.getPhoneNumber2().isEmpty())
         {
@@ -75,6 +84,8 @@ public class BusinessProfile extends AppCompatActivity {
 
             Intent intent2 =new Intent(this, EditMyProfile.class);
             intent2.putExtra("id",ID);
+            intent2.putExtra("businessUserInGson",FromIntent);
+
             Log.i("xxxx1",ID);
             Toast.makeText(BusinessProfile.this, "fill JUST what you need", Toast.LENGTH_LONG).show();
             startActivity(intent2);

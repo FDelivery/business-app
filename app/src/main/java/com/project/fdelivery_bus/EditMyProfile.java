@@ -2,6 +2,7 @@ package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,25 +20,30 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMyProfile extends AppCompatActivity {
-    private EditText fnameEP;
     private EditText EmailEP;
     private EditText Phone1EP;
     private EditText Phone2EP;
     private EditText NameEP;
+    private EditText CityEP,StreetEP,NumberEP,FlootEP,AprtEP,EntranceEP;
     private RetrofitInterface rtfBase;
     private Button ChangeEP;
-    String FromIntent;
+    String ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_my_profile);
 
-        fnameEP=(EditText)findViewById(R.id.FnameEP);
         ChangeEP=(Button)findViewById(R.id.ChangeEP);
         EmailEP=(EditText) findViewById(R.id.EmailEP);
         NameEP=(EditText)findViewById(R.id.NameEP);
         Phone1EP=(EditText)findViewById(R.id.Phone1EP);
         Phone2EP=(EditText)findViewById(R.id.Phone2EP);
+        CityEP=(EditText) findViewById(R.id.cityEP);
+        StreetEP=(EditText) findViewById(R.id.streetEP);
+        NumberEP=(EditText) findViewById(R.id.numberEP);
+        FlootEP=(EditText) findViewById(R.id.floorEP);
+        AprtEP=(EditText) findViewById(R.id.aprtEP);
+        EntranceEP=(EditText) findViewById(R.id.entranceEP);
         rtfBase = RetrofitBase.getRetrofitInterface();
 
          Bundle extras = getIntent().getExtras();
@@ -46,7 +52,7 @@ public class EditMyProfile extends AppCompatActivity {
 
         if(extras!=null)
         {
-            FromIntent = extras.getString("id");
+            ID = extras.getString("id");
 
 
 
@@ -54,7 +60,7 @@ public class EditMyProfile extends AppCompatActivity {
         ChangeEP.setOnClickListener((v) -> {
 
 
-            updateUser(FromIntent);
+            updateUser(ID);
         });
     }
 
@@ -62,21 +68,25 @@ public class EditMyProfile extends AppCompatActivity {
     private void updateUser(String id)
     {
         HashMap<String, String> map=new HashMap<>();
-        String emailText= EmailEP.getText().toString();
+        String EmailText= EmailEP.getText().toString();
         String NameText= NameEP.getText().toString();
         String Phone1Text= Phone1EP.getText().toString();
         String Phone2Text= Phone2EP.getText().toString();
-        String firstName=fnameEP.getText().toString();
 
 
-        if(!emailText.isEmpty()) {
-            map.put("email",emailText);
+       /* String CityText= CityEP.getText().toString();
+        String AprText= AprtEP.getText().toString();
+        String NumberText= NumberEP.getText().toString();
+        String EntranceText= EntranceEP.getText().toString();
+        String StreetText= StreetEP.getText().toString();
+        String FloorText= FlootEP.getText().toString();*/
+
+
+        if(!EmailText.isEmpty()) {
+            map.put("email",EmailText);
         }
         if(!NameText.isEmpty()) {
             map.put("businessName",NameText);
-        }
-        if(!firstName.isEmpty()) {
-            map.put("firstName",firstName);
         }
         if(!Phone1Text.isEmpty())
         {
@@ -85,6 +95,7 @@ public class EditMyProfile extends AppCompatActivity {
         if(!Phone2Text.isEmpty()) {
            map.put("secondaryPhone",Phone2Text);
         }
+
 
   // Log.i("mytest3333",id);
      //   Log.i("mytest444",map.get("primaryPhone")+ " "+ map.get("firstName"));
