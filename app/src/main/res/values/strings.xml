@@ -22,13 +22,13 @@
     <string name="PassChangeMP">CHANGE PASSWORD</string>
 
     <!-- activity edit my profile -->
-    <string name="AddressEP">HERE WE NEED THE BUSINESS ADDRESS FOR DB</string>
-    <string name="Phone1EP">HERE WE NEED THE BUSINESS PHONE 1 FORM DB</string>
-    <string name="Phone2EP">HERE WE NEED THE BUSINESS PHONE 2 FORM DB</string>
+
+    <string name="Phone1EP">Enter new phone number</string>
+    <string name="Phone2EP">Enter new additional phone number</string>
     <string name="textEP">Edit Profile</string>
-    <string name="EmailEP">HERE WE NEED THE BUSINESS EMAIL FORM DB</string>
+    <string name="EmailEP">Enter new email address</string>
     <string name="ChangeEP">SAVE</string>
-    <string name="NameEP">HERE WE NEED THE BUSINESS NAME FORM DB</string>
+    <string name="NameEP">Enter new business name</string>
 
     <!-- activity main -->
     <string name="password">Password</string>
@@ -58,7 +58,7 @@
     <!-- activity  new delivery-->
     <string name="CPhone">client phone</string>
     <string name="CName">client name</string>
-    <string name="Cnotes">notes about the delivery</string>
+    <string name="Cnote">notes about the delivery</string>
     <string name="cost">0₪</string>
     <string name="Date">00/00/00</string>
     <string name="Time">time</string>
