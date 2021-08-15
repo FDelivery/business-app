@@ -5,12 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:scrollbarSize="10dp"
     tools:context=".DeliveryTable">
 
 
     <ListView
         android:id="@+id/listDelivery"
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.ListView"
 
-        android:layout_height="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:scrollbarDefaultDelayBeforeFade="400"
+        android:scrollbarSize="10dp"
+
+        android:divider="@color/purple_200"
+        android:dividerHeight="2dip"
+
+        android:scrollbarStyle="insideInset" />
 </RelativeLayout>
