@@ -121,7 +121,7 @@ public class newDelivery extends AppCompatActivity {
                         Time.setError("This field is necessary");
                         return;
                     }
-                    Delivery delivery = new Delivery(clientAddress, clientPhone, clientName, clientNote, time, date);
+                    Delivery delivery = new Delivery(clientAddress, clientPhone, clientName, clientNote, time, date,"COURIER_SEARCHING");
         handleSubmit(delivery);
 
         }
