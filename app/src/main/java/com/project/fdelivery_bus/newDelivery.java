@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +37,7 @@ public class newDelivery extends AppCompatActivity {
     private EditText city,street,Cnote,number,floor,apartment,entrance;
     private CheckBox Motorbike, Car, Bicycle;
     private Button submit;
-
+    private Socket mSocket;
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
     String FromIntent,ID,TOKEN;
 
@@ -65,6 +66,7 @@ public class newDelivery extends AppCompatActivity {
         Motorbike = (CheckBox)findViewById(R.id.motorbike);
         submit = findViewById(R.id.ndSubmit);
         Bundle extras = getIntent().getExtras();
+        mSocket = SocketIO.getSocket();
 
         if(extras!=null)
         {
@@ -200,6 +202,11 @@ public class newDelivery extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSocket.disconnect();
+    }
 
     private void handleSubmit(Delivery delivery)
     {
@@ -226,6 +233,7 @@ public class newDelivery extends AppCompatActivity {
                     delivery.setId(response.body());
                     Toast.makeText(newDelivery.this, "successfully add the new delivery",Toast.LENGTH_LONG).show();
                     startActivity(intent);
+                    mSocket.emit("delivery_posted", ID);
                 }
             }
 
