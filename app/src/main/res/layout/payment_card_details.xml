@@ -12,7 +12,7 @@
         android:id="@+id/imageView3"
         android:layout_width="367dp"
         android:layout_height="494dp"
-        app:srcCompat="@drawable/circule"
+        app:srcCompat="@drawable/payment"
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="198dp"
         tools:ignore="MissingConstraints" />

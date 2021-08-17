@@ -245,10 +245,10 @@
 
     <TextView
         android:id="@+id/ETpreferd_vehicle"
-        android:layout_width="182dp"
-        android:layout_height="43dp"
+        android:layout_width="86dp"
+        android:layout_height="36dp"
         android:padding="10dp"
-        android:text="@string/preferd_vehicle"
+        android:text="@string/vehicle"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#A8A2A2"
         android:textSize="14sp"
@@ -260,18 +260,18 @@
         app:layout_constraintVertical_bias="0.901" />
 
     <CheckBox
-        android:id="@+id/ETbike"
-        android:layout_width="64dp"
-        android:layout_height="45dp"
-        android:text="@string/bike"
+        android:id="@+id/ETmotorbike"
+        android:layout_width="138dp"
+        android:layout_height="33dp"
+        android:text="@string/ETmotorbike"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <CheckBox
         android:id="@+id/ETbicycle"
@@ -282,10 +282,10 @@
         android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="0.919"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
+        app:layout_constraintVertical_bias="0.909" />
 
     <CheckBox
         android:id="@+id/ETcar"
@@ -296,10 +296,10 @@
         android:textColor="#040404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintVertical_bias="0.907" />
 
     <Button
         android:id="@+id/ETndsubmit"

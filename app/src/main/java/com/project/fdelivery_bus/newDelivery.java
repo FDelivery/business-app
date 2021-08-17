@@ -19,10 +19,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class newDelivery extends AppCompatActivity {
     private EditText CPhone, CName, Date, Time;
     private EditText city,street,Cnote,number,floor,apartment,entrance;
-    private CheckBox Bike, Car;
+    private CheckBox Motorbike, Car, Bicycle;
     private Button submit;
 
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
@@ -49,7 +61,8 @@ public class newDelivery extends AppCompatActivity {
         Date = (EditText)findViewById(R.id.Date);
         Time = (EditText)findViewById(R.id.Time);
         Car = (CheckBox)findViewById(R.id.car);
-        Bike = (CheckBox)findViewById(R.id.bike);
+        Bicycle=(CheckBox)findViewById(R.id.bicycle);
+        Motorbike = (CheckBox)findViewById(R.id.motorbike);
         submit = findViewById(R.id.ndSubmit);
         Bundle extras = getIntent().getExtras();
 
@@ -61,9 +74,65 @@ public class newDelivery extends AppCompatActivity {
         }
 
 
+        Date.setInputType(InputType.TYPE_NULL);
+        Time.setInputType(InputType.TYPE_NULL);
+
+        Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(Date);
+            }
+
+            private void showDateDialog(EditText Date) {
+                final Calendar calendar=Calendar.getInstance();
+                DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR,year);
+                        calendar.set(Calendar.MONTH,month);
+                        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yy-MM-dd");
+                        Date.setText(simpleDateFormat.format(calendar.getTime()));
+
+                    }
+                };
+
+                new DatePickerDialog(newDelivery.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+
+        Time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimeDialog(Time);
+            }
+
+            private void showTimeDialog(EditText time) {
+
+                final Calendar calendar=Calendar.getInstance();
+
+                TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        calendar.set(Calendar.MINUTE,minute);
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+                        Time.setText(simpleDateFormat.format(calendar.getTime()));
+                    }
+                };
+
+                new TimePickerDialog(newDelivery.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+            }
+        });
+
+
+
 
 
         submit.setOnClickListener((v) -> {
+
+
                     String clientPhone = CPhone.getText().toString();
                     String clientName = CName.getText().toString();
                     String City = city.getText().toString();
@@ -77,7 +146,8 @@ public class newDelivery extends AppCompatActivity {
                     String date = Date.getText().toString();
                     String time = Time.getText().toString();
                     Boolean car = Car.isChecked();
-                    Boolean bike = Bike.isChecked();
+                    Boolean motorbike = Motorbike.isChecked();
+                    Boolean bicycle = Bicycle.isChecked();
                     if(clientPhone.isEmpty())
                     {
                         CPhone.setError("This field is necessary");

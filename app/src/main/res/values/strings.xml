@@ -75,11 +75,11 @@
     <string name="cost">0₪</string>
     <string name="Date">00/00/00</string>
     <string name="Time">time</string>
-    <string name="preferd_vehicle">choose preferred vehicle:</string>
+    <string name="vehicle">vehicle:</string>
     <string name="bicycle">bicycle</string>
-    <string name="bike">bike</string>
+    <string name="motorbike">motorbike</string>
     <string name="car">car</string>
-    <string name="textViewNewdelivery">fill in the following details</string>
+    <string name="textViewNewdelivery">fill in details</string>
     <string name="ndsubmit">SUBMIT</string>
     <string name="CNcity">city</string>
     <string name="CNentrance">entrance</string>
@@ -96,8 +96,8 @@
     <string name="ETcost">0₪</string>
     <string name="ETDate">00/00/00</string>
     <string name="ETTime">time</string>
-    <string name="ETpreferd_vehicle">change preferd vehicle</string>
-    <string name="ETbike">bike</string>
+    <string name="ETvehicle">vehicle</string>
+    <string name="ETmotorbike">motorbike</string>
     <string name="ETcar">car</string>
     <string name="ETbicycle">bicycle</string>
     <string name="ETtextViewNewdelivery">What details would you like to change?</string>
