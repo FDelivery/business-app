@@ -16,6 +16,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class editDelivery extends AppCompatActivity {
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
     String deliveryFromIntent,IDDELIVERY,TOKEN;
@@ -29,6 +41,7 @@ public class editDelivery extends AppCompatActivity {
     private EditText number;
     private EditText street;
     private EditText entrance;
+    private EditText Time,Date;
 
     //private CheckBox Bike, Car;
     Delivery delivery;
@@ -48,6 +61,8 @@ public class editDelivery extends AppCompatActivity {
         entrance=(EditText)findViewById(R.id.ETentrance);
         street=(EditText)findViewById(R.id.ETstreet);
         aprt=(EditText)findViewById(R.id.ETaprt);
+        Time=(EditText)findViewById(R.id.ETTime);
+        Date=(EditText)findViewById(R.id.ETDate);
       //  Car = (CheckBox)findViewById(R.id.ETcar);
        // Bike = (CheckBox)findViewById(R.id.ETbike);
         Bundle extras = getIntent().getExtras();
@@ -63,6 +78,56 @@ public class editDelivery extends AppCompatActivity {
 
 
         }
+        Date.setInputType(InputType.TYPE_NULL);
+        Time.setInputType(InputType.TYPE_NULL);
+
+        Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(Date);
+            }
+
+            private void showDateDialog(EditText Date) {
+                final Calendar calendar=Calendar.getInstance();
+                DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(Calendar.YEAR,year);
+                        calendar.set(Calendar.MONTH,month);
+                        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yy-MM-dd");
+                        Date.setText(simpleDateFormat.format(calendar.getTime()));
+
+                    }
+                };
+
+                new DatePickerDialog(editDelivery.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+
+        });
+        Time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimeDialog(Time);
+            }
+
+            private void showTimeDialog(EditText time) {
+
+                final Calendar calendar=Calendar.getInstance();
+
+                TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        calendar.set(Calendar.MINUTE,minute);
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+                        Time.setText(simpleDateFormat.format(calendar.getTime()));
+                    }
+                };
+
+                new TimePickerDialog(editDelivery.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+            }
+        });
 
         save.setOnClickListener((v) -> {
 
@@ -70,7 +135,8 @@ public class editDelivery extends AppCompatActivity {
             String PhoneText= phone.getText().toString();
             String noteText= note.getText().toString();
             String priceText=price.getText().toString();
-
+            String TimeText= Time.getText().toString();
+            String DateText =Date.getText().toString();
             String CityText= city.getText().toString();
             String AprtText= aprt.getText().toString();
             String NumberText= number.getText().toString();
@@ -79,6 +145,16 @@ public class editDelivery extends AppCompatActivity {
             Address address=delivery.getClientAddress();
             //  Boolean car = Car.isChecked();
           //  Boolean bike = Bike.isChecked();
+
+            if(!TimeText.isEmpty()) {
+                delivery.setTime(TimeText);
+            }
+            if(!DateText.isEmpty()) {
+                delivery.setDate(DateText);
+            }
+            if(!priceText.isEmpty()){
+                delivery.setPrice(Double.parseDouble(priceText));
+            }
 
             if(!PhoneText.isEmpty()) {
                 delivery.setClientPhone(PhoneText);

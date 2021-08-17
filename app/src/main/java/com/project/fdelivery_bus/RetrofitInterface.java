@@ -34,7 +34,6 @@ public interface RetrofitInterface
     Call<List<String>> getDeliveries(@Query("AddedBy") String id);
 
 
-
     @POST("/api/v1/deliveriesRef/") //return deliveryID
     Call<String> insertNewDelivery(@Header("Authorization") String token, @Body Delivery d);
 

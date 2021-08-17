@@ -22,7 +22,7 @@ public class Delivery
     @Override
     public String toString() {
         return  " client name: "+clientName+ "\n client phone: "+clientPhone+"\n ADDRESS- city:"+destAddress.getCity()+
-                "\n apartment: "+destAddress.getApartment()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note;
+                "\n apartment: "+destAddress.getApartment()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note+"\n status: "+status;
     }
 
 

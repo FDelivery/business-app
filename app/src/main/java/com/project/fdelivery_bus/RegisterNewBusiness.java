@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 public class RegisterNewBusiness extends AppCompatActivity {
 
-    private EditText BusinessName, PasswordEt, Phone2, Phone1, EmailEt, last, first;
+    private EditText BusinessName, PasswordEt, Phone2, Phone1, EmailEt;
     private EditText city,street,number,floor,apartment,entrance;
     private Button Create,Pay;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
@@ -75,14 +75,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 PasswordEt.setError("This field is necessary");
                 return;
             }
-          /*  if(lastName.isEmpty()) {
-                last.setError("This field is necessary");
-                return;
-            }
-            if(firstName.isEmpty()) {
-                first.setError("This field is necessary");
-                return;
-            }*/
+
             if(bName.isEmpty()) {
                 BusinessName.setError("This field is necessary");
                 return;
@@ -194,7 +187,6 @@ public class RegisterNewBusiness extends AppCompatActivity {
                     assert response.body() != null;
                     business.setToken(response.body()[0]);
                     business.setId(response.body()[1]);
-                  //  Log.i("iddd",business.getId());
                     Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
 
                     GetUser(business.getId());
@@ -229,7 +221,6 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
         Intent intent = new Intent(this, BusinessProfile.class);
 
-       // Log.i("myTest2",id);
 
         Call<String> call = rtfBase.getUser(id);
 
