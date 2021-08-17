@@ -31,7 +31,9 @@ public interface RetrofitInterface
     Call<String> getDelivery(@Path("delivery_id") String id);
 
     @GET("/api/v1/deliveriesRef/") ////return gson string (Delivery)
-    Call<List<String>> getDeliveries(@Query("userId") String id);
+    Call<List<String>> getDeliveries(@Query("AddedBy") String id);
+
+
 
     @POST("/api/v1/deliveriesRef/") //return deliveryID
     Call<String> insertNewDelivery(@Header("Authorization") String token, @Body Delivery d);

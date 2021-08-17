@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 public class MainBusiness extends AppCompatActivity {
     private ImageButton deliveryHistory;
     private ImageButton deliveryRequest;
-    private ImageButton deliveryList;
+    private ImageButton ActiveDeliveries;
     private ImageButton myprofile;
     private Business businessUser;
     private TextView welcome;
@@ -39,7 +39,7 @@ public class MainBusiness extends AppCompatActivity {
 
         deliveryHistory=(ImageButton)findViewById(R.id.deliveryHistory);
         deliveryRequest=(ImageButton)findViewById(R.id.deliveryRequest);
-        deliveryList=(ImageButton)findViewById(R.id.deliveryList);
+        ActiveDeliveries=(ImageButton)findViewById(R.id.activeDeliveries);
         myprofile=(ImageButton)findViewById(R.id.myprofile);
         welcome=(TextView)findViewById(R.id.textViewWelcom);
 
@@ -62,7 +62,7 @@ public class MainBusiness extends AppCompatActivity {
         }
 
 
-        deliveryList.setOnClickListener((v) -> {
+        ActiveDeliveries.setOnClickListener((v) -> {
            Intent intent = new Intent(this, DeliveryTable.class);
             intent.putExtra("id",ID);
             intent.putExtra("businessUserInGson",FromIntent);
@@ -81,7 +81,13 @@ public class MainBusiness extends AppCompatActivity {
         });
 
         deliveryHistory.setOnClickListener((v) -> {
-            startActivity(new Intent(this, DeliveryHistory.class));
+            Intent intent =new Intent(this, DeliveryHistory.class);
+            intent.putExtra("id",ID);
+            intent.putExtra("businessUserInGson",FromIntent);
+            intent.putExtra("token",TOKEN);
+
+
+            startActivity(intent);
         });
 
         deliveryRequest.setOnClickListener((v) -> {

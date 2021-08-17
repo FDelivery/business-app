@@ -21,7 +21,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
     private EditText BusinessName, PasswordEt, Phone2, Phone1, EmailEt, last, first;
     private EditText city,street,number,floor,apartment,entrance;
-    private Button Create;
+    private Button Create,Pay;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
 
     @Override
@@ -42,10 +42,12 @@ public class RegisterNewBusiness extends AppCompatActivity {
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
-      //  last = (EditText)findViewById(R.id.last);
-      //  first = (EditText)findViewById(R.id.first);
+        Pay =findViewById(R.id.pay);
 
-
+        Pay.setOnClickListener((v) -> {
+                    Intent intent=new Intent(this,cardPay.class);
+                    startActivity(intent);
+                });
         Create.setOnClickListener((v) -> {
 
             String email = EmailEt.getText().toString();
@@ -53,8 +55,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
             String bName = BusinessName.getText().toString();
             String phone1 = Phone1.getText().toString();
             String phone2 = Phone2.getText().toString();
-       //     String lastName = last.getText().toString();
-      //      String firstName = first.getText().toString();
+
 
             String City = city.getText().toString();
             String Street = street.getText().toString();

@@ -67,7 +67,6 @@
     <string name="pay">CREDIT CARD DETAILS</string>
 
 
-
     <!-- activity  new delivery-->
     <string name="CPhone">client phone</string>
     <string name="CName">client name</string>
@@ -110,7 +109,6 @@
     <string name="ETfloor">floor</string>
 
 
-
     <!-- activity  payment card detailes -->
     <string name="card">Enter card details </string>
     <string name="messege">This information is stored for reuse</string>
@@ -118,19 +116,6 @@
 
     <!-- activity  show coosen -->
     <string name="printall"> examle of delivery</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </resources>

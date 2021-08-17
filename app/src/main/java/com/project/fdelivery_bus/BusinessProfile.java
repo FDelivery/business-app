@@ -64,21 +64,20 @@ public class BusinessProfile extends AppCompatActivity {
         TextMP.setText("welcome "+businessUser.getBusinessName());
         EmailMP.setText("My email is: "+businessUser.getEmail());
         CityMP.setText("City: "+businessUser.getAddress().getCity());
-        StreetMP.setText("\nstreet: "+businessUser.getAddress().getStreet());
-        NumberMP.setText("\nnumber: "+businessUser.getAddress().getNumber());
-        FlootMP.setText("\n floor: "+businessUser.getAddress().getFloor());
-        AprtMP.setText("\n apartment: "+businessUser.getAddress().getApartment());
-        EntranceMP.setText("\n entrance :"+businessUser.getAddress().getEntrance());
+        StreetMP.setText("street: "+businessUser.getAddress().getStreet());
+        NumberMP.setText("number: "+businessUser.getAddress().getNumber());
+        FlootMP.setText("floor: "+businessUser.getAddress().getFloor());
+        AprtMP.setText("apartment: "+businessUser.getAddress().getApartment());
+        EntranceMP.setText("entrance :"+businessUser.getAddress().getEntrance());
         Phone1MP.setText("My phone is: "+businessUser.getPrimaryPhone());
-        if(!businessUser.getPhoneNumber2().isEmpty())
-        {
-            Phone2MP.setText("My second phone is: "+businessUser.getPhoneNumber2());
-        }
-        else{
-            Phone2MP.setText("My second phone is: No number entered");
+        if(businessUser.getPhoneNumber2()!=null){
+            if (!businessUser.getPhoneNumber2().isEmpty()) {
+                Phone2MP.setText("My second phone is: " + businessUser.getPhoneNumber2());
+            } else {
+                Phone2MP.setText("My second phone is: No number entered");
 
+            }
         }
-
        // String finalFromIntent = FromIntent;
         ChangeMP.setOnClickListener((v) -> {
 

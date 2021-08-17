@@ -69,8 +69,8 @@ public class DeliveryTable extends AppCompatActivity {
 
                 if(response.code() == 400)
                 {
-                    Toast.makeText(DeliveryTable.this, "this ID do not exist",Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(DeliveryTable.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+                    finish();
                 }
                 if(response.code() == 200)
                 {

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FDelivery"
         android:usesCleartextTraffic="true">
-        <activity android:name=".editDelivery"></activity>
+        <activity android:name=".cardPay"></activity>
+        <activity android:name=".editDelivery" />
         <activity android:name=".showCoosenActivity" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".EditMyProfile" />
