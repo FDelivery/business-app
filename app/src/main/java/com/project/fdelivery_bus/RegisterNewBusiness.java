@@ -53,8 +53,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
             String bName = BusinessName.getText().toString();
             String phone1 = Phone1.getText().toString();
             String phone2 = Phone2.getText().toString();
-            String lastName = last.getText().toString();
-            String firstName = first.getText().toString();
+       //     String lastName = last.getText().toString();
+      //      String firstName = first.getText().toString();
 
             String City = city.getText().toString();
             String Street = street.getText().toString();
@@ -74,14 +74,14 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 PasswordEt.setError("This field is necessary");
                 return;
             }
-            if(lastName.isEmpty()) {
+          /*  if(lastName.isEmpty()) {
                 last.setError("This field is necessary");
                 return;
             }
             if(firstName.isEmpty()) {
                 first.setError("This field is necessary");
                 return;
-            }
+            }*/
             if(bName.isEmpty()) {
                 BusinessName.setError("This field is necessary");
                 return;
@@ -134,8 +134,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
             }
 
-            Business business = phone2.isEmpty() ? new Business(email, phone1, adr, bName,firstName,lastName, password)
-                    : new Business(email, phone1, phone2, adr, bName, firstName, lastName, password);
+            Business business = phone2.isEmpty() ? new Business(email, phone1, adr, bName, password)
+                    : new Business(email, phone1, phone2, adr, bName, password);
 
             handleRegister(business);
 

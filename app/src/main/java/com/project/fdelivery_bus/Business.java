@@ -52,7 +52,7 @@ public class Business {
         return token;
     }
 
-    Business(String e, String p1, String p2, Address a, String bn, String fn, String ln, String pass)
+    Business(String e, String p1, String p2, Address a, String bn, String pass)
     {
         email = e;
         primaryPhone = p1;
@@ -65,7 +65,7 @@ public class Business {
     }
 
 
-    Business(String e, String p1, Address a, String bn, String fn, String ln, String pass)
+    Business(String e, String p1, Address a, String bn, String pass)
     {
         email = e;
         primaryPhone = p1;
