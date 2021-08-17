@@ -44,4 +44,7 @@ public interface RetrofitInterface
 
     @DELETE("/api/v1/deliveriesRef/{delivery_id}/") //we put deliveryId and delete it
     Call<Void> deleteDelivery(@Header("Authorization") String token, @Path("delivery_id") String id);
+
+    @GET("/api/v1/deliveriesRef/") ////return gson string (Delivery)
+    Call<List<String>> getDeliveriesHistory(@Query("status") String status ,@Query("AddedBy") String addBY);
 }
