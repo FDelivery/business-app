@@ -2,15 +2,21 @@ package com.project.fdelivery_bus;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import io.socket.emitter.Emitter;
 
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
 
@@ -25,10 +31,11 @@ public class MainBusiness extends AppCompatActivity {
     private Business businessUser;
     private TextView welcome;
     String FromIntent,ID,TOKEN;
+    private Socket mSocket;
 
-    protected void onPause() {
-    mSocket.off("delivery accepted");
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
+        mSocket.off("delivery_accepted");
     }
 
     @SuppressLint("SetTextI18n")
@@ -36,7 +43,7 @@ public class MainBusiness extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_business);
-
+        createNotificationChannel();
         deliveryHistory=(ImageButton)findViewById(R.id.deliveryHistory);
         deliveryRequest=(ImageButton)findViewById(R.id.deliveryRequest);
         ActiveDeliveries=(ImageButton)findViewById(R.id.activeDeliveries);
@@ -44,14 +51,23 @@ public class MainBusiness extends AppCompatActivity {
         welcome=(TextView)findViewById(R.id.textViewWelcom);
 
         Bundle extras = getIntent().getExtras();
-        mSocket.connect();
-        mSocket.on("delivery accepted",deliveryAcceptedListener);
+        mSocket = SocketIO.getSocket();
+        mSocket.on("delivery_accepted", (msg)->{
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"123")
+                .setSmallIcon(R.drawable.notification_icon)
+                .setContentTitle("zibi")
+                .setContentText("zini bizbi")
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify(123, builder.build());
+
+        });
         if(extras!=null)
         {
             FromIntent = extras.getString("businessUserInGson");
             ID =extras.getString("id");
+            mSocket.emit("join", ID);
             TOKEN =extras.getString("token");
-
             businessUser = new Gson().fromJson(FromIntent, Business.class);
             // Log.i("ttt", businessUser.getFirstName());
            // businessUser.setId(ID);
@@ -98,27 +114,17 @@ public class MainBusiness extends AppCompatActivity {
             startActivity(intent);
         });
     }
-    private Socket mSocket;
-    {
-        try {
-            mSocket = IO.socket("http://10.0.0.19:5000");
-        } catch (URISyntaxException e) {}
-    }
-
-
-    private Emitter.Listener deliveryAcceptedListener = new Emitter.Listener() {
-        @Override
-        public void call(Object... args) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Log.d("test", "11111");
-
-                }
-            });
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "123";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("123", name, importance);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
-    };
-
-
-
+    }
 }

@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import java.util.HashMap;
 
+import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
