@@ -44,6 +44,8 @@ public class MainBusiness extends AppCompatActivity {
         myprofile=(ImageButton)findViewById(R.id.myprofile);
         welcome=(TextView)findViewById(R.id.textViewWelcom);
 
+
+
         Bundle extras = getIntent().getExtras();
         mSocket = SocketIO.getSocket();
         mSocket.on("delivery_accepted", (msg)->{
@@ -79,6 +81,8 @@ public class MainBusiness extends AppCompatActivity {
             intent.putExtra("token",TOKEN);
 
             startActivity(intent);
+          //  MainActivity.a.finish();
+
         });
 
         myprofile.setOnClickListener((v) -> {

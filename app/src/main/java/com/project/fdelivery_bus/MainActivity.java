@@ -1,5 +1,6 @@
 package com.project.fdelivery_bus;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView RegisterNewBusiness;
     private RetrofitInterface rtfBase;
     Intent intent;
+    public static Activity a;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         RegisterNewBusiness = findViewById(R.id.newBusiness);
 
         intent = new Intent(this, MainBusiness.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //שלא יהיה ניתן לחזור אחורה
+
         logIn.setOnClickListener((v) -> {
             String email = EmailEt.getText().toString();
             if(email.isEmpty())

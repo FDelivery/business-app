@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
     private EditText city,street,number,floor,apartment,entrance;
     private Button Create, creditCard;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
-
+String ID,TOKEN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -179,6 +180,9 @@ public class RegisterNewBusiness extends AppCompatActivity {
                     assert response.body() != null;
                     business.setToken(response.body()[0]);
                     business.setId(response.body()[1]);
+
+                    TOKEN=response.body()[0];
+                    ID=response.body()[1];
                     Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
 
                     GetUser(business.getId());
@@ -212,6 +216,8 @@ public class RegisterNewBusiness extends AppCompatActivity {
     {
 
         Intent intent = new Intent(this, MainBusiness.class);
+        intent.putExtra("token", TOKEN);
+        intent.putExtra("token", ID);
 
 
         Call<String> call = rtfBase.getUser(id);

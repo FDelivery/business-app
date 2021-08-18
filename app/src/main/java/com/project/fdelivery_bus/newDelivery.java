@@ -143,7 +143,12 @@ public class newDelivery extends AppCompatActivity {
                     String Apartment = apartment.getText().toString();
                     String Entrance = entrance.getText().toString();
                     String Number = number.getText().toString();
-                    Address clientAddress = new Address(City,Street,Number,Apartment,Floor,Entrance);
+
+
+                    Address clientAddress = new Address(City,Street,Number);
+                    clientAddress.setApartment(Apartment);
+                    clientAddress.setEntrance(Entrance);
+                    clientAddress.setFloor(Floor);
                     String clientNote = Cnote.getText().toString();
                     String date = Date.getText().toString();
                     String time = Time.getText().toString();
