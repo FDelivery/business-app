@@ -1,5 +1,4 @@
 package com.project.fdelivery_bus;
-import io.socket.client.IO;
 import io.socket.client.Socket;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
@@ -7,20 +6,15 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import io.socket.emitter.Emitter;
 
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
-
-import java.net.URISyntaxException;
 
 
 public class MainBusiness extends AppCompatActivity {
@@ -55,8 +49,8 @@ public class MainBusiness extends AppCompatActivity {
         mSocket.on("delivery_accepted", (msg)->{
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"123")
                 .setSmallIcon(R.drawable.notification_icon)
-                .setContentTitle("zibi")
-                .setContentText("zini bizbi")
+                .setContentTitle("Delivery accepted")
+                .setContentText("a courier is on his way to take care of your delivery")
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(123, builder.build());

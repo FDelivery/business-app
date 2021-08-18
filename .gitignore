@@ -56,3 +56,4 @@ captures/
 #*.keystore
 
 # External native build folder generated in Andr
+app/src/main/java/com/project/fdelivery_bus/RetrofitBase.java
