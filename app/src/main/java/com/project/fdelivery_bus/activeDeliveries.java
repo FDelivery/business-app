@@ -6,16 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +21,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 // in here the business can see a list of his on going delivers
-public class DeliveryTable extends AppCompatActivity {
+public class activeDeliveries extends AppCompatActivity {
     private ListView listView;
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
     String FromIntent,ID,TOKEN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delivery_table);
+        setContentView(R.layout.activity_active_deliveries);
         listView=(ListView) findViewById(R.id.listDelivery);
 
         Business businessUser;
@@ -69,7 +65,7 @@ public class DeliveryTable extends AppCompatActivity {
 
                 if(response.code() == 400)
                 {
-                    Toast.makeText(DeliveryTable.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activeDeliveries.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
                     finish();
                 }
                 if(response.code() == 200)
@@ -90,7 +86,7 @@ public class DeliveryTable extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                Toast.makeText(DeliveryTable.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(activeDeliveries.this, t.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });
@@ -124,7 +120,7 @@ public class DeliveryTable extends AppCompatActivity {
 
                 if(response.code() == 400)
                 {
-                    Toast.makeText(DeliveryTable.this, "this ID do not exist",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activeDeliveries.this, "this ID do not exist",Toast.LENGTH_LONG).show();
 
                 }
                 if(response.code() == 200)
@@ -132,7 +128,7 @@ public class DeliveryTable extends AppCompatActivity {
                     Log.i("TEST1",response.body());
                     Delivery GSON = new Gson().fromJson(response.body(),Delivery.class);
                     Log.i("TEST2",GSON.getClientName());
-                    Toast.makeText(DeliveryTable.this, "We found your Delivery",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activeDeliveries.this, "We found your Delivery",Toast.LENGTH_LONG).show();
 
                         intent.putExtra("delivery",response.body());
                         intent.putExtra("idDelivery",idDelivery);
@@ -150,7 +146,7 @@ public class DeliveryTable extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(DeliveryTable.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(activeDeliveries.this, t.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });

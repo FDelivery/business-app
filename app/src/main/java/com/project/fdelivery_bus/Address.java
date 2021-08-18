@@ -9,42 +9,12 @@ public class Address {
     private String entrance;
 
 
-
-
-
-    public Address(String city, String street, String number, String apartment, String floor, String entrance) {
-        this.city = city;
-        this.street = street;
-        this.floor = floor;
-        this.number = number;
-        this.apartment = apartment;
-        this.entrance = entrance;
-    }
-
-
-
     public Address(String city, String street, String number) {
         this.city = city;
         this.street = street;
         this.number = number;
     }
 
-    public Address(String city, String street, String number, String apartment,String floor) {
-        this.city = city;
-        this.street = street;
-        this.number = number;
-        this.apartment = apartment;
-        this.floor = floor;
-
-    }
-    public Address(String city, String street, String number, String apartment) {
-        this.city = city;
-        this.street = street;
-        this.number = number;
-        this.apartment = apartment;
-
-
-    }
 
     public void setFloor(String floor) {
         this.floor = floor;

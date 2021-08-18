@@ -10,11 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-
 import java.util.HashMap;
 
-import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,9 +19,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private EditText EmailEt;
     private EditText PasswordEt;
-    private Button on;
+    private Button logIn;
     private TextView ForgotPassword;
-    private TextView NewBusiness;
+    private TextView RegisterNewBusiness;
     private RetrofitInterface rtfBase;
     Intent intent;
 
@@ -37,45 +34,45 @@ public class MainActivity extends AppCompatActivity {
         rtfBase = RetrofitBase.getRetrofitInterface();
         EmailEt = findViewById(R.id.Email);
         PasswordEt = findViewById(R.id.Password);
-        on=findViewById(R.id.Connect);
+        logIn=findViewById(R.id.Connect);
         ForgotPassword = findViewById(R.id.forgotPass);
-        NewBusiness = findViewById(R.id.newBusiness);
+        RegisterNewBusiness = findViewById(R.id.newBusiness);
 
         intent = new Intent(this, MainBusiness.class);
-        on.setOnClickListener((v) -> {
+        logIn.setOnClickListener((v) -> {
             String email = EmailEt.getText().toString();
             if(email.isEmpty())
             {
-                Toast.makeText(MainActivity.this, "Something went wrong" , Toast.LENGTH_LONG).show();
-
+            //     Toast.makeText(MainActivity.this, "Email is a required field" , Toast.LENGTH_LONG).show();
                 EmailEt.setError("This field is necessary");
                 return;
             }
             if(PasswordEt.getText().toString().isEmpty())
             {
-                Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
 
                 PasswordEt.setError("This field is necessary");
                 return;
             }
             handleConnect();
         });
-        ForgotPassword.setOnClickListener((v)->{                     //need to complete
-         //   GetUser("6106919d6ffd57c4090b6285"); // for my test
+        ForgotPassword.setOnClickListener((v)->{
+         //   GetUser("6106919d6ffd57c4090b6285");
         //    Intent i=new Intent(this,newDelivery.class);
-        //    i.putExtra("token",response.body()); //נשמור את הטוקן לאקטיביטי הבא?
+        //    i.putExtra("token",response.body());
 
         //    startActivity(i);
 
 
         });
-        NewBusiness.setOnClickListener((v) -> {
+        RegisterNewBusiness.setOnClickListener((v) -> {
             startActivity(new Intent(this, RegisterNewBusiness.class));
+            finish();
         });
 
 
     }
-
+//return token and id if the user is exist
     private void handleConnect() {
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email",EmailEt.getText().toString());
@@ -91,15 +88,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                    // business.setToken(response.body());
 
-                    String[] arr = new String[2];
+                    String[] TokenAndId = new String[2];
 
-                    arr=response.body();
-                  //  Log.i("token1",arr[0]);
-                   // Log.i("id1",arr[1]);
-                    intent.putExtra("token",arr[0]);
-
-                    // Log.i("TESSSSSTTT",credentials.get("password"));
-                    GetUser(arr[1]);
+                    TokenAndId=response.body();
+                  //  Log.i("token1",TokenAndId[0]);
+                   // Log.i("id1",TokenAndId[1]);
+                    intent.putExtra("token",TokenAndId[0]);
+                    GetUser(TokenAndId[1]);
 
 
                 }
@@ -134,10 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Log.i("myTest2",id);
+       // Log.i("myTest2",id);
 
         Call<String> call = rtfBase.getUser(id);
-
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -179,46 +173,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-/*
-
- private void useUser(HashMap<String, String> credentials) // we get the user-id after login
- {
-
-     Call<String> call = rtfBase.getUserId(credentials.get("email"));
-     call.enqueue(new Callback<String>() {
-         @Override
-         public void onResponse(Call<String> call, Response<String> response) {
-             if(response.code() == 400 || response.code() == 401)
-             {
-                 //failure
-                 Toast.makeText(MainActivity.this, "log in failed-try again", Toast.LENGTH_LONG).show();
-             }
-             if(response.code() == 500)
-             {
-                 //failure
-                 Toast.makeText(MainActivity.this, "user do not exist", Toast.LENGTH_LONG).show();
-
-             }
-             if(response.code() == 200)
-             {
-                 Log.i("TESSSSSTTT",response.body());
-
-                 GetUser(response.body());
-
-
-
-             }
-         }
-
-         @Override
-         public void onFailure(Call<String> call, Throwable t) {
-             Toast.makeText(MainActivity.this, "Something went wrong" +t.getMessage(), Toast.LENGTH_LONG).show();
-
-         }
-     });
- }
-*/
-
 
 }

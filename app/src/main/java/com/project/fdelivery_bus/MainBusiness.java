@@ -1,5 +1,4 @@
 package com.project.fdelivery_bus;
-import io.socket.client.IO;
 import io.socket.client.Socket;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
@@ -7,20 +6,15 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import io.socket.emitter.Emitter;
 
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
-
-import java.net.URISyntaxException;
 
 
 public class MainBusiness extends AppCompatActivity {
@@ -79,7 +73,7 @@ public class MainBusiness extends AppCompatActivity {
 
 
         ActiveDeliveries.setOnClickListener((v) -> {
-           Intent intent = new Intent(this, DeliveryTable.class);
+           Intent intent = new Intent(this, activeDeliveries.class);
             intent.putExtra("id",ID);
             intent.putExtra("businessUserInGson",FromIntent);
             intent.putExtra("token",TOKEN);

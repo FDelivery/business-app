@@ -20,7 +20,7 @@
         <activity android:name=".BusinessProfile" />
         <activity android:name=".MainBusiness" />
         <activity android:name=".newDelivery" />
-        <activity android:name=".DeliveryTable" />
+        <activity android:name=".activeDeliveries" />
         <activity android:name=".DeliveryHistory" />
         <activity android:name=".RegisterNewBusiness" />
         <activity

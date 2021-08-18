@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
     private EditText BusinessName, PasswordEt, Phone2, Phone1, EmailEt;
     private EditText city,street,number,floor,apartment,entrance;
-    private Button Create,Pay;
+    private Button Create, creditCard;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
 
     @Override
@@ -42,9 +41,9 @@ public class RegisterNewBusiness extends AppCompatActivity {
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
-        Pay =findViewById(R.id.pay);
+        creditCard =findViewById(R.id.pay);
 
-        Pay.setOnClickListener((v) -> {
+        creditCard.setOnClickListener((v) -> {
                     Intent intent=new Intent(this,cardPay.class);
                     startActivity(intent);
                 });
@@ -111,25 +110,18 @@ public class RegisterNewBusiness extends AppCompatActivity {
                 PasswordEt.setError("This password is not valid, password needs minimum 8 characters, at least one letter");
                 return;
             }
-            Address adr;
-            if(!Floor.isEmpty() && !Apartment.isEmpty() && !Entrance.isEmpty()) {
-                adr = new Address(City, Street, Number, Apartment, Floor, Entrance);
-            }
-            else if (!Floor.isEmpty() && !Apartment.isEmpty())
-            {
-                adr = new Address(City, Street, Number, Apartment, Floor);
-            }
-            else if (!Apartment.isEmpty())
-            {
-                adr = new Address(City, Street, Number, Apartment);
-            }
-            else{
-                adr = new Address(City, Street, Number);
 
-            }
 
-            Business business = phone2.isEmpty() ? new Business(email, phone1, adr, bName, password)
-                    : new Business(email, phone1, phone2, adr, bName, password);
+            Address address = new Address(City, Street, Number);
+
+            if (!Floor.isEmpty()) address.setFloor(Floor);
+            if (!Entrance.isEmpty()) address.setEntrance(Entrance);
+            if (!Apartment.isEmpty()) address.setApartment(Apartment);
+
+
+
+            Business business = phone2.isEmpty() ? new Business(email, phone1, address, bName, password)
+                    : new Business(email, phone1, phone2, address, bName, password);
 
             handleRegister(business);
 
@@ -219,7 +211,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
     public void GetUser(String id) // need to know how to use in accepted user
     {
 
-        Intent intent = new Intent(this, BusinessProfile.class);
+        Intent intent = new Intent(this, MainBusiness.class);
 
 
         Call<String> call = rtfBase.getUser(id);
