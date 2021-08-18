@@ -62,7 +62,7 @@ public class DeliveryHistory extends AppCompatActivity {
 
     private void GetDeliveries(String id) //this give us all deliveries that this id-user added
     {
-        Call<List<String>> call = rtfBase.getDeliveries(id);
+        Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",id);
         ArrayList<String> arrayList=new ArrayList<>();
         call.enqueue(new Callback<List<String>>() {
             @Override
@@ -83,7 +83,7 @@ public class DeliveryHistory extends AppCompatActivity {
 
                         Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                         delivery.setId(deliveryID);
-                        arrayList.add(deliveryID);
+                        arrayList.add(delivery.getClientName()+" "+delivery.getClientPhone()+"\nid="+deliveryID);
                         help(arrayList);
                     }
 
@@ -106,7 +106,7 @@ public class DeliveryHistory extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Log.i("whatt",arrayList.get(position));
-                GetDelivery(arrayList.get(position));
+                GetDelivery(arrayList.get(position).split("id=")[1]);
 
 
 

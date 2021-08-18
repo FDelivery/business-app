@@ -81,7 +81,7 @@ public class DeliveryTable extends AppCompatActivity {
 
                         Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                         delivery.setId(deliveryID);
-                        arrayList.add(deliveryID);
+                        arrayList.add(delivery.getClientName()+" "+delivery.getClientPhone()+"\nid="+deliveryID);
                         help(arrayList);
                     }
 
@@ -104,7 +104,7 @@ public class DeliveryTable extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                // Log.i("whatt",arrayList.get(position));
-                GetDelivery(arrayList.get(position));
+                GetDelivery(arrayList.get(position).split("id=")[1]);
 
 
 
