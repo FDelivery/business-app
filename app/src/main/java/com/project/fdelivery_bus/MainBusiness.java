@@ -1,5 +1,9 @@
 package com.project.fdelivery_bus;
 import io.socket.client.Socket;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,8 +11,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -16,16 +22,21 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainBusiness extends AppCompatActivity {
     private ImageButton deliveryHistory;
-    private ImageButton deliveryRequest;
+    private ImageButton createNewDelivery;
     private ImageButton ActiveDeliveries;
-    private ImageButton myprofile;
+    private ImageButton myProfile;
     private Business businessUser;
     private TextView welcome;
-    String FromIntent,ID,TOKEN;
+    private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+    String USER,ID,TOKEN;
     private Socket mSocket;
+    Delivery delivery;
 
     protected void onStop() {
         super.onStop();
@@ -39,9 +50,9 @@ public class MainBusiness extends AppCompatActivity {
         setContentView(R.layout.activity_main_business);
         createNotificationChannel();
         deliveryHistory=(ImageButton)findViewById(R.id.deliveryHistory);
-        deliveryRequest=(ImageButton)findViewById(R.id.deliveryRequest);
+        createNewDelivery =(ImageButton)findViewById(R.id.deliveryRequest);
         ActiveDeliveries=(ImageButton)findViewById(R.id.activeDeliveries);
-        myprofile=(ImageButton)findViewById(R.id.myprofile);
+        myProfile =(ImageButton)findViewById(R.id.myprofile);
         welcome=(TextView)findViewById(R.id.textViewWelcom);
 
 
@@ -60,55 +71,122 @@ public class MainBusiness extends AppCompatActivity {
         });
         if(extras!=null)
         {
-            FromIntent = extras.getString("businessUserInGson");
+            USER = extras.getString("businessUserInGson");
             ID =extras.getString("id");
             mSocket.emit("join", ID);
             TOKEN =extras.getString("token");
-            businessUser = new Gson().fromJson(FromIntent, Business.class);
-            // Log.i("ttt", businessUser.getFirstName());
-           // businessUser.setId(ID);
-           // businessUser.setToken(TOKEN);
+            businessUser = new Gson().fromJson(USER, Business.class);
 
             welcome.setText("welcome "+businessUser.getBusinessName());
 
         }
 
-
+        //show all active deliveries, First we will check if there are such deliveries
         ActiveDeliveries.setOnClickListener((v) -> {
            Intent intent = new Intent(this, activeDeliveries.class);
-            intent.putExtra("id",ID);
-            intent.putExtra("businessUserInGson",FromIntent);
-            intent.putExtra("token",TOKEN);
+            Call<List<String>> call = rtfBase.getDeliveries(ID);
+            ArrayList<String> arrayList=new ArrayList<>();
+            call.enqueue(new Callback<List<String>>() {
+                @Override
+                public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                    if(response.code() == 200)
+                    {
+                        for(int i=0;i<response.body().size();i++){
+                            delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                            if(!delivery.getStatus().equals("DELIVERED")){
+                                arrayList.add(response.body().get(i));
+                            }
+                        }
+                        if(!arrayList.isEmpty()) {
 
-            startActivity(intent);
-          //  MainActivity.a.finish();
+                            intent.putExtra("id", ID);
+                            intent.putExtra("businessUserInGson", USER);
+                            intent.putExtra("token", TOKEN);
+
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                    else{
+                        Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<String>> call, Throwable t) {
+                    Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
 
         });
-
-        myprofile.setOnClickListener((v) -> {
+//show all profile info (and option to change)
+        myProfile.setOnClickListener((v) -> {
             Intent intent= new Intent(this, BusinessProfile.class);
             intent.putExtra("id",ID);
-            intent.putExtra("businessUserInGson",FromIntent);
+            intent.putExtra("businessUserInGson", USER);
             intent.putExtra("token",TOKEN);
 
             startActivity(intent);
+            finish();
         });
-
+//show all deliveries that sends
         deliveryHistory.setOnClickListener((v) -> {
+            Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",ID);
+            ArrayList<String> arrayList=new ArrayList<>();
             Intent intent =new Intent(this, DeliveryHistory.class);
-            intent.putExtra("id",ID);
-            intent.putExtra("businessUserInGson",FromIntent);
-            intent.putExtra("token",TOKEN);
+
+            call.enqueue(new Callback<List<String>>() {
+                @Override
+                public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                    if(response.code() == 200) {
+                        for (int i = 0; i < response.body().size(); i++) {
+                            delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                            if (delivery.getStatus().equals("DELIVERED")) {
+                                arrayList.add(response.body().get(i));
+                            }
+                        }
+                        if (!arrayList.isEmpty()) {
+
+                            intent.putExtra("id",ID);
+                            intent.putExtra("businessUserInGson", USER);
+                            intent.putExtra("token",TOKEN);
 
 
-            startActivity(intent);
+                            startActivity(intent);
+                        }
+                    }else{
+                        Toast.makeText(MainBusiness.this, "you have no completed deliveries",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<String>> call, Throwable t) {
+                    Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
+
+
+
+
+
+
         });
-
-        deliveryRequest.setOnClickListener((v) -> {
+ //create new delivery
+        createNewDelivery.setOnClickListener((v) -> {
             Intent intent =new Intent(this, newDelivery.class);
             intent.putExtra("token",TOKEN);
             intent.putExtra("id",ID);
-            intent.putExtra("businessUserInGson",FromIntent);
+            intent.putExtra("businessUserInGson", USER);
             startActivity(intent);
         });
     }

@@ -1,6 +1,7 @@
 package com.project.fdelivery_bus;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,16 +17,11 @@ import com.google.gson.Gson;
 
 public class BusinessProfile extends AppCompatActivity {
     private TextView CityMP,StreetMP,NumberMP,FlootMP,AprtMP,EntranceMP;
-    private TextView EmailMP;
-    private Button ChangeMP;
-    private Button PassChangeMP;
-    private TextView TextMP;
-    private TextView Phone1MP;
-    private TextView Phone2MP;
+    private Button ChangeMP,PassChangeMP;
+    private TextView TextMP,Phone1MP,Phone2MP,EmailMP;
     private RetrofitInterface rtfBase;
      Business businessUser;
-    String FromIntent,ID,TOKEN;
-
+    String USER,ID,TOKEN;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +45,12 @@ public class BusinessProfile extends AppCompatActivity {
 
         if(extras!=null)
         {
-                FromIntent = extras.getString("businessUserInGson");
+                USER = extras.getString("businessUserInGson");
                 ID =extras.getString("id");
                 TOKEN =extras.getString("token");
 
-            businessUser = new Gson().fromJson(FromIntent, Business.class);
-               // Log.i("ttt", businessUser.getFirstName());
-                businessUser.setId(ID);
-                businessUser.setToken(TOKEN);
+            businessUser = new Gson().fromJson(USER, Business.class);
+
 
         }
 
@@ -78,20 +72,20 @@ public class BusinessProfile extends AppCompatActivity {
 
             }
         }
-       // String finalFromIntent = FromIntent;
+
+        //change profile info
         ChangeMP.setOnClickListener((v) -> {
 
-            Intent intent2 =new Intent(this, EditMyProfile.class);
-            intent2.putExtra("id",ID);
-            intent2.putExtra("businessUserInGson",FromIntent);
-
-            Log.i("xxxx1",ID);
+            Intent intent =new Intent(this, EditMyProfile.class);
+            intent.putExtra("id",ID);
+            intent.putExtra("businessUserInGson", USER);
+            intent.putExtra("token",TOKEN);
             Toast.makeText(BusinessProfile.this, "fill JUST what you need", Toast.LENGTH_LONG).show();
-            startActivity(intent2);
-
+            startActivity(intent);
+            finish();
         });
 
-
+//change password
         PassChangeMP.setOnClickListener((v) -> {
             startActivity(new Intent(this, ChangePassword.class));
         });

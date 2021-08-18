@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,18 +17,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class showCoosenActivity extends AppCompatActivity {
-    private TextView printall;
-    private Button del,edit;
+    private TextView printInfo;
+    private Button delete,edit;
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
 
-    String deliveryFromIntent,IDDELIVERY,TOKEN,ID,FromIntent;
+    String DELIVERY,IDDELIVERY,TOKEN,ID, USER;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_coosen);
-        printall = (TextView)findViewById(R.id.printall);
-        del=(Button)findViewById(R.id.delete);
+        printInfo = (TextView)findViewById(R.id.printall);
+        delete =(Button)findViewById(R.id.delete);
         edit=(Button)findViewById(R.id.change);
 
 
@@ -38,31 +37,31 @@ public class showCoosenActivity extends AppCompatActivity {
 
         if(extras!=null)
         {
-            deliveryFromIntent = extras.getString("delivery");
+            DELIVERY = extras.getString("delivery");
             IDDELIVERY=extras.getString("idDelivery");
             TOKEN=extras.getString("token");
             ID=extras.getString("id");
-            FromIntent=extras.getString("businessUserInGson");
-            delivery = new Gson().fromJson(deliveryFromIntent, Delivery.class);
-            printall.setText("ID: "+IDDELIVERY+"\n" +delivery.toString());
+            USER =extras.getString("businessUserInGson");
+            delivery = new Gson().fromJson(DELIVERY, Delivery.class);
+            printInfo.setText("ID: "+IDDELIVERY+"\n" +delivery.toString());
 
         }
 
-        del.setOnClickListener((v) -> {
+        delete.setOnClickListener((v) -> {
 
             deleteDelivery(TOKEN,IDDELIVERY);
 
 
         });
-
+//edit delivery info
         edit.setOnClickListener((v) ->
         {
                Intent intent=new Intent(this, editDelivery.class);
                intent.putExtra("idDelivery",IDDELIVERY);
-               intent.putExtra("delivery",deliveryFromIntent);
+               intent.putExtra("delivery", DELIVERY);
                intent.putExtra("token",TOKEN);
                intent.putExtra("id",ID);
-               intent.putExtra("businessUserInGson",FromIntent);
+               intent.putExtra("businessUserInGson", USER);
 
             startActivity(intent);
         });
@@ -70,7 +69,7 @@ public class showCoosenActivity extends AppCompatActivity {
 
     }
 
-
+//delete delivery
     private void deleteDelivery(String token,String idDelivery)
     {
         Intent intent=new Intent(this, MainBusiness.class);
@@ -90,8 +89,8 @@ public class showCoosenActivity extends AppCompatActivity {
                 if(response.code() == 200)
                 {
                     Toast.makeText(showCoosenActivity.this, "we delete this delivery successfully",Toast.LENGTH_LONG).show();
-                    Log.i("w1w",token+ " "+idDelivery);
-                    intent.putExtra("businessUserInGson",FromIntent);
+                   // Log.i("w1w",token+ " "+idDelivery);
+                    intent.putExtra("businessUserInGson", USER);
                     intent.putExtra("token",TOKEN);
                     intent.putExtra("id",ID);
                     startActivity(intent);

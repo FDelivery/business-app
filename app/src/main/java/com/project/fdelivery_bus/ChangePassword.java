@@ -24,7 +24,7 @@ public class ChangePassword extends AppCompatActivity {
 
         ConformPasswordChange.setOnClickListener((v) -> {
              // here need to be code for saving the new password
-finish();
+                finish();
           //  startActivity(new Intent(this, MainBusiness.class));
         });
     }

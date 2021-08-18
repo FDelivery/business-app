@@ -1,12 +1,7 @@
 package com.project.fdelivery_bus;
 
 public class Address {
-    private String city;
-    private String street;
-    private String number;
-    private String apartment;
-    private String floor;
-    private String entrance;
+    private String city,street,number,apartment,floor,entrance;
 
 
     public Address(String city, String street, String number) {

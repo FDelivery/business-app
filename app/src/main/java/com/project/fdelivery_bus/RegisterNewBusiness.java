@@ -2,15 +2,13 @@ package com.project.fdelivery_bus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.HashMap;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.HashMap;
+
 
 
 import retrofit2.Call;
@@ -23,7 +21,7 @@ public class RegisterNewBusiness extends AppCompatActivity {
     private EditText city,street,number,floor,apartment,entrance;
     private Button Create, creditCard;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
-String ID,TOKEN;
+    private String ID,TOKEN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,7 +35,6 @@ String ID,TOKEN;
         floor = (EditText) findViewById(R.id.floor);
         apartment = (EditText) findViewById(R.id.aprt);
         entrance = (EditText)findViewById(R.id.entrance);
-
         Phone2 = (EditText)findViewById(R.id.Phone2);
         Phone1 = (EditText)findViewById(R.id.Phone1);
         Create=(Button)findViewById(R.id.Create);
@@ -45,25 +42,22 @@ String ID,TOKEN;
         creditCard =findViewById(R.id.pay);
 
         creditCard.setOnClickListener((v) -> {
-                    Intent intent=new Intent(this,cardPay.class);
-                    startActivity(intent);
+                    startActivity(new Intent(this,cardPay.class));
                 });
-        Create.setOnClickListener((v) -> {
 
+
+        Create.setOnClickListener((v) -> {
             String email = EmailEt.getText().toString();
             String password = PasswordEt.getText().toString();
             String bName = BusinessName.getText().toString();
             String phone1 = Phone1.getText().toString();
             String phone2 = Phone2.getText().toString();
-
-
             String City = city.getText().toString();
             String Street = street.getText().toString();
             String Floor = floor.getText().toString();
             String Apartment = apartment.getText().toString();
             String Entrance = entrance.getText().toString();
             String Number = number.getText().toString();
-
 
 
             //we need to check that the required fields are not empty
@@ -98,7 +92,6 @@ String ID,TOKEN;
             }
 
 
-
             //check whether the given email address is valid
             if(!validations.isValidEmail(email))
             {
@@ -129,10 +122,8 @@ String ID,TOKEN;
 
         });
     }
-
-    //still need to handle password...
+//send business and register
     private void handleRegister(Business business) {
-
 
         Call<String> call = rtfBase.register(business); //we get id
         call.enqueue(new Callback<String>() {
@@ -140,8 +131,8 @@ String ID,TOKEN;
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.code() == 200)
                 {
-                    business.setId(response.body());
-                    Toast.makeText(RegisterNewBusiness.this, "registered successfully",Toast.LENGTH_LONG).show();
+                   // business.setId(response.body());
+                   // Toast.makeText(RegisterNewBusiness.this, "registered successfully",Toast.LENGTH_LONG).show();
 
                     connectToApp(business);
 
@@ -166,32 +157,33 @@ String ID,TOKEN;
             }
         });
     }
+    //connect the app auto after register
     private void connectToApp(Business business){
 
-        HashMap<String, String> help = new HashMap<>();
-        help.put("email",business.getEmail()) ;
-        help.put("password",business.getPassword());
-        Call<String[]> call = rtfBase.connect(help); //we get token and id
+        HashMap<String, String> connect = new HashMap<>();
+        connect.put("email",business.getEmail()) ;
+        connect.put("password",business.getPassword());
+        Call<String[]> call = rtfBase.connect(connect); //we get token and id
         call.enqueue(new Callback<String[]>() {
             @Override
             public void onResponse(Call<String[]> call, Response<String[]> response) {
                 if(response.code() == 200)
                 {
                     assert response.body() != null;
-                    business.setToken(response.body()[0]);
-                    business.setId(response.body()[1]);
+                   // business.setToken(response.body()[0]);
+                   // business.setId(response.body()[1]);
 
                     TOKEN=response.body()[0];
                     ID=response.body()[1];
-                    Toast.makeText(RegisterNewBusiness.this, "successfully",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterNewBusiness.this, "registered successfully",Toast.LENGTH_LONG).show();
 
-                    GetUser(business.getId());
+                    GetUser();
 
 
                 }
                 if(response.code() == 400)
                 {
-                    Toast.makeText(RegisterNewBusiness.this, "we have a problem",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterNewBusiness.this, "fail to connect",Toast.LENGTH_LONG).show();
 
                 }
                 if(response.code() == 401)
@@ -211,16 +203,15 @@ String ID,TOKEN;
     }
 
 
-    // get- in id, return user
-    public void GetUser(String id) // need to know how to use in accepted user
+    // return user for sending is info to MainBusiness activity
+    public void GetUser()
     {
 
         Intent intent = new Intent(this, MainBusiness.class);
-        intent.putExtra("token", TOKEN);
-        intent.putExtra("token", ID);
 
 
-        Call<String> call = rtfBase.getUser(id);
+
+        Call<String> call = rtfBase.getUser(ID);
 
 
         call.enqueue(new Callback<String>() {
@@ -232,12 +223,10 @@ String ID,TOKEN;
                 {
 
                     //success
-
-                      Log.i("TEST123",response.body());
-                    //  Business businessUser = new Gson().fromJson(response.body(),Business.class);
-                    //   Log.i("TEST2",businessUser.getFirstName());
-                    //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
                     intent.putExtra("businessUserInGson",response.body());
+                    intent.putExtra("token", TOKEN);
+                    intent.putExtra("id", ID);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); 
                     startActivity(intent);
 
 
@@ -254,7 +243,7 @@ String ID,TOKEN;
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(RegisterNewBusiness.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterNewBusiness.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });

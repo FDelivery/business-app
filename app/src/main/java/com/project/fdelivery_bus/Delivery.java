@@ -11,6 +11,11 @@ public class Delivery
     private String deliveredDate;
     private String pickedDate;
     private double price;
+
+    public String getStatus() {
+        return status;
+    }
+
     private String status;
 
     public void setPrice(double price) {
@@ -21,8 +26,8 @@ public class Delivery
 
     @Override
     public String toString() {
-        return  " client name: "+clientName+ "\n client phone: "+clientPhone+"\n ADDRESS- city:"+destAddress.getCity()+
-                "\n apartment: "+destAddress.getApartment()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note+"\n status: "+status;
+        return  " client name: "+clientName+ "\n client phone: "+clientPhone+"\ncity:"+destAddress.getCity()+
+                "\n street: "+destAddress.getStreet()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note+"\n status: "+status;
     }
 
 
@@ -36,7 +41,7 @@ public class Delivery
     }
 
 
-    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date,String status) {
+    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date,String status,double price) {
         this.destAddress= clientAddress;
         this.clientName = clientName;
         this.clientPhone = clientPhone;
@@ -44,6 +49,7 @@ public class Delivery
         this.Note = clientNote;
         this.deliveredDate = date;
         this.status=status;
+        this.price=price;
     }
 
     public String getClientPhone() {

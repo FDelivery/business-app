@@ -20,14 +20,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMyProfile extends AppCompatActivity {
-    private EditText EmailEP;
-    private EditText Phone1EP;
-    private EditText Phone2EP;
-    private EditText NameEP;
+    private EditText NameEP,EmailEP,Phone1EP,Phone2EP;
     private EditText CityEP,StreetEP,NumberEP,FlootEP,AprtEP,EntranceEP;
     private RetrofitInterface rtfBase;
     private Button ChangeEP;
-    String ID;
+    String ID,TOKEN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +50,7 @@ public class EditMyProfile extends AppCompatActivity {
         if(extras!=null)
         {
             ID = extras.getString("id");
-
+            TOKEN=extras.getString("token");
 
 
         }
@@ -74,14 +71,6 @@ public class EditMyProfile extends AppCompatActivity {
         String Phone2Text= Phone2EP.getText().toString();
 
 
-       /* String CityText= CityEP.getText().toString();
-        String AprText= AprtEP.getText().toString();
-        String NumberText= NumberEP.getText().toString();
-        String EntranceText= EntranceEP.getText().toString();
-        String StreetText= StreetEP.getText().toString();
-        String FloorText= FlootEP.getText().toString();*/
-
-
         if(!EmailText.isEmpty()) {
             map.put("email",EmailText);
         }
@@ -97,8 +86,6 @@ public class EditMyProfile extends AppCompatActivity {
         }
 
 
-  // Log.i("mytest3333",id);
-     //   Log.i("mytest444",map.get("primaryPhone")+ " "+ map.get("firstName"));
         Call<Void> call = rtfBase.updateUser(id,map);
     call.enqueue(new Callback<Void>() {
         @Override
@@ -106,7 +93,6 @@ public class EditMyProfile extends AppCompatActivity {
             if(response.code() == 200)
             {
 
-                Toast.makeText(EditMyProfile.this, "We update successfully", Toast.LENGTH_LONG).show();
                 GetUser(id);
             }
 
@@ -119,19 +105,17 @@ public class EditMyProfile extends AppCompatActivity {
 
         @Override
         public void onFailure(Call<Void> call, Throwable t) {
-            Toast.makeText(EditMyProfile.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(EditMyProfile.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
         }
     });
     }
 
-    // get- in id, return user
+    // get- in id, return user after update info
     public void GetUser(String id)
     {
 
-        Intent intent = new Intent(this, BusinessProfile.class);
-
-      //  Log.i("myTest2--",id);
+        Intent intent = new Intent(this, MainBusiness.class);
 
         Call<String> call = rtfBase.getUser(id);
 
@@ -143,13 +127,13 @@ public class EditMyProfile extends AppCompatActivity {
 
                 if(response.code() == 200)
                 {
-
-
+                    Toast.makeText(EditMyProfile.this, "We update successfully", Toast.LENGTH_LONG).show();
                     intent.putExtra("businessUserInGson",response.body());
                     intent.putExtra("id",id);
-                 //   Log.i("xxx",response.body());
-                    startActivity(intent);
+                    intent.putExtra("token",TOKEN);
 
+                    startActivity(intent);
+                    finish();
                 }
 
 
@@ -163,7 +147,7 @@ public class EditMyProfile extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(EditMyProfile.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(EditMyProfile.this,t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });

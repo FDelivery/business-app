@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitBase {
 
     private static Retrofit retrofit;
-    public static final String BASE_URL = "http://192.168.1.39:5000";
+    public static final String BASE_URL = "http://10.100.102.121:5000";
 
     private RetrofitBase() { }
     public static RetrofitInterface getRetrofitInterface()

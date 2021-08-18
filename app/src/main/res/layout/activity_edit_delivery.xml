@@ -243,64 +243,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.536" />
 
-    <TextView
-        android:id="@+id/ETpreferd_vehicle"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
-        android:padding="10dp"
-        android:text="@string/vehicle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#A8A2A2"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
-
-    <CheckBox
-        android:id="@+id/ETmotorbike"
-        android:layout_width="138dp"
-        android:layout_height="33dp"
-        android:text="@string/ETmotorbike"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#040404"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
-
-    <CheckBox
-        android:id="@+id/ETbicycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ETbicycle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#040404"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
-
-    <CheckBox
-        android:id="@+id/ETcar"
-        android:layout_width="62dp"
-        android:layout_height="47dp"
-        android:text="@string/car"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#040404"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.704"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
-
     <Button
         android:id="@+id/ETndsubmit"
         android:layout_width="352dp"

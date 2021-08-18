@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -18,11 +16,9 @@ import retrofit2.Response;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
@@ -30,22 +26,14 @@ import java.util.Calendar;
 
 public class editDelivery extends AppCompatActivity {
     private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
-    String deliveryFromIntent,IDDELIVERY,TOKEN;
-    private EditText name;
-    private EditText phone;
-    private TextView price;
-    private EditText note;
+    String DELIVERY,IDDELIVERY,TOKEN,USER,ID;
+    private EditText name,phone,price,note;
     private Button save;
-    private EditText city;
-    private EditText aprt;
-    private EditText number;
-    private EditText street;
-    private EditText entrance;
+    private EditText city,aprt,number,street,entrance;
     private EditText Time,Date;
 
-    //private CheckBox Bike, Car;
     Delivery delivery;
-    String FromIntent,ID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +41,7 @@ public class editDelivery extends AppCompatActivity {
         setContentView(R.layout.activity_edit_delivery);
         save=(Button)findViewById(R.id.ETndsubmit);
         name=(EditText) findViewById(R.id.ETname);
-        price=(TextView)findViewById(R.id.ETcost);
+        price=(EditText)findViewById(R.id.ETcost);
         note=(EditText)findViewById(R.id.ETnote);
         phone=(EditText)findViewById(R.id.ETphone);
         city=(EditText)findViewById(R.id.ETcity);
@@ -63,18 +51,17 @@ public class editDelivery extends AppCompatActivity {
         aprt=(EditText)findViewById(R.id.ETaprt);
         Time=(EditText)findViewById(R.id.ETTime);
         Date=(EditText)findViewById(R.id.ETDate);
-      //  Car = (CheckBox)findViewById(R.id.ETcar);
-       // Bike = (CheckBox)findViewById(R.id.ETbike);
+
         Bundle extras = getIntent().getExtras();
 
         if(extras!=null)
         {
-            deliveryFromIntent = extras.getString("delivery");
+            DELIVERY = extras.getString("delivery");
             IDDELIVERY=extras.getString("idDelivery");
             TOKEN=extras.getString("token");
-            FromIntent = extras.getString("businessUserInGson");
+            USER = extras.getString("businessUserInGson");
             ID =extras.getString("id");
-            delivery = new Gson().fromJson(deliveryFromIntent, Delivery.class);
+            delivery = new Gson().fromJson(DELIVERY, Delivery.class);
 
 
         }
@@ -143,8 +130,7 @@ public class editDelivery extends AppCompatActivity {
             String EntranceText=entrance.getText().toString();
             String StreetText=street.getText().toString();
             Address address=delivery.getClientAddress();
-            //  Boolean car = Car.isChecked();
-          //  Boolean bike = Bike.isChecked();
+
 
             if(!TimeText.isEmpty()) {
                 delivery.setTime(TimeText);
@@ -196,10 +182,7 @@ public class editDelivery extends AppCompatActivity {
                 address.setEntrance(delivery.getClientAddress().getEntrance());
 
             }
-          /*  if(!priceText.isEmpty()) {                      ///משהו השתנה בxml
-                double str1 = Double.parseDouble(priceText);
-                delivery.setPrice(str1);
-            }*/
+
 
             delivery.setClientAddress(address);
             UpdateDelivery(TOKEN, IDDELIVERY, delivery);
@@ -208,9 +191,8 @@ public class editDelivery extends AppCompatActivity {
         });
 
     }
-
-
-    private void UpdateDelivery(String token,String idDelivery,Delivery d)  //we got id-delivery, user-token and  new delivery and we update parameters
+    //we got id-delivery, user-token and  new delivery and we update parameters
+    private void UpdateDelivery(String token,String idDelivery,Delivery d)
     {
         Intent intent= new Intent(this, MainBusiness.class);
 
@@ -224,13 +206,13 @@ public class editDelivery extends AppCompatActivity {
 
                     if(response.code() == 400)
                     {
-                        Toast.makeText(editDelivery.this, "do not success",Toast.LENGTH_LONG).show();
+                        Toast.makeText(editDelivery.this, "update failed",Toast.LENGTH_LONG).show();
 
                     }
                     if(response.code() == 200 || response.code() == 204)
                     {
                         intent.putExtra("id",ID);
-                        intent.putExtra("businessUserInGson",FromIntent);
+                        intent.putExtra("businessUserInGson", USER);
                         intent.putExtra("token",TOKEN);
                         Toast.makeText(editDelivery.this, "update successfully",Toast.LENGTH_LONG).show();
                         startActivity(intent);

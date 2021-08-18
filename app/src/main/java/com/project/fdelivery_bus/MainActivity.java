@@ -3,7 +3,6 @@ package com.project.fdelivery_bus;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText EmailEt;
     private EditText PasswordEt;
     private Button logIn;
-    private TextView ForgotPassword;
     private TextView RegisterNewBusiness;
     private RetrofitInterface rtfBase;
     Intent intent;
-    public static Activity a;
+    String TOKEN,ID;
+   // public static Activity a;
 
 
     @Override
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         EmailEt = findViewById(R.id.Email);
         PasswordEt = findViewById(R.id.Password);
         logIn=findViewById(R.id.Connect);
-        ForgotPassword = findViewById(R.id.forgotPass);
         RegisterNewBusiness = findViewById(R.id.newBusiness);
 
         intent = new Intent(this, MainBusiness.class);
@@ -48,36 +46,26 @@ public class MainActivity extends AppCompatActivity {
             String email = EmailEt.getText().toString();
             if(email.isEmpty())
             {
-            //     Toast.makeText(MainActivity.this, "Email is a required field" , Toast.LENGTH_LONG).show();
                 EmailEt.setError("This field is necessary");
                 return;
             }
             if(PasswordEt.getText().toString().isEmpty())
             {
-              //  Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
-
                 PasswordEt.setError("This field is necessary");
                 return;
             }
             handleConnect();
         });
-        ForgotPassword.setOnClickListener((v)->{
-         //   GetUser("6106919d6ffd57c4090b6285");
-        //    Intent i=new Intent(this,newDelivery.class);
-        //    i.putExtra("token",response.body());
-
-        //    startActivity(i);
 
 
-        });
         RegisterNewBusiness.setOnClickListener((v) -> {
             startActivity(new Intent(this, RegisterNewBusiness.class));
-            finish();
+
         });
 
 
     }
-//return token and id if the user is exist
+// log in. return token and id if the user is exist
     private void handleConnect() {
         HashMap<String, String> credentials = new HashMap<>();
         credentials.put("email",EmailEt.getText().toString());
@@ -90,16 +78,14 @@ public class MainActivity extends AppCompatActivity {
                 if(response.code() == 200)
                 {
                     //success
-                    Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
-                   // business.setToken(response.body());
-
                     String[] TokenAndId = new String[2];
-
                     TokenAndId=response.body();
-                  //  Log.i("token1",TokenAndId[0]);
-                   // Log.i("id1",TokenAndId[1]);
-                    intent.putExtra("token",TokenAndId[0]);
-                    GetUser(TokenAndId[1]);
+
+                    TOKEN=TokenAndId[0];
+                    ID=TokenAndId[1];
+                    intent.putExtra("token",TOKEN);
+
+                    GetUser();
 
 
                 }
@@ -119,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String[]> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Something went wrong" +t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -129,14 +115,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     // get- in id, return user
-    public void GetUser(String id)
+    public void GetUser()
     {
 
-
-
-       // Log.i("myTest2",id);
-
-        Call<String> call = rtfBase.getUser(id);
+        Call<String> call = rtfBase.getUser(ID);
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -147,14 +129,10 @@ public class MainActivity extends AppCompatActivity {
                 {
 
                     //success
-
-                  //  Log.i("TEST1",response.body());
-                  //  Business businessUser = new Gson().fromJson(response.body(),Business.class);
-                 //   Log.i("TEST2",businessUser.getFirstName());
-                  //  Toast.makeText(MainActivity.this, "We found your user", Toast.LENGTH_LONG).show();
+                    intent.putExtra("token",TOKEN);
                     intent.putExtra("businessUserInGson",response.body());
-                    intent.putExtra("id",id);
-
+                    intent.putExtra("id",ID);
+                    Toast.makeText(MainActivity.this, "You have logged in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
 
 
@@ -171,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Something went wrong " +t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });

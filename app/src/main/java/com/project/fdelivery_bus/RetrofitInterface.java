@@ -38,13 +38,13 @@ public interface RetrofitInterface
     Call<String> insertNewDelivery(@Header("Authorization") String token, @Body Delivery d);
 
 
-    @PUT("/api/v1/deliveriesRef/{delivery_id}/") //return void
+    @PUT("/api/v1/deliveriesRef/{delivery_id}/") //update delivery
     Call<Void> updateDelivery(@Header("Authorization") String token, @Path("delivery_id") String id, @Body Delivery d);
 
 
     @DELETE("/api/v1/deliveriesRef/{delivery_id}/") //we put deliveryId and delete it
     Call<Void> deleteDelivery(@Header("Authorization") String token, @Path("delivery_id") String id);
 
-    @GET("/api/v1/deliveriesRef/") ////return gson string (Delivery)
+    @GET("/api/v1/deliveriesRef/") ////return gson string all Deliveries that delivered
     Call<List<String>> getDeliveriesHistory(@Query("status") String status ,@Query("AddedBy") String addBY);
 }
