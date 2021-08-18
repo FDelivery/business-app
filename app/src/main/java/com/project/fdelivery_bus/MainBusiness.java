@@ -49,8 +49,8 @@ public class MainBusiness extends AppCompatActivity {
         mSocket.on("delivery_accepted", (msg)->{
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"123")
                 .setSmallIcon(R.drawable.notification_icon)
-                .setContentTitle("zibi")
-                .setContentText("zini bizbi")
+                .setContentTitle("Delivery accepted")
+                .setContentText("a courier is on his way to take care of your delivery")
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(123, builder.build());
