@@ -30,17 +30,17 @@ public class EditMyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_my_profile);
 
-        ChangeEP=(Button)findViewById(R.id.ChangeEP);
-        EmailEP=(EditText) findViewById(R.id.EmailEP);
-        NameEP=(EditText)findViewById(R.id.NameEP);
-        Phone1EP=(EditText)findViewById(R.id.Phone1EP);
-        Phone2EP=(EditText)findViewById(R.id.Phone2EP);
-        CityEP=(EditText) findViewById(R.id.cityEP);
-        StreetEP=(EditText) findViewById(R.id.streetEP);
-        NumberEP=(EditText) findViewById(R.id.numberEP);
-        FlootEP=(EditText) findViewById(R.id.floorEP);
-        AprtEP=(EditText) findViewById(R.id.aprtEP);
-        EntranceEP=(EditText) findViewById(R.id.entranceEP);
+        ChangeEP=findViewById(R.id.ChangeEP);
+        EmailEP= findViewById(R.id.EmailEP);
+        NameEP= findViewById(R.id.NameEP);
+        Phone1EP= findViewById(R.id.Phone1EP);
+        Phone2EP= findViewById(R.id.Phone2EP);
+        CityEP= findViewById(R.id.cityEP);
+        StreetEP= findViewById(R.id.streetEP);
+        NumberEP= findViewById(R.id.numberEP);
+        FlootEP=findViewById(R.id.floorEP);
+        AprtEP=findViewById(R.id.aprtEP);
+        EntranceEP=findViewById(R.id.entranceEP);
         rtfBase = RetrofitBase.getRetrofitInterface();
 
          Bundle extras = getIntent().getExtras();
@@ -56,12 +56,11 @@ public class EditMyProfile extends AppCompatActivity {
         }
         ChangeEP.setOnClickListener((v) -> {
 
-
             updateUser(ID);
         });
     }
 
-
+//this sent the new info and update in DB
     private void updateUser(String id)
     {
         HashMap<String, String> map=new HashMap<>();
@@ -131,6 +130,7 @@ public class EditMyProfile extends AppCompatActivity {
                     intent.putExtra("businessUserInGson",response.body());
                     intent.putExtra("id",id);
                     intent.putExtra("token",TOKEN);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                     startActivity(intent);
                     finish();

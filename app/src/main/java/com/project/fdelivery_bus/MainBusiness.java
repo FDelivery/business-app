@@ -22,6 +22,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +50,11 @@ public class MainBusiness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_business);
         createNotificationChannel();
-        deliveryHistory=(ImageButton)findViewById(R.id.deliveryHistory);
-        createNewDelivery =(ImageButton)findViewById(R.id.deliveryRequest);
-        ActiveDeliveries=(ImageButton)findViewById(R.id.activeDeliveries);
-        myProfile =(ImageButton)findViewById(R.id.myprofile);
-        welcome=(TextView)findViewById(R.id.textViewWelcom);
+        deliveryHistory=findViewById(R.id.deliveryHistory);
+        createNewDelivery =findViewById(R.id.deliveryRequest);
+        ActiveDeliveries=findViewById(R.id.activeDeliveries);
+        myProfile =findViewById(R.id.myprofile);
+        welcome=findViewById(R.id.textViewWelcom);
 
 
 
@@ -86,6 +87,8 @@ public class MainBusiness extends AppCompatActivity {
            Intent intent = new Intent(this, activeDeliveries.class);
             Call<List<String>> call = rtfBase.getDeliveries(ID);
             ArrayList<String> arrayList=new ArrayList<>();
+            Bundle bundle = new Bundle();
+
             call.enqueue(new Callback<List<String>>() {
                 @Override
                 public void onResponse(Call<List<String>> call, Response<List<String>> response) {
@@ -94,7 +97,11 @@ public class MainBusiness extends AppCompatActivity {
                         for(int i=0;i<response.body().size();i++){
                             delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                             if(!delivery.getStatus().equals("DELIVERED")){
-                                arrayList.add(response.body().get(i));
+                                String deliveryID=response.body().get(i).substring(18,42);
+                                Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                                delivery.setId(deliveryID);
+                                arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
+
                             }
                         }
                         if(!arrayList.isEmpty()) {
@@ -102,6 +109,10 @@ public class MainBusiness extends AppCompatActivity {
                             intent.putExtra("id", ID);
                             intent.putExtra("businessUserInGson", USER);
                             intent.putExtra("token", TOKEN);
+                            bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                            intent.putExtra("BUNDLE",bundle);
+
+
 
                             startActivity(intent);
                         }else{
@@ -133,13 +144,14 @@ public class MainBusiness extends AppCompatActivity {
             intent.putExtra("token",TOKEN);
 
             startActivity(intent);
-            finish();
+            //finish();
         });
-//show all deliveries that sends
+//show all deliveries that sends. First we will check if there are such deliveries
         deliveryHistory.setOnClickListener((v) -> {
             Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",ID);
             ArrayList<String> arrayList=new ArrayList<>();
             Intent intent =new Intent(this, DeliveryHistory.class);
+            Bundle bundle = new Bundle();
 
             call.enqueue(new Callback<List<String>>() {
                 @Override
@@ -148,7 +160,10 @@ public class MainBusiness extends AppCompatActivity {
                         for (int i = 0; i < response.body().size(); i++) {
                             delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                             if (delivery.getStatus().equals("DELIVERED")) {
-                                arrayList.add(response.body().get(i));
+                                String deliveryID=response.body().get(i).substring(18,42);
+                                Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                                delivery.setId(deliveryID);
+                                arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
                             }
                         }
                         if (!arrayList.isEmpty()) {
@@ -156,7 +171,8 @@ public class MainBusiness extends AppCompatActivity {
                             intent.putExtra("id",ID);
                             intent.putExtra("businessUserInGson", USER);
                             intent.putExtra("token",TOKEN);
-
+                            bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                            intent.putExtra("BUNDLE",bundle);
 
                             startActivity(intent);
                         }

@@ -27,17 +27,17 @@ public class RegisterNewBusiness extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_new_business);
-        BusinessName = (EditText)findViewById(R.id.BusinessName);
-        PasswordEt = (EditText)findViewById(R.id.PasswordEt);
-        city = (EditText) findViewById(R.id.city);
-        street = (EditText) findViewById(R.id.street);
-        number = (EditText) findViewById(R.id.number);
-        floor = (EditText) findViewById(R.id.floor);
-        apartment = (EditText) findViewById(R.id.aprt);
-        entrance = (EditText)findViewById(R.id.entrance);
-        Phone2 = (EditText)findViewById(R.id.Phone2);
-        Phone1 = (EditText)findViewById(R.id.Phone1);
-        Create=(Button)findViewById(R.id.Create);
+        BusinessName = findViewById(R.id.BusinessName);
+        PasswordEt = findViewById(R.id.PasswordEt);
+        city =  findViewById(R.id.city);
+        street =  findViewById(R.id.street);
+        number =  findViewById(R.id.number);
+        floor =  findViewById(R.id.floor);
+        apartment =  findViewById(R.id.aprt);
+        entrance = findViewById(R.id.entrance);
+        Phone2 = findViewById(R.id.Phone2);
+        Phone1 = findViewById(R.id.Phone1);
+        Create=findViewById(R.id.Create);
         EmailEt = findViewById(R.id.EmailEt);
         creditCard =findViewById(R.id.pay);
 

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         RegisterNewBusiness = findViewById(R.id.newBusiness);
 
         intent = new Intent(this, MainBusiness.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //שלא יהיה ניתן לחזור אחורה
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); 
 
         logIn.setOnClickListener((v) -> {
             String email = EmailEt.getText().toString();

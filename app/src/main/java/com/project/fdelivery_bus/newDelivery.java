@@ -39,20 +39,20 @@ public class newDelivery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_delivery);
 
-        CPhone = (EditText)findViewById(R.id.CPhone);
-        CName = (EditText)findViewById(R.id.CName);
-        Ccost = (EditText)findViewById(R.id.cost);
+        CPhone = findViewById(R.id.CPhone);
+        CName = findViewById(R.id.CName);
+        Ccost = findViewById(R.id.cost);
 
-        entrance = (EditText)findViewById(R.id.CNentrance);
-        city = (EditText)findViewById(R.id.CNcity);
-        street = (EditText)findViewById(R.id.CNstreet);
-        number = (EditText)findViewById(R.id.CNnumber);
-        floor = (EditText)findViewById(R.id.CNfloor);
-        apartment = (EditText)findViewById(R.id.CNaprt);
+        entrance = findViewById(R.id.CNentrance);
+        city = findViewById(R.id.CNcity);
+        street = findViewById(R.id.CNstreet);
+        number = findViewById(R.id.CNnumber);
+        floor = findViewById(R.id.CNfloor);
+        apartment = findViewById(R.id.CNaprt);
 
-        Cnote = (EditText)findViewById(R.id.Cnote);
-        Date = (EditText)findViewById(R.id.Date);
-        Time = (EditText)findViewById(R.id.Time);
+        Cnote = findViewById(R.id.Cnote);
+        Date = findViewById(R.id.Date);
+        Time = findViewById(R.id.Time);
         submit = findViewById(R.id.ndSubmit);
         Bundle extras = getIntent().getExtras();
         mSocket = SocketIO.getSocket();

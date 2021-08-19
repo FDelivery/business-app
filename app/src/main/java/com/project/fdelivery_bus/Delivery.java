@@ -9,25 +9,28 @@ public class Delivery
     private String Note;
     private String Time;
     private String deliveredDate;
-    private String pickedDate;
     private double price;
+    private String id;
+    private String status;
+
+
 
     public String getStatus() {
         return status;
     }
 
-    private String status;
+
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    private String id;
+
 
     @Override
     public String toString() {
         return  " client name: "+clientName+ "\n client phone: "+clientPhone+"\ncity:"+destAddress.getCity()+
-                "\n street: "+destAddress.getStreet()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note+"\n status: "+status;
+                "\n street: "+destAddress.getStreet()+"\n number: "+destAddress.getNumber()+"\n price: "+price+ "\n note: "+Note+"\n status: "+status+"\n deliveredDate: "+deliveredDate;
     }
 
 

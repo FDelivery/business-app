@@ -17,9 +17,9 @@ public class ChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        NewPassword=(EditText)findViewById(R.id.NewPassword);
-        ConformNewPassword=(EditText)findViewById(R.id.ConformNewPassword);
-        ConformPasswordChange=(Button)findViewById(R.id.ConformPasswordChange);
+        NewPassword=findViewById(R.id.NewPassword);
+        ConformNewPassword=findViewById(R.id.ConformNewPassword);
+        ConformPasswordChange=findViewById(R.id.ConformPasswordChange);
 
 
         ConformPasswordChange.setOnClickListener((v) -> {

@@ -7,8 +7,6 @@ public class Business {
     private String primaryPhone;
     private String secondaryPhone;
     private String password;
-  //  private String firstName;
-  //  private String lastName;
     private String id;
     private String token;
     private String role = "BUSINESS";
@@ -22,8 +20,6 @@ public class Business {
             this.secondaryPhone = b.secondaryPhone;
         }
         this.password = b.password;
-       // this.firstName = b.firstName;
-       // this.lastName = b.lastName;
         this.role = b.role;
         this.id=b.id;
 
@@ -59,8 +55,6 @@ public class Business {
         secondaryPhone = p2;
         address = a;
         businessName = bn;
-       // firstName=fn;
-      //  lastName=ln;
         password = pass;
     }
 
@@ -71,18 +65,9 @@ public class Business {
         primaryPhone = p1;
         address = a;
         businessName = bn;
-      //  firstName=fn;
-      //  lastName=ln;
         password = pass;
     }
 
-   // public String getFirstName() {
-  ///      return firstName;
-  //  }
-
- //   public String getLastName() {
-  ////      return lastName;
-  //  }
 
     public Address getAddress() {
         return address;
@@ -90,7 +75,6 @@ public class Business {
 
 
     public String getEmail() { return email; }
-//In my opinion(sarah) you do not need it because in my opinion you should not allow the business / courier to change the email with which they registered
     public void setEmail(String email) { this.email = email; }
 
     public String getBusinessName() { return businessName; }
@@ -107,7 +91,7 @@ public class Business {
 
 
     public String getPassword() { return password; }
-    public void deletePassword(){ password = "";}
+
 
     public void setId(String id) {
         this.id =id;

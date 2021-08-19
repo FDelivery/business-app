@@ -39,18 +39,18 @@ public class editDelivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delivery);
-        save=(Button)findViewById(R.id.ETndsubmit);
-        name=(EditText) findViewById(R.id.ETname);
-        price=(EditText)findViewById(R.id.ETcost);
-        note=(EditText)findViewById(R.id.ETnote);
-        phone=(EditText)findViewById(R.id.ETphone);
-        city=(EditText)findViewById(R.id.ETcity);
-        number=(EditText)findViewById(R.id.ETnumber);
-        entrance=(EditText)findViewById(R.id.ETentrance);
-        street=(EditText)findViewById(R.id.ETstreet);
-        aprt=(EditText)findViewById(R.id.ETaprt);
-        Time=(EditText)findViewById(R.id.ETTime);
-        Date=(EditText)findViewById(R.id.ETDate);
+        save=findViewById(R.id.ETndsubmit);
+        name= findViewById(R.id.ETname);
+        price=findViewById(R.id.ETcost);
+        note=findViewById(R.id.ETnote);
+        phone=findViewById(R.id.ETphone);
+        city=findViewById(R.id.ETcity);
+        number=findViewById(R.id.ETnumber);
+        entrance=findViewById(R.id.ETentrance);
+        street=findViewById(R.id.ETstreet);
+        aprt=findViewById(R.id.ETaprt);
+        Time=findViewById(R.id.ETTime);
+        Date=findViewById(R.id.ETDate);
 
         Bundle extras = getIntent().getExtras();
 

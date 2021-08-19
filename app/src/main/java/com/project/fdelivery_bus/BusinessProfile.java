@@ -19,28 +19,26 @@ public class BusinessProfile extends AppCompatActivity {
     private TextView CityMP,StreetMP,NumberMP,FlootMP,AprtMP,EntranceMP;
     private Button ChangeMP,PassChangeMP;
     private TextView TextMP,Phone1MP,Phone2MP,EmailMP;
-    private RetrofitInterface rtfBase;
      Business businessUser;
-    String USER,ID,TOKEN;
+     String USER,ID,TOKEN;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_profile);
 
-        CityMP=(TextView) findViewById(R.id.cityMP);
-        StreetMP=(TextView) findViewById(R.id.streetMP);
-        NumberMP=(TextView) findViewById(R.id.numberMP);
-        FlootMP=(TextView) findViewById(R.id.floorMP);
-        AprtMP=(TextView) findViewById(R.id.aprtMP);
-        EntranceMP=(TextView) findViewById(R.id.entranceMP);
-        ChangeMP=(Button)findViewById(R.id.ChangeMP);
-        EmailMP=(TextView) findViewById(R.id.EmailMP);
-        PassChangeMP=(Button)findViewById(R.id.PassChangeMP);
-        rtfBase = RetrofitBase.getRetrofitInterface();
-        TextMP=(TextView)findViewById(R.id.TextMP);
-        Phone1MP=(TextView)findViewById(R.id.Phone1MP);
-        Phone2MP=(TextView)findViewById(R.id.Phone2MP);
+        CityMP= findViewById(R.id.cityMP);
+        StreetMP= findViewById(R.id.streetMP);
+        NumberMP= findViewById(R.id.numberMP);
+        FlootMP= findViewById(R.id.floorMP);
+        AprtMP= findViewById(R.id.aprtMP);
+        EntranceMP= findViewById(R.id.entranceMP);
+        ChangeMP=findViewById(R.id.ChangeMP);
+        EmailMP= findViewById(R.id.EmailMP);
+        PassChangeMP=findViewById(R.id.PassChangeMP);
+        TextMP=findViewById(R.id.TextMP);
+        Phone1MP=findViewById(R.id.Phone1MP);
+        Phone2MP=findViewById(R.id.Phone2MP);
         Bundle extras = getIntent().getExtras();
 
         if(extras!=null)
@@ -82,7 +80,7 @@ public class BusinessProfile extends AppCompatActivity {
             intent.putExtra("token",TOKEN);
             Toast.makeText(BusinessProfile.this, "fill JUST what you need", Toast.LENGTH_LONG).show();
             startActivity(intent);
-            finish();
+            //finish();
         });
 
 //change password

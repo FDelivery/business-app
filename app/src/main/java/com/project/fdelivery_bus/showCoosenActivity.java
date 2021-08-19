@@ -27,9 +27,9 @@ public class showCoosenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_coosen);
-        printInfo = (TextView)findViewById(R.id.printall);
-        delete =(Button)findViewById(R.id.delete);
-        edit=(Button)findViewById(R.id.change);
+        printInfo = findViewById(R.id.printall);
+        delete =findViewById(R.id.delete);
+        edit=findViewById(R.id.change);
 
 
         Delivery delivery;
