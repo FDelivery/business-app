@@ -10,49 +10,49 @@
 
     <TextView
         android:id="@+id/printall"
-        android:layout_width="350dp"
-        android:layout_height="365dp"
+        android:layout_width="361dp"
+        android:layout_height="547dp"
         android:background="@drawable/border"
         android:ems="14"
         android:hint="@string/printall"
         android:padding="20dp"
         android:textColor="#040404"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.198" />
 
     <Button
         android:id="@+id/change"
-        android:layout_width="352dp"
+        android:layout_width="361dp"
         android:layout_height="43dp"
         android:background="@drawable/round_buttom"
-        android:text="change"
+        android:text="@string/change"
         android:textColor="#ffffff"
-        app:backgroundTint="#00a8f3"
+        app:backgroundTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
+        app:layout_constraintVertical_bias="0.879" />
 
     <Button
         android:id="@+id/delete"
-        android:layout_width="352dp"
+        android:layout_width="361dp"
         android:layout_height="43dp"
         android:background="@drawable/round_buttom"
-        android:text="delete"
+        android:text="@string/delete"
         android:textColor="#ffffff"
         app:backgroundTint="#00a8f3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        app:layout_constraintVertical_bias="0.959" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

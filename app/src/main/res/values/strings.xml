@@ -10,22 +10,22 @@
 
 
     <!-- activity main business -->
-    <string name="textViewWelcom">hello (user name)</string>
+    <string name="textViewWelcom">hello user </string>
 
     <!-- activity business profile -->
 
-    <string name="Phone1MP">PHONE 1 FROM DB</string>
-    <string name="phone2MP">PHONE 2 FROM DB</string>
-    <string name="textMP">BUSINESS NAME FROM DB</string>
-    <string name="EmailMP">EMAIL FROM DB</string>
+    <string name="Phone1MP">phone 1 </string>
+    <string name="phone2MP">phone 2 </string>
+    <string name="textMP">business name </string>
+    <string name="EmailMP">email </string>
     <string name="ChangeMP">EDIT</string>
     <string name="PassChangeMP">CHANGE PASSWORD</string>
-    <string name="cityMP">city FROM DB</string>
-    <string name="entranceMP">entrance FROM BD</string>
-    <string name="numberMP">number FROM DB</string>
-    <string name="streetMP">street FROM DB</string>
-    <string name="aprtMP">apartment FROM DB</string>
-    <string name="floorMP">floor FROM DB</string>
+    <string name="cityMP">city </string>
+    <string name="entranceMP">entrance </string>
+    <string name="numberMP">number </string>
+    <string name="streetMP">street </string>
+    <string name="aprtMP">apartment </string>
+    <string name="floorMP">floor </string>
 
     <!-- activity edit my profile -->
 
@@ -74,10 +74,7 @@
     <string name="cost">0₪</string>
     <string name="Date">00/00/00</string>
     <string name="Time">time</string>
-    <string name="vehicle">vehicle:</string>
-    <string name="bicycle">bicycle</string>
-    <string name="motorbike">motorbike</string>
-    <string name="car">car</string>
+
     <string name="textViewNewdelivery">fill in details</string>
     <string name="ndsubmit">SUBMIT</string>
     <string name="CNcity">city</string>
@@ -95,10 +92,7 @@
     <string name="ETcost">0₪</string>
     <string name="ETDate">00/00/00</string>
     <string name="ETTime">time</string>
-    <string name="ETvehicle">vehicle</string>
-    <string name="ETmotorbike">motorbike</string>
-    <string name="ETcar">car</string>
-    <string name="ETbicycle">bicycle</string>
+
     <string name="ETtextViewNewdelivery">What details would you like to change?</string>
     <string name="ETndsubmit">SAVE CHANGE</string>
     <string name="ETcity">city</string>
@@ -115,7 +109,10 @@
 
 
     <!-- activity  show coosen -->
-    <string name="printall"> examle of delivery</string>
+    <string name="printall"> there is no delivery to present</string>
+    <string name="change">CHANGE</string>
+    <string name="delete">DELETE</string>
+
 
 
 </resources>
