@@ -73,6 +73,7 @@ public class showCoosenActivity extends AppCompatActivity {
     private void deleteDelivery(String token,String idDelivery)
     {
         Intent intent=new Intent(this, MainBusiness.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         Call<Void> call =rtfBase.deleteDelivery("Bearer "+token,idDelivery);
 

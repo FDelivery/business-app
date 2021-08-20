@@ -195,6 +195,7 @@ public class editDelivery extends AppCompatActivity {
     private void UpdateDelivery(String token,String idDelivery,Delivery d)
     {
         Intent intent= new Intent(this, MainBusiness.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 
         Call<Void> call = rtfBase.updateDelivery("Bearer "+token,idDelivery,d);

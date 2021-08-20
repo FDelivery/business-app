@@ -84,56 +84,7 @@ public class MainBusiness extends AppCompatActivity {
 
         //show all active deliveries, First we will check if there are such deliveries
         ActiveDeliveries.setOnClickListener((v) -> {
-           Intent intent = new Intent(this, activeDeliveries.class);
-            Call<List<String>> call = rtfBase.getDeliveries(ID);
-            ArrayList<String> arrayList=new ArrayList<>();
-            Bundle bundle = new Bundle();
-
-            call.enqueue(new Callback<List<String>>() {
-                @Override
-                public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                    if(response.code() == 200)
-                    {
-                        for(int i=0;i<response.body().size();i++){
-                            delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
-                            if(!delivery.getStatus().equals("DELIVERED")){
-                                String deliveryID=response.body().get(i).substring(18,42);
-                                Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
-                                delivery.setId(deliveryID);
-                                arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
-
-                            }
-                        }
-                        if(!arrayList.isEmpty()) {
-
-                            intent.putExtra("id", ID);
-                            intent.putExtra("businessUserInGson", USER);
-                            intent.putExtra("token", TOKEN);
-                            bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
-                            intent.putExtra("BUNDLE",bundle);
-
-
-
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                    else{
-                        Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<String>> call, Throwable t) {
-                    Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
-
-                }
-            });
-
-
+            showActive();
 
         });
 //show all profile info (and option to change)
@@ -148,53 +99,7 @@ public class MainBusiness extends AppCompatActivity {
         });
 //show all deliveries that sends. First we will check if there are such deliveries
         deliveryHistory.setOnClickListener((v) -> {
-            Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",ID);
-            ArrayList<String> arrayList=new ArrayList<>();
-            Intent intent =new Intent(this, DeliveryHistory.class);
-            Bundle bundle = new Bundle();
-
-            call.enqueue(new Callback<List<String>>() {
-                @Override
-                public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                    if(response.code() == 200) {
-                        for (int i = 0; i < response.body().size(); i++) {
-                            delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
-                            if (delivery.getStatus().equals("DELIVERED")) {
-                                String deliveryID=response.body().get(i).substring(18,42);
-                                Delivery delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
-                                delivery.setId(deliveryID);
-                                arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
-                            }
-                        }
-                        if (!arrayList.isEmpty()) {
-
-                            intent.putExtra("id",ID);
-                            intent.putExtra("businessUserInGson", USER);
-                            intent.putExtra("token",TOKEN);
-                            bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
-                            intent.putExtra("BUNDLE",bundle);
-
-                            startActivity(intent);
-                        }
-                    }else{
-                        Toast.makeText(MainBusiness.this, "you have no completed deliveries",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<String>> call, Throwable t) {
-                    Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
-
-                }
-            });
-
-
-
-
-
-
-
+            getHistory();
 
         });
  //create new delivery
@@ -219,4 +124,103 @@ public class MainBusiness extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+    //show all deliveries that sends. First we will check if there are such deliveries
+    private void getHistory(){
+        Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",ID);
+        ArrayList<String> arrayList=new ArrayList<>();
+        Intent intent =new Intent(this, DeliveryHistory.class);
+        Bundle bundle = new Bundle();
+
+        call.enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if(response.code() == 200) {
+                    for (int i = 0; i < response.body().size(); i++) {
+                        delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                        if (delivery.getStatus().equals("DELIVERED")) {
+                            String deliveryID=response.body().get(i).substring(18,42);
+                            arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
+                        }
+                    }
+                    if (!arrayList.isEmpty()) {
+
+                        intent.putExtra("id",ID);
+                        intent.putExtra("businessUserInGson", USER);
+                        intent.putExtra("token",TOKEN);
+                        bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                        intent.putExtra("BUNDLE",bundle);
+
+                        startActivity(intent);
+                    }
+                }else{
+                    Toast.makeText(MainBusiness.this, "you have no completed deliveries",Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
+
+
+
+    //show all active deliveries, First we will check if there are such deliveries
+    private void showActive(){
+        Intent intent = new Intent(this, activeDeliveries.class);
+        Call<List<String>> call = rtfBase.getDeliveries(ID);
+        ArrayList<String> arrayList=new ArrayList<>();
+        Bundle bundle = new Bundle();
+
+        call.enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if(response.code() == 200)
+                {
+                    for(int i=0;i<response.body().size();i++){
+                        delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
+                        if(!delivery.getStatus().equals("DELIVERED")){
+                            String deliveryID=response.body().get(i).substring(18,42);
+                            arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
+
+                        }
+                    }
+                    if(!arrayList.isEmpty()) {
+
+                        intent.putExtra("id", ID);
+                        intent.putExtra("businessUserInGson", USER);
+                        intent.putExtra("token", TOKEN);
+                        bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                        intent.putExtra("BUNDLE",bundle);
+
+
+
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+                else{
+                    Toast.makeText(MainBusiness.this, "you have no active deliveries",Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                Toast.makeText(MainBusiness.this, t.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+    }
+
+
 }
