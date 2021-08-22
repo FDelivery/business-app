@@ -25,7 +25,7 @@ public class activeDeliveries extends AppCompatActivity {
     private ListView listView;
     private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
     String USER,ID,TOKEN;
-    ArrayList<String> arraylist;
+    ArrayList<String> arrayListShow,arraylistId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,9 @@ public class activeDeliveries extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Bundle args = getIntent().getBundleExtra("BUNDLE");
 
-        arraylist = (ArrayList<String>) args.getSerializable("ARRAYLIST");
+        arrayListShow = (ArrayList<String>) args.getSerializable("arrayListShow");
+        arraylistId = (ArrayList<String>) args.getSerializable("arrayListId");
+
 
         if (extras != null) {
             USER = extras.getString("businessUserInGson");
@@ -45,7 +47,7 @@ public class activeDeliveries extends AppCompatActivity {
             TOKEN = extras.getString("token");
 
 
-            helpArrayAdapter(arraylist);
+            helpArrayAdapter(arrayListShow);
         }
 
     }
@@ -58,7 +60,7 @@ public class activeDeliveries extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                GetDelivery(arrayList.get(position).split("id=")[1]);
+                GetDelivery(arraylistId.get(position));
 
             }
         });

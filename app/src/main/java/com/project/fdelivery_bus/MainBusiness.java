@@ -128,7 +128,9 @@ public class MainBusiness extends AppCompatActivity {
     //show all deliveries that sends. First we will check if there are such deliveries
     private void getHistory(){
         Call<List<String>> call = rtfBase.getDeliveriesHistory("DELIVERED",ID);
-        ArrayList<String> arrayList=new ArrayList<>();
+        ArrayList<String> arrayListShow=new ArrayList<>();
+        ArrayList<String> arrayListId=new ArrayList<>();
+
         Intent intent =new Intent(this, DeliveryHistory.class);
         Bundle bundle = new Bundle();
 
@@ -140,15 +142,20 @@ public class MainBusiness extends AppCompatActivity {
                         delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                         if (delivery.getStatus().equals("DELIVERED")) {
                             String deliveryID=response.body().get(i).substring(18,42);
-                            arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
+                            arrayListShow.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone());
+                            arrayListId.add(deliveryID);
+
+
                         }
                     }
-                    if (!arrayList.isEmpty()) {
+                    if (!arrayListShow.isEmpty()) {
 
                         intent.putExtra("id",ID);
                         intent.putExtra("businessUserInGson", USER);
                         intent.putExtra("token",TOKEN);
-                        bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                        bundle.putSerializable("arrayListShow",(Serializable)arrayListShow);
+                        bundle.putSerializable("arrayListId",(Serializable)arrayListId);
+
                         intent.putExtra("BUNDLE",bundle);
 
                         startActivity(intent);
@@ -174,7 +181,8 @@ public class MainBusiness extends AppCompatActivity {
     private void showActive(){
         Intent intent = new Intent(this, activeDeliveries.class);
         Call<List<String>> call = rtfBase.getDeliveries(ID);
-        ArrayList<String> arrayList=new ArrayList<>();
+        ArrayList<String> arrayListShow=new ArrayList<>();
+        ArrayList<String> arrayListId=new ArrayList<>();
         Bundle bundle = new Bundle();
 
         call.enqueue(new Callback<List<String>>() {
@@ -186,16 +194,17 @@ public class MainBusiness extends AppCompatActivity {
                         delivery = new Gson().fromJson(response.body().get(i), Delivery.class);
                         if(!delivery.getStatus().equals("DELIVERED")){
                             String deliveryID=response.body().get(i).substring(18,42);
-                            arrayList.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone()+"\nid="+deliveryID);
-
+                            arrayListShow.add("Client Name: "+delivery.getClientName()+"\nNumber: "+delivery.getClientPhone());
+                            arrayListId.add(deliveryID);
                         }
                     }
-                    if(!arrayList.isEmpty()) {
+                    if(!arrayListShow.isEmpty()) {
 
                         intent.putExtra("id", ID);
                         intent.putExtra("businessUserInGson", USER);
                         intent.putExtra("token", TOKEN);
-                        bundle.putSerializable("ARRAYLIST",(Serializable)arrayList);
+                        bundle.putSerializable("arrayListShow",(Serializable)arrayListShow);
+                        bundle.putSerializable("arrayListId",(Serializable)arrayListId);
                         intent.putExtra("BUNDLE",bundle);
 
 
