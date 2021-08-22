@@ -211,9 +211,7 @@ public class newDelivery extends AppCompatActivity {
     private void handleSubmit(Delivery delivery)
     {
         Intent intent=new Intent(this,MainBusiness.class);
-
-       // Call<String> call = rtfBase.insertNewDelivery("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyODE4ODY3MywianRpIjoiYjA4Zjc0ODYtMzY4Yy00NzQwLWI1OTgtZWY5NmQwMWRlMTNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYxMDgwM2RjNTcyMzdmMzUzMmI3OGQ3MCIsIm5iZiI6MTYyODE4ODY3MywiZXhwIjoxNjI4NzkzNDczfQ.cguZk7JFCehGHVeuoFQaXcfEii3s1mbz3MSwrzdfAnY",delivery);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Call<String> call = rtfBase.insertNewDelivery("Bearer "+TOKEN,delivery);
         call.enqueue(new Callback<String>() {
             @Override
