@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.classes;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

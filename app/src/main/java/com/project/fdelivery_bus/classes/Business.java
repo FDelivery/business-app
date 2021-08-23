@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.classes;
 
 public class Business {
 
@@ -48,7 +48,7 @@ public class Business {
         return token;
     }
 
-    Business(String e, String p1, String p2, Address a, String bn, String pass)
+    public Business(String e, String p1, String p2, Address a, String bn, String pass)
     {
         email = e;
         primaryPhone = p1;
@@ -59,7 +59,7 @@ public class Business {
     }
 
 
-    Business(String e, String p1, Address a, String bn, String pass)
+    public Business(String e, String p1, Address a, String bn, String pass)
     {
         email = e;
         primaryPhone = p1;

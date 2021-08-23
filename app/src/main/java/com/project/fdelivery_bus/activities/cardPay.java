@@ -1,8 +1,10 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.project.fdelivery_bus.R;
 
 public class cardPay extends AppCompatActivity {
 

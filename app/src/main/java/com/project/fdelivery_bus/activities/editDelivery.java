@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.project.fdelivery_bus.classes.Address;
+import com.project.fdelivery_bus.classes.Delivery;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class editDelivery extends AppCompatActivity {
-    private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+    private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
     String DELIVERY,IDDELIVERY,TOKEN,USER,ID;
     private EditText name,phone,price,note;
     private Button save;

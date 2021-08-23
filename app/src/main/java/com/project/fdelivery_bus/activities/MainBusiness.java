@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 import io.socket.client.Socket;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +20,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
+import com.project.fdelivery_bus.classes.Business;
+import com.project.fdelivery_bus.classes.Delivery;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
+import com.project.fdelivery_bus.classes.SocketIO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,7 +39,7 @@ public class MainBusiness extends AppCompatActivity {
     private ImageButton myProfile;
     private Business businessUser;
     private TextView welcome;
-    private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+    private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
     String USER,ID,TOKEN;
     private Socket mSocket;
     Delivery delivery;

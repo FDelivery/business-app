@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
+
 import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;

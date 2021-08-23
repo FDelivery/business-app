@@ -1,4 +1,7 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.classes;
+
+import com.project.fdelivery_bus.classes.Business;
+import com.project.fdelivery_bus.classes.Delivery;
 
 import java.util.HashMap;
 import java.util.List;

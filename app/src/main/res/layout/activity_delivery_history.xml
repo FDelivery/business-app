@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:scrollbarSize="10dp"
-    tools:context=".activeDeliveries">
+    tools:context=".activities.activeDeliveries">
 
 
     <ListView

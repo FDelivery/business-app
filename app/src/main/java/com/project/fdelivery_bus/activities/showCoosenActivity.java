@@ -1,16 +1,19 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.project.fdelivery_bus.classes.Delivery;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +22,7 @@ import retrofit2.Response;
 public class showCoosenActivity extends AppCompatActivity {
     private TextView printInfo;
     private Button delete,edit;
-    private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+    private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
 
     String DELIVERY,IDDELIVERY,TOKEN,ID, USER;
     @SuppressLint("SetTextI18n")

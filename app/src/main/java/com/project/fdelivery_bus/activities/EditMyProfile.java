@@ -1,17 +1,16 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Telephony;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
 
 import java.util.HashMap;
 

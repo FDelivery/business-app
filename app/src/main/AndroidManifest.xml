@@ -12,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FDelivery"
         android:usesCleartextTraffic="true">
-        <activity android:name=".cardPay"></activity>
-        <activity android:name=".editDelivery" />
-        <activity android:name=".showCoosenActivity" />
-        <activity android:name=".ChangePassword" />
-        <activity android:name=".EditMyProfile" />
-        <activity android:name=".BusinessProfile" />
-        <activity android:name=".MainBusiness" />
-        <activity android:name=".newDelivery" />
-        <activity android:name=".activeDeliveries" />
-        <activity android:name=".DeliveryHistory" />
-        <activity android:name=".RegisterNewBusiness" />
+        <activity android:name=".activities.cardPay"></activity>
+        <activity android:name=".activities.editDelivery" />
+        <activity android:name=".activities.showCoosenActivity" />
+        <activity android:name=".activities.ChangePassword" />
+        <activity android:name=".activities.EditMyProfile" />
+        <activity android:name=".activities.BusinessProfile" />
+        <activity android:name=".activities.MainBusiness" />
+        <activity android:name=".activities.newDelivery" />
+        <activity android:name=".activities.activeDeliveries" />
+        <activity android:name=".activities.DeliveryHistory" />
+        <activity android:name=".activities.RegisterNewBusiness" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:theme="@style/Theme.FDelivery.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

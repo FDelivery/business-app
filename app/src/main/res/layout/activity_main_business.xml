@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/circule"
 
-    tools:context=".MainBusiness">
+    tools:context=".activities.MainBusiness">
 
     <ImageButton
         android:id="@+id/activeDeliveries"

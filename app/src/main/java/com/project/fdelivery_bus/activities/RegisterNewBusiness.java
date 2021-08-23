@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,12 @@ import java.util.HashMap;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
+import com.project.fdelivery_bus.classes.Address;
+import com.project.fdelivery_bus.classes.Business;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
+import com.project.fdelivery_bus.classes.validations;
 
 import retrofit2.Call;
 import retrofit2.Callback;

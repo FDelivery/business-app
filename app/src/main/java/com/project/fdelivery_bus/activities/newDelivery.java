@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -21,6 +21,13 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.project.fdelivery_bus.classes.Address;
+import com.project.fdelivery_bus.classes.Delivery;
+import com.project.fdelivery_bus.R;
+import com.project.fdelivery_bus.classes.RetrofitBase;
+import com.project.fdelivery_bus.classes.RetrofitInterface;
+import com.project.fdelivery_bus.classes.SocketIO;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -29,7 +36,7 @@ public class newDelivery extends AppCompatActivity {
     private EditText city,street,Cnote,number,floor,apartment,entrance;
     private Button submit;
     private Socket mSocket;
-    private RetrofitInterface  rtfBase = RetrofitBase.getRetrofitInterface();
+    private RetrofitInterface rtfBase = RetrofitBase.getRetrofitInterface();
     String USER,ID,TOKEN;
 
 

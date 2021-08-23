@@ -1,4 +1,4 @@
-package com.project.fdelivery_bus;
+package com.project.fdelivery_bus.classes;
 
 public class Address {
     private String city,street,number,apartment,floor,entrance;
