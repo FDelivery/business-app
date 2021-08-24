@@ -208,11 +208,7 @@ public class newDelivery extends AppCompatActivity {
 
 
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSocket.disconnect();
-    }
+
 
     //finish put delivery info so add the new delivery
     private void handleSubmit(Delivery delivery)

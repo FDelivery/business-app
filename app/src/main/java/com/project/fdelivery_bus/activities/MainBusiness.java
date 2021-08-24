@@ -1,5 +1,6 @@
 package com.project.fdelivery_bus.activities;
 import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ import com.project.fdelivery_bus.classes.SocketIO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class MainBusiness extends AppCompatActivity {
@@ -43,10 +46,28 @@ public class MainBusiness extends AppCompatActivity {
     String USER,ID,TOKEN;
     private Socket mSocket;
     Delivery delivery;
+    private NotificationManagerCompat notificationManager;
 
     protected void onStop() {
         super.onStop();
         mSocket.off("delivery_accepted");
+        Log.i("socket", "listener off");
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("socket", "listener on");
+//        mSocket = SocketIO.getSocket();
+//        mSocket.emit("join", ID);
+        mSocket.on("delivery_accepted", onNewMessage);
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mSocket.emit("leave", ID);
+        mSocket.disconnect();
+        super.onDestroy();
     }
 
     @SuppressLint("SetTextI18n")
@@ -60,29 +81,20 @@ public class MainBusiness extends AppCompatActivity {
         ActiveDeliveries=findViewById(R.id.activeDeliveries);
         myProfile =findViewById(R.id.myprofile);
         welcome=findViewById(R.id.textViewWelcom);
-
-
+        notificationManager = NotificationManagerCompat.from(this);
+        mSocket = SocketIO.getSocket();
 
         Bundle extras = getIntent().getExtras();
-        mSocket = SocketIO.getSocket();
-        mSocket.on("delivery_accepted", (msg)->{
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"123")
-                .setSmallIcon(R.drawable.notification_icon)
-                .setContentTitle("Delivery accepted")
-                .setContentText("a courier is on his way to take care of your delivery")
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.notify(123, builder.build());
 
-        });
         if(extras!=null)
         {
             USER = extras.getString("businessUserInGson");
             ID =extras.getString("id");
-            mSocket.emit("join", ID);
             TOKEN =extras.getString("token");
             businessUser = new Gson().fromJson(USER, Business.class);
 
+            mSocket.emit("join", ID);
+            Log.i("ID", ID);
             welcome.setText("welcome "+businessUser.getBusinessName());
 
         }
@@ -236,5 +248,17 @@ public class MainBusiness extends AppCompatActivity {
 
     }
 
+    private Emitter.Listener onNewMessage = new Emitter.Listener(){
+        @Override
+        public void call(Object... args) {
+            Log.i("socket", "111");
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),"123")
+                    .setSmallIcon(R.drawable.notification_icon)
+                    .setContentTitle("Delivery accepted")
+                    .setContentText("a courier is on his way to take care of your delivery")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH);
 
+            notificationManager.notify((int)Math.random()*100, builder.build());
+        }
+    };
 }
