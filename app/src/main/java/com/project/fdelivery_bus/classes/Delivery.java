@@ -14,15 +14,15 @@ public class Delivery
     private String status;
 
 
-
-    public String getStatus() {
-        return status;
-    }
-
-
-
-    public void setPrice(double price) {
-        this.price = price;
+    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date,String status,double price) {
+        this.destAddress= clientAddress;
+        this.clientName = clientName;
+        this.clientPhone = clientPhone;
+        this.Time = time;
+        this.Note = clientNote;
+        this.deliveredDate = date;
+        this.status=status;
+        this.price=price;
     }
 
 
@@ -34,6 +34,13 @@ public class Delivery
     }
 
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -41,18 +48,6 @@ public class Delivery
 
     public void setId(String id) {
         this.id = id;
-    }
-
-
-    public Delivery(Address clientAddress, String clientPhone, String clientName, String clientNote, String time, String date,String status,double price) {
-        this.destAddress= clientAddress;
-        this.clientName = clientName;
-        this.clientPhone = clientPhone;
-        this.Time = time;
-        this.Note = clientNote;
-        this.deliveredDate = date;
-        this.status=status;
-        this.price=price;
     }
 
     public String getClientPhone() {
@@ -73,10 +68,6 @@ public class Delivery
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
-    }
-
-    public String getDate() {
-        return deliveredDate;
     }
 
     public void setDate(String date) {
