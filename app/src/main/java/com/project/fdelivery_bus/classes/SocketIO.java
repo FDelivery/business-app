@@ -9,7 +9,7 @@ public class SocketIO {
     private static Socket mSocket;
     public static Socket getSocket()
     {
-        if(mSocket!= null && mSocket.isActive())
+        if(mSocket!= null && mSocket.connected())
             return mSocket;
         try {
              mSocket = IO.socket(RetrofitBase.BASE_URL);

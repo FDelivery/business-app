@@ -58,16 +58,21 @@ public class MainBusiness extends AppCompatActivity {
     protected void onResume() {
         Log.i("socket", "listener on");
 //        mSocket = SocketIO.getSocket();
-//        mSocket.emit("join", ID);
+        mSocket.emit("join", ID, mSocket.id());
         mSocket.on("delivery_accepted", onNewMessage);
         super.onResume();
     }
 
     @Override
     protected void onDestroy() {
-        mSocket.emit("leave", ID);
         mSocket.disconnect();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSocket.emit("leave", ID, mSocket.id());
     }
 
     @SuppressLint("SetTextI18n")
@@ -93,7 +98,7 @@ public class MainBusiness extends AppCompatActivity {
             TOKEN =extras.getString("token");
             businessUser = new Gson().fromJson(USER, Business.class);
 
-            mSocket.emit("join", ID);
+//            mSocket.emit("join", ID);
             Log.i("ID", ID);
             welcome.setText("welcome "+businessUser.getBusinessName());
 
