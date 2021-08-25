@@ -58,7 +58,7 @@ public class MainBusiness extends AppCompatActivity {
     protected void onResume() {
         Log.i("socket", "listener on");
 //        mSocket = SocketIO.getSocket();
-        mSocket.emit("join", ID, mSocket.id());
+        mSocket.emit("join", ID);
         mSocket.on("delivery_accepted", onNewMessage);
         super.onResume();
     }
@@ -72,7 +72,7 @@ public class MainBusiness extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mSocket.emit("leave", ID, mSocket.id());
+        mSocket.emit("leave", ID);
     }
 
     @SuppressLint("SetTextI18n")
